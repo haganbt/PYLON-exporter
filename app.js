@@ -1,6 +1,6 @@
 'use strict';
 
-var bunyan = require('bunyan')
+var DataSift = require('./lib/datasift/datasift')
     , log = require('./utils/logger')
     , config = require('config')
     ;
