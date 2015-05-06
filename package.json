@@ -1,0 +1,23 @@
+{
+  "name": "PYLON-exporter",
+  "version": "1.0.0",
+  "description": "Utility for exporting data from a PYLON index.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haganbt/PYLON-exporter.git"
+  },
+  "author": "Ben",
+  "bugs": {
+    "url": "https://github.com/haganbt/PYLON-exporter/issues"
+  },
+  "homepage": "https://github.com/haganbt/PYLON-exporter",
+  "dependencies": {
+    "bunyan": "^1.3.5",
+    "bunyan-format": "^0.2.1",
+    "config": "^1.13.0"
+  }
+}
