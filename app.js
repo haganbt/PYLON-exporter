@@ -11,8 +11,7 @@ var options = {
         'user': config.get('auth.username'),
         'pass': config.get('auth.api_key')
     },
-    'uri': 'https://api.datasift.com/v1/pylon/get?hash='+config.get('hash'),
-    resolveWithFullResponse: true
+    'uri': 'https://api.datasift.com/v1/pylon/get?hash='+config.get('hash')
 };
 
 
