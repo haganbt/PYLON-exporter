@@ -10,11 +10,11 @@ module.exports = {
         "fd": [
             {
                 "target": "fb.author.gender",
-                "threshold": 5,
+                "threshold": 5
             },
             {
                 "target": "fb.author.age",
-                "threshold": 5,
+                "threshold": 5
             }
         ]
     }
