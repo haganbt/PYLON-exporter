@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = {
-    "hash" : "1fdec37f185a269b57e8252bc4635853",
+    "hash" : "1a26526e533f2c5c30ab8092d10aa152",
     "auth": {
         "username": "CS_2",
         "api_key": "8bc6d49909a9f1220b35d573acfeee90"
     },
     "analysis": {
-        "frequencyDistribution": [
+        "fd": [
             {
                 "target": "fb.author.gender",
                 "threshold": 5,
