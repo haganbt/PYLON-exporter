@@ -6,7 +6,7 @@ Utility for exporting data from a PYLON index
 
 Install node libs:
 
-```sudo npm install``
+```sudo npm install```
 
 ### Run
 
