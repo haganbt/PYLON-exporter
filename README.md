@@ -8,6 +8,10 @@ Install node libs:
 
 ```sudo npm install```
 
+### Run Tests
+
+```npm test```
+
 ### Run
 
 ```node app.js```
