@@ -13,12 +13,3 @@ var log = require('./utils/logger')
  * with the value of the error. Once the tasks have completed, the
  * results are passed to the final callback as an array.
  */
-async.parallelLimit(jobs, 3
-    , function (err, results) {
-        if (err) {
-            log.info(err);
-        }
-
-        log.info(results);
-        log.info("Complete.");
-    });

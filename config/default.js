@@ -7,15 +7,20 @@ module.exports = {
         "api_key": "8bc6d49909a9f1220b35d573acfeee90"
     },
     "analysis": {
-        "fd": [
-            {
-                "target": "fb.author.gender",
-                "threshold": 5
-            },
+        "freqDist": [
             {
                 "target": "fb.author.age",
                 "threshold": 5
+            },
+            {
+                "target": "fb.author.gender",
+                "threshold": 2
             }
-        ]
+        ]/*,
+        "timeSeries": [
+            {
+                "interval": "day"
+            }
+        ]*/
     }
 };
