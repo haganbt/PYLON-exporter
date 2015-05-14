@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-    "hash" : "1a26526e533f2c5c30ab8092d10aa152",
+    "hash": "b5566a154bb6dcd19b52b3b431e59373",
     "auth": {
         "username": "CS_2",
-        "api_key": "8bc6d49909a9f1220b35d573acfeee90"
+        "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
     },
     "analysis": {
         "freqDist": [
@@ -16,11 +16,11 @@ module.exports = {
                 "target": "fb.author.gender",
                 "threshold": 2
             }
-        ]/*,
+        ],
         "timeSeries": [
             {
                 "interval": "day"
             }
-        ]*/
+        ]
     }
 };
