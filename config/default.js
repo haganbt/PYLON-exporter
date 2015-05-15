@@ -11,19 +11,12 @@ module.exports = {
             {
                 "target": "fb.author.age",
                 "threshold": 5
-            },
-            {
-                "target": "fb.author.gender",
-                "threshold": 2
             }
         ],
         "timeSeries": [
             {
                 "interval": "hour",
                 "span": 2
-            },
-            {
-                "interval": "week"
             }
         ]
     }
