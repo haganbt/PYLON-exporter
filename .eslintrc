@@ -16,8 +16,8 @@ rules:
   semi: 1
   eqeqeq: 1
   no-mixed-requires: 1
-  comma-spacing: 0
-  space-infix-ops: 0
+  comma-spacing: 1
+  space-infix-ops: 1
   no-spaced-func: 0
   no-multi-spaces: 0
   key-spacing: 0
