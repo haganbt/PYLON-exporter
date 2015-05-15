@@ -8,7 +8,8 @@ var log = require("./utils/logger")
 var tasks = taskManager.buildFromConfig();
 var jobs = [];
 
-//itterate tasks and build requestFunctions for each
+//iterate tasks and build requestFunctions for each
+//TODO - move the iteration of array to buildRequestFunction()
 for (var prop in tasks) {
     if (tasks.hasOwnProperty(prop)) {
         jobs.push(taskManager.buildRequestFunction(tasks[prop]));
