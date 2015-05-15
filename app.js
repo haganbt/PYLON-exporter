@@ -4,7 +4,6 @@ var log = require('./utils/logger')
     , async = require('async')
     , taskManager = require('./lib/taskManager')
     , jobs = taskManager.load()
-    , async = require('async')
     ;
 
 /**
