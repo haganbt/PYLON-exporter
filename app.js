@@ -15,11 +15,10 @@ var log = require('./utils/logger')
  * results are passed to the final callback as an array.
  */
 async.parallel(jobs
-    , function (err, results) {
+    , function (err) { // , function (err, results) {
         if (err) {
             log.info(err);
         }
 
-        //log.info(results);
         log.info("All requests complete.");
     });
