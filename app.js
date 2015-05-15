@@ -5,7 +5,16 @@ var log = require("./utils/logger")
     , taskManager = require("./lib/taskManager")
     ;
 
-var tasks = taskManager.load();
+var tasks = taskManager.buildFromConfig();
+var jobs = [];
+
+//itterate tasks and build requestFunctions for each
+for (var prop in tasks) {
+    if (tasks.hasOwnProperty(prop)) {
+        jobs.push(taskManager.buildRequestFunction(tasks[prop]));
+    }
+}
+
 
 /**
  * Run the tasks array of functions in parallel, without waiting until
@@ -14,7 +23,7 @@ var tasks = taskManager.load();
  * with the value of the error. Once the tasks have completed, the
  * results are passed to the final callback as an array.
  */
-async.parallelLimit(tasks, 2
+async.parallelLimit(jobs, 2
     , function (err) { // , function (err, results) {
         if (err) {
             log.info(err);
