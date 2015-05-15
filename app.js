@@ -5,7 +5,7 @@ var log = require("./utils/logger")
     , taskManager = require("./lib/taskManager")
     ;
 
-var jobs = taskManager.load();
+var tasks = taskManager.load();
 
 /**
  * Run the tasks array of functions in parallel, without waiting until
@@ -14,7 +14,7 @@ var jobs = taskManager.load();
  * with the value of the error. Once the tasks have completed, the
  * results are passed to the final callback as an array.
  */
-async.parallel(jobs
+async.parallelLimit(tasks, 2
     , function (err) { // , function (err, results) {
         if (err) {
             log.info(err);
