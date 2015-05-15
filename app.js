@@ -3,8 +3,9 @@
 var log = require('./utils/logger')
     , async = require('async')
     , taskManager = require('./lib/taskManager')
-    , jobs = taskManager.load()
     ;
+
+var jobs = taskManager.load();
 
 /**
  * Run the tasks array of functions in parallel, without waiting until
