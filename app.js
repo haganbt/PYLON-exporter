@@ -21,5 +21,5 @@ async.parallel(jobs
         }
 
         //log.info(results);
-        log.info("Complete.");
+        log.info("All requests complete.");
     });

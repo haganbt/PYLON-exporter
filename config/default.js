@@ -19,8 +19,17 @@ module.exports = {
         ],
         "timeSeries": [
             {
-                "interval": "day"
+                "interval": "hour",
+                "span": 2
+            },
+            {
+                "interval": "week"
             }
         ]
     }
 };
+
+//age by domain
+//show topics related to url
+//age gender
+// network graph
