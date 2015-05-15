@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha && eslint ."
+    "test": "mocha && eslint .",
+    "test-coverage": "istanbul cover _mocha"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "chai": "^2.3.0",
     "eslint": "0.21.0",
     "expect": "^1.6.0",
+    "istanbul": "^0.3.14",
     "mocha": "2.2.4",
     "should": "^6.0.1"
   }
