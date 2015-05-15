@@ -2,9 +2,9 @@ env:
   node: true
 rules:
   # TODO: enable one by one (disabled for now to get eslint into CI)
-  no-process-exit: 0
-  no-undef: 0
-  no-use-before-define: 0
+  no-process-exit: 1
+  no-undef: 1
+  no-use-before-define: 1
   strict: 0
   no-unused-vars: 0
   no-shadow: 0
