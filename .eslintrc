@@ -1,7 +1,6 @@
 env:
   node: true
 rules:
-  # TODO: enable one by one (disabled for now to get eslint into CI)
   no-process-exit: 1
   no-undef: 1
   no-use-before-define: 1
@@ -28,4 +27,4 @@ rules:
   camelcase: 1
   no-underscore-dangle: 1
   quotes: 1
-  eol-last: 0
+  eol-last: 1
