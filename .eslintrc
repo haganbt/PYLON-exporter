@@ -11,9 +11,9 @@ rules:
   handle-callback-err: 1
   consistent-return: 1
   no-redeclare: 1
-  no-unreachable: 0
-  no-unused-expressions: 0
-  semi: 0
+  no-unreachable: 1
+  no-unused-expressions: 1
+  semi: 1
   eqeqeq: 0
   no-mixed-requires: 0
   comma-spacing: 0
