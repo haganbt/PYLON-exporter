@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "eslint ."
+    "test": "mocha && eslint ."
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,10 @@
     "request-debug": "0.1.1"
   },
   "devDependencies": {
+    "chai": "^2.3.0",
     "eslint": "0.21.0",
-    "mocha": "2.2.4"
+    "expect": "^1.6.0",
+    "mocha": "2.2.4",
+    "should": "^6.0.1"
   }
 }
