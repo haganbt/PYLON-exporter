@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-var log = require('./utils/logger')
-    , async = require('async')
-    , taskManager = require('./lib/taskManager')
+var log = require("./utils/logger")
+    , async = require("async")
+    , taskManager = require("./lib/taskManager")
     ;
 
 var jobs = taskManager.load();

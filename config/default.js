@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 module.exports = {
     "hash": "b5566a154bb6dcd19b52b3b431e59373",

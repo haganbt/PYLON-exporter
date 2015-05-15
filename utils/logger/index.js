@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-var bunyan = require('bunyan')
-    , bformat = require('bunyan-format')
+var bunyan = require("bunyan")
+    , bformat = require("bunyan-format")
     ;
 
-var formatOut = bformat({ outputMode: 'short' })
+var formatOut = bformat({ outputMode: "short" })
     , logger = bunyan.createLogger({
-        name: 'PYLON-exporter',
+        name: "PYLON-exporter",
         streams: [
             {
                 level: "debug",

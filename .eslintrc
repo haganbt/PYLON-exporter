@@ -26,6 +26,6 @@ rules:
   yoda: 1
   new-cap: 1
   camelcase: 1
-  no-underscore-dangle: 0
-  quotes: 0
+  no-underscore-dangle: 1
+  quotes: 1
   eol-last: 0
