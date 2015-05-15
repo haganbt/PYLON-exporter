@@ -28,8 +28,3 @@ module.exports = {
         ]
     }
 };
-
-//age by domain
-//show topics related to url
-//age gender
-// network graph
