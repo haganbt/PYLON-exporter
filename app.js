@@ -24,7 +24,7 @@ for (var prop in tasks) {
  * with the value of the error. Once the tasks have completed, the
  * results are passed to the final callback as an array.
  */
-async.parallelLimit(jobs, 2
+async.parallelLimit(jobs, 3
     , function (err) { // , function (err, results) {
         if (err) {
             log.info(err);
