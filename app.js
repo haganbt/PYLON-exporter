@@ -5,16 +5,8 @@ var log = require("./utils/logger")
     , taskManager = require("./lib/taskManager")
     ;
 
-var tasks = taskManager.buildFromConfig();
-var jobs = [];
-
-//iterate tasks and build requestFunctions for each
-//TODO - move the iteration of array to buildRequestFunction()
-for (var prop in tasks) {
-    if (tasks.hasOwnProperty(prop)) {
-        jobs.push(taskManager.buildRequestFunction(tasks[prop]));
-    }
-}
+var tasks = taskManager.loadConfig();
+var taskFunctions = taskManager.buildRequestFunctions(tasks);
 
 
 /**
@@ -24,11 +16,12 @@ for (var prop in tasks) {
  * with the value of the error. Once the tasks have completed, the
  * results are passed to the final callback as an array.
  */
-async.parallelLimit(jobs, 3
-    , function (err) { // , function (err, results) {
+async.parallelLimit(taskFunctions, 5
+    , function (err, results) {
         if (err) {
             log.info(err);
         }
 
-        log.info("All requests complete.");
+        log.info("All requests complete:");
+        log.info("    " + JSON.stringify(results));
     });
