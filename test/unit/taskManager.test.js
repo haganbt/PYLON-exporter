@@ -11,8 +11,8 @@ describe("Task Manager", function(){
 
     it("should successfully build response function", function(){
         var ops = { "foo": "bar" };
-        var test = taskManager.buildRequestFunction(ops);
-        expect(test).to.be.an("function");
+        var test = taskManager.buildRequestFunctions(ops);
+        expect(test).to.be.instanceof(Array);
     });
 
 });
