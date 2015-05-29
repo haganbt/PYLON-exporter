@@ -26,5 +26,6 @@ rules:
   new-cap: 1
   camelcase: 1
   no-underscore-dangle: 0
-  quotes: 1
+  #quotes: [2, "single", "avoid-escape"]
   eol-last: 1
+  max-len: [2, 80, 4]
