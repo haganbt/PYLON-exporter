@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = {
+    "app": {
+        "max_parallel_tasks": 3
+    },
     "hash": "b5566a154bb6dcd19b52b3b431e59373",
     "auth": {
         "username": "CS_2",
