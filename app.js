@@ -9,8 +9,21 @@ var log = require("./utils/logger")
 
 var oe = new operationsEngine();
 
+//TODO - this should be async
+var configTasks = taskManager.loadConfig();
 
-oe.queue.push({name: 'foo'}, function (err) {
+oe.enqueue(configTasks, function(err, data){
+    if(err){
+        log.error(err);
+    }
+    log.info(data);
+});
+
+
+
+
+/*
+oe.enqueue({name: 'foo'}, function (err) {
 
     if(err){
         log.error(err);
@@ -20,7 +33,7 @@ oe.queue.push({name: 'foo'}, function (err) {
     log.info('finished processing');
 });
 
-
+*/
 /*
 var tasks = taskManager.loadConfig();
 var taskFunctions = taskManager.buildRequestFunctions(tasks);
