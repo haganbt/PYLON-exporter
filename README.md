@@ -2,20 +2,22 @@
 
 Utility for exporting data from a PYLON index.
 
-### TODO
-
-https://github.com/haganbt/PYLON-exporter/issues
-
 ### Setup
 
 Install node libs:
 
 ```sudo npm install```
 
+Run tests:
+
+```npm test```
+
 
 ### Usage
 
-TODO.
+Edit ```/config/defaults.js``` and configure accordingly.
+
+Run:
 
 ```node app.js```
 
@@ -38,6 +40,10 @@ Nested requests are configured within the config file using the ```then``` objec
 }
 ```
 
-### Run Tests
+### Override Config
 
-```npm test```
+TODO.
+
+### TODO
+
+https://github.com/haganbt/PYLON-exporter/issues
