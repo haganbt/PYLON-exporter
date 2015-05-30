@@ -6,7 +6,7 @@ var log = require('./utils/logger')
     ;
 
 var oe = new OperationsEngine();
-var configTasks = taskManager.loadConfig();
+var configTasks = taskManager.buildFromConfig();
 
 oe.enqueue(configTasks, function(err, data, then){
     if(err){
