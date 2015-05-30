@@ -12,16 +12,12 @@ module.exports = {
     "analysis": {
         "freqDist": [
             {
-                "target": "fb.parent.author.gender",
+                "target": "links.domain",
                 "threshold": 3,
                 "then": {
-                    "target": "fb.parent.author.age",
-                    "threshold": 10
+                    "target": "fb.parent.author.gender",
+                    "threshold": 3
                 }
-            },
-            {
-                "target": "fb.type",
-                "threshold": 5
             }
         ],
         "timeSeries": [
