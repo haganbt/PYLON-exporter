@@ -22,7 +22,7 @@ oe.enqueue(configTasks, function(err, data, then){
             , resultTarget = data.analysis.parameters.target || ""
             ;
 
-        log.debug("Results array: "+JSON.stringify(results));
+        log.debug("Results array: " + JSON.stringify(results));
 
         //process result keys and build the secondary task obj
         for (var ind in results) {
@@ -36,14 +36,17 @@ oe.enqueue(configTasks, function(err, data, then){
                 //iterate the then params and push to the new req obj
                 for (var thenInd in then) {
                     if (then.hasOwnProperty(thenInd)) {
-                        reqParams.json.parameters.parameters[thenInd] = then[thenInd];
+                        reqParams.json.parameters.parameters[thenInd]
+                            = then[thenInd];
                     }
                 }
 
                 //filter - TODO hashmap for operator lookup
-                reqParams.json.filter = resultTarget + ' == "' + results[ind].key + '"';
+                reqParams.json.filter = resultTarget
+                        + ' == "' + results[ind].key + '"';
 
-                //log.debug( "Generated secondary params: " + JSON.stringify(reqParams));
+                //log.debug( "Generated secondary params: "
+                //      + JSON.stringify(reqParams));
 
                 secondaryTasks.push(reqParams);
             }
@@ -51,11 +54,11 @@ oe.enqueue(configTasks, function(err, data, then){
         //log.debug( "secondaryTasks: " + JSON.stringify(secondaryTasks));
 
         //make secondary requests
-        oe.enqueue(secondaryTasks, function(err, data) {
-            if (err) {
-                log.error(err);
+        oe.enqueue(secondaryTasks, function(sErr, sData) {
+            if (sErr) {
+                log.error(sErr);
             }
-            log.info("::: result (secondary): " + JSON.stringify(data));
+            log.info("::: result (secondary): " + JSON.stringify(sData));
         });
     }
 
