@@ -19,10 +19,6 @@ module.exports = {
             {
                 "target": "fb.type",
                 "threshold": 5
-            },
-            {
-                "target": "fb.type",
-                "threshold": 5
             }
         ],
         "timeSeries": [
