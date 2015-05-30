@@ -1,7 +1,7 @@
 env:
   node: true
 rules:
-  no-process-exit: 1
+  no-process-exit: 0
   no-undef: 1
   no-use-before-define: 1
   strict: 1
