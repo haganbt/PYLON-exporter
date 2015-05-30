@@ -21,6 +21,8 @@ The exporter supports the ability to make secondary requests using the results o
 For example, to provide an age breakdown by domain, firstly the domains are requested, and with each of 
 the result keys, an additional request is made using age as the target.
 
+Nested requests are configured within the config file using the ```then``` object:
+
 ```json
 {
     "target": "links.domain",
