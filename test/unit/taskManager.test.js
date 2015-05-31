@@ -6,7 +6,7 @@ var chai = require("chai")
 var expect = chai.expect
     ;
 
-describe("Task Manager", function(){
+describe.skip("Task Manager", function(){
 
     it("test", function(){
         var ops = { "foo": "bar" };
