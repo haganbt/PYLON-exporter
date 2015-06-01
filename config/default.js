@@ -18,7 +18,7 @@ module.exports = {
                     "target": "fb.parent.author.age",
                     "threshold": 6
                 }
-            }/*,
+            },
             {
                 "target": "fb.parent.topics.name",
                 "threshold": 10,
@@ -26,7 +26,7 @@ module.exports = {
                     "target": "fb.parent.topics.name",
                     "threshold": 3
                 }
-            }*/
+            }
         ],
         "timeSeries": [
             {
