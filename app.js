@@ -8,6 +8,10 @@ var log = require('./utils/logger')
 var oe = new OperationsEngine();
 var configTasks = taskManager.buildFromConfig();
 
+
+//TODO - seperation 1) load from config, 2) handle response to call enqueue once again
+
+
 oe.enqueue(configTasks, function(err, data, task){
     if(err){
         log.error(err);
