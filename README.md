@@ -1,6 +1,10 @@
 # PYLON-exporter
 
-Utility for exporting data from a PYLON index. 
+Utility for exporting data from a PYLON index. Features:
+ 
+ * Inbuilt queue to manage requests
+ * Parallel requests limit to control simultanious requests 
+
 
 ### Setup
 
