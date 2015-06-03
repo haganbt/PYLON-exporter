@@ -74,7 +74,6 @@ Secondary:
   "filter": "fb.parent.author.gender ==\"male\""
 }
 
-
 {
   "parameters": {
     "analysis_type": "freqDist",
