@@ -14,12 +14,34 @@ module.exports = {
             {
                 "target": "fb.parent.author.gender",
                 "threshold": 2,
+            },
+            {
+                "target": "fb.parent.topics.name",
+                "threshold": 2,
+                "filter": "fb.parent.sentiment == \"negative\""
+            },
+            {
+                "target": "fb.parent.author.gender",
+                "threshold": 2,
                 "then": {
                     "target": "fb.parent.author.age",
                     "threshold": 6
                 }
+            },
+            {
+                "target": "fb.parent.topics.name",
+                "threshold": 5,
+                "then": {
+                    "target": "fb.parent.topics.name",
+                    "threshold": 2
+                }
+            }
+        ],
+        "timeSeries": [
+            {
+                "interval": "week",
+                "span": 1
             }
         ]
     }
 };
-
