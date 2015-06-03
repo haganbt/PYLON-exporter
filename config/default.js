@@ -12,8 +12,9 @@ module.exports = {
     "analysis": {
         "freqDist": [
             {
-                "target": "fb.parent.topics.name",
-                "threshold": 5,
+                "target": "fb.type",
+                "threshold": 4,
+                "filter": "fb.parent.author.gender == \"male\"",
                 "then": {
                     "target": "fb.parent.topics.name",
                     "threshold": 2

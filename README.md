@@ -90,8 +90,8 @@ Secondary:
 
 ### Request Filters
 
-The ```filter``` parameter is supported for primary requests as you would expect. The following example would return
-the top 2 topics where the sentiment was negative:
+The ```filter``` parameter is supported as expected. The following example would return the top 2 topics where the
+sentiment was negative:
 
 ```json
 {
@@ -100,6 +100,73 @@ the top 2 topics where the sentiment was negative:
     "filter": "fb.parent.sentiment == \"negative\""
 }
 ```
+
+**Nested Filters - Primary**
+
+Request filters can also be used within nested queries:
+
+```json
+{
+    "target": "links.domain",
+    "threshold": 5,
+    "filter": "fb.sentiment == \"positive\"",
+    "then": {
+        "target": "fb.parent.gender",
+        "threshold": 2
+    }
+}
+```
+In this instance, the filter is ONLY applied to the primary request, not the secondary requests. In this example 
+the first request would be made for the top 5 domains where the sentiment is positive. For each of the domains
+returned, a request is made for the gender. These secondary requests DO NOT include the filter for sentiment as it was
+only specified as part of the primary request.
+
+**Nested Filters - Secondary**
+
+Specifying a filter within a nested query results in the specified filter being appended to the automatically generated
+filters using an ```AND`` operator. For example: 
+
+```json
+{
+    "target": "fb.type",
+    "threshold": 4,
+    "then": {
+        "target": "fb.parent.author.age",
+        "threshold": 2,
+        "filter": "fb.parent.author.gender == \"male\"",
+    }
+}
+```
+This would generate the following request for each type:
+
+```json
+{
+  "parameters": {
+    "analysis_type": "freqDist",
+    "parameters": {
+      "target": "fb.parent.author.age",
+      "threshold": 2
+    }
+  },
+  "filter": "fb.parent.author.gender == \"male\" AND fb.type ==\"like\""
+}
+```
+
+Of course both primary and secondary filter parameters can be used together. For example, if we wanted results for
+Male authors only for both the primary request and secondary:
+
+```json
+{
+    "target": "fb.type",
+    "threshold": 4,
+    "filter": "fb.parent.author.gender == \"male\"",
+    "then": {
+        "target": "fb.parent.topics.name",
+        "threshold": 2
+        "filter": "fb.parent.author.gender == \"male\"",
+    }
+}
+```            
 
 ### Override Config
 
