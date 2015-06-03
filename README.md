@@ -9,7 +9,7 @@ Utility for exporting data from a PYLON index. Features:
 
 ## Setup
 
-Install node libs:
+Install node module dependencies:
 
 ```sudo npm install```
 
