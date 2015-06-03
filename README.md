@@ -116,15 +116,15 @@ Request filters can also be used within nested queries:
     }
 }
 ```
-In this instance, the filter is ***ONLY applied to the primary*** request, not the secondary requests. The first request 
-would be made for the top 5 domains where the sentiment is positive. For each of the domains returned, a subsequent 
-request is made for the gender. These ***secondary requests DO NOT include the filter*** for sentiment as it was only 
-specified as part of the primary request.
+In this instance, the ```filter``` parameter is ***ONLY applied to the primary*** request, not the secondary requests. 
+The first request would be made for the top 5 domains where the sentiment is positive. For each of the domains 
+returned, a subsequent request is made for the gender. These ***secondary requests DO NOT include the filter*** for 
+sentiment as it was only specified as part of the primary request.
 
 **Nested Filters - Secondary**
 
-Specifying a filter within a nested query results in the specified filter being appended to the automatically generated
-filters using an ```AND`` operator. For example: 
+Specifying a ```filter``` within a nested query results in the specified filter being appended to the automatically 
+generated filters using an  ```AND`` operator. For example: 
 
 ```json
 {
@@ -152,8 +152,8 @@ This would generate the following request for each type:
 }
 ```
 
-Of course both primary and secondary filter parameters can be used together. For example, if we wanted results for
-Male authors only for both the primary request and secondary:
+Of course both primary and secondary ```filter``` parameters can be used together. For example, if we wanted results
+for Male authors only for both the primary request and secondary:
 
 ```json
 {
