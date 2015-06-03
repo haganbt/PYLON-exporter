@@ -20,7 +20,7 @@ Run tests:
 
 ## Usage
 
-Edit ```/config/defaults.js``` and configure accordingly.
+Configure what data to request by editing the ```/config/defaults.js``` file.
 
 Run:
 
