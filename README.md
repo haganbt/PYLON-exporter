@@ -27,22 +27,49 @@ Run:
 
 ### Nested Requests
 
-The exporter supports the ability to make secondary requests using the results of the first as filter parameters. 
-For example, to provide an age breakdown by domain, firstly the domains are requested, and with each of 
-the result keys, an additional request is made using age as the target.
+Nested requests are supported whereby each result key form a request (primary) then generates
+a subsequent request (secondary) using the key as a filter parameter.
 
 Nested requests are configured within the config file using the ```then``` object:
 
 ```json
 {
-    "target": "links.domain",
-    "threshold": 5,
+    "target": "fb.parent.author.gender",
+    "threshold": 2,
     "then": {
         "target": "fb.parent.author.age",
-        "threshold": 10
+        "threshold": 6
     }
 }
 ```
+
+The above example would generate the following secondary requests:
+
+```json
+{
+  "parameters": {
+    "analysis_type": "freqDist",
+    "parameters": {
+      "target": "fb.parent.author.age",
+      "threshold": 6
+    }
+  },
+  "filter": "fb.parent.author.gender ==\"male\""
+}
+
+
+{
+  "parameters": {
+    "analysis_type": "freqDist",
+    "parameters": {
+      "target": "fb.parent.author.age",
+      "threshold": 6
+    }
+  },
+  "filter": "fb.parent.author.gender ==\"female\""
+}
+
+
 ### Request Filters
 
 The ```filter``` parameter is supported for primary requests as you would expect. The following example would return
