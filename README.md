@@ -43,7 +43,23 @@ Nested requests are configured within the config file using the ```then``` objec
 }
 ```
 
-The above example would generate the following secondary requests:
+The above example would generate the following requests:
+
+Primary:
+
+```json
+{
+  "parameters": {
+    "analysis_type": "freqDist",
+    "parameters": {
+      "target": "fb.parent.author.gender",
+      "threshold": 2
+    }
+  }
+}
+```
+
+Secondary:
 
 ```json
 {
