@@ -27,8 +27,8 @@ Run:
 
 ### Nested Requests
 
-Nested requests are supported whereby each result key form a request (primary) then generates
-a subsequent request (secondary) using the key as a filter parameter.
+Nested requests are supported whereby each result key from a primary request then automatically generates
+a subsequent secondary request using the key as a filter parameter.
 
 Nested requests are configured within the config file using the ```then``` object:
 
