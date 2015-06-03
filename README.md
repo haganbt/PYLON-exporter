@@ -116,10 +116,10 @@ Request filters can also be used within nested queries:
     }
 }
 ```
-In this instance, the filter is ONLY applied to the primary request, not the secondary requests. In this example 
-the first request would be made for the top 5 domains where the sentiment is positive. For each of the domains
-returned, a request is made for the gender. These secondary requests DO NOT include the filter for sentiment as it was
-only specified as part of the primary request.
+In this instance, the filter is ***ONLY applied to the primary*** request, not the secondary requests. The first request 
+would be made for the top 5 domains where the sentiment is positive. For each of the domains returned, a subsequent 
+request is made for the gender. These ***secondary requests DO NOT include the filter*** for sentiment as it was only 
+specified as part of the primary request.
 
 **Nested Filters - Secondary**
 
