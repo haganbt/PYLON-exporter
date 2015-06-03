@@ -68,7 +68,7 @@ The above example would generate the following secondary requests:
   },
   "filter": "fb.parent.author.gender ==\"female\""
 }
-
+```
 
 ### Request Filters
 
