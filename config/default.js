@@ -13,7 +13,16 @@ module.exports = {
         "freqDist": [
             {
                 "target": "fb.parent.author.gender",
-                "threshold": 3,
+                "threshold": 2,
+            },
+            {
+                "target": "fb.parent.topics.name",
+                "threshold": 2,
+                "filter": "fb.parent.sentiment == \"negative\""
+            },
+            {
+                "target": "fb.parent.author.gender",
+                "threshold": 2,
                 "then": {
                     "target": "fb.parent.author.age",
                     "threshold": 6
@@ -21,10 +30,11 @@ module.exports = {
             },
             {
                 "target": "fb.parent.topics.name",
-                "threshold": 10,
+                "threshold": 5,
+                "filter": "fb.parent.sentiment == \"positive\"",
                 "then": {
                     "target": "fb.parent.topics.name",
-                    "threshold": 3
+                    "threshold": 2
                 }
             }
         ],
