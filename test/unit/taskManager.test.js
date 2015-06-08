@@ -7,11 +7,24 @@ var chai = require("chai")
 var expect = chai.expect
     ;
 
-describe.skip("Task Manager", function(){
+var taskManager = require('../../lib/taskManager')
+    ;
 
-    it("test", function(){
-        var ops = { "foo": "bar" };
-        expect(ops).to.exist;
+describe.only("Task Manager", function(){
+
+    it("should create a default task object", function(){
+        var taskObj = taskManager.getDefaultTaskObj();
+        expect(taskObj).to.be.an.object;
+        expect(taskObj).to.have.keys("auth", "json", "method", "uri");
+    });
+
+    it("should build tasks from the config file", function(){
+        var tasks = taskManager.buildFromConfig();
+        expect(tasks).to.be.an.array;
+    });
+
+    it.skip("should build a task object from a response", function(){
+        //todo
     });
 
 });
