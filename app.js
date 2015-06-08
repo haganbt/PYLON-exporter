@@ -20,11 +20,11 @@ oe.process(configTasks, function(err, data, task){
         var fields = ['key', 'interactions', 'unique_authors'];
 
         if(data.analysis.results){
-            json2csv({ data: data.analysis.results, fields: fields }, function(err, csv) {
-                if (err) console.log(err);
+            json2csv({ data: data.analysis.results, fields: fields },
+                function(csVErr, csv) {
+                    if (csVErr) { console.log(csVErr); }
 
-
-                log.info(csv);
+                    log.info(csv);
             });
         }
     }
