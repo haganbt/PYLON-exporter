@@ -20,11 +20,50 @@ Run tests:
 
 ## Usage
 
-Configure what data to request by editing the ```/config/defaults.js``` file.
+A request recipe can be written be configured either extending the ```/config/defaults.js``` file, or by creating a 
+new config file and setting it as en environment variable.
 
-Run:
+
+NOTE: All config files extend ```defaults.js``` and hence anything specified there will be run in addition to 
+anything specified in a custom configuration file.
+
+**Example Config Recipe**
+
+Create a new file within the ```/config/``` directory called `foo.js` witht the following configuration:
+ 
+
+```json
+ "use strict";
+ 
+ module.exports = {
+     "analysis": {
+         "freqDist": [
+             {
+                 "target": "fb.parent.author.gender",
+                 "threshold": 2
+             }
+         ],
+         "timeSeries": [
+             {
+                 "interval": "week",
+                 "span": 1
+             }
+         ]
+     }
+ };
+ 
+ ```
+
+Next, set the file using an environment variable:
+
+```export NODE_ENV=foo```
+
+
+Execute:
 
 ```node app.js```
+
+
 
 ### Nested Requests
 
@@ -167,10 +206,6 @@ for Male authors only for both the primary request and secondary:
     }
 }
 ```            
-
-### Override Config
-
-TODO.
 
 ### TODO
 
