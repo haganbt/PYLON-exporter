@@ -23,13 +23,12 @@ Run tests:
 A request recipe can be written be configured either extending the ```/config/defaults.js``` file, or by creating a 
 new config file and setting it as en environment variable.
 
-
 NOTE: All config files extend ```defaults.js``` and hence anything specified there will be run in addition to 
 anything specified in a custom configuration file.
 
 **Example Config Recipe**
 
-Create a new file within the ```/config/``` directory called `foo.js` witht the following configuration:
+Create a new file within the ```/config/``` directory called `example.js` with the following configuration:
  
 
 ```json
@@ -56,7 +55,7 @@ Create a new file within the ```/config/``` directory called `foo.js` witht the 
 
 Next, set the file using an environment variable:
 
-```export NODE_ENV=foo```
+```export NODE_ENV=example```
 
 
 Execute:
