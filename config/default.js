@@ -8,17 +8,5 @@ module.exports = {
     "auth": {
         "username": "CS_2",
         "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
-    },
-    "analysis": {
-        "freqDist": [
-            {
-                "target": "fb.parent.author.gender",
-                "threshold": 2,
-                "then": {
-                    "target": "fb.parent.author.age",
-                    "threshold": 6
-                }
-            }
-        ]
     }
 };
