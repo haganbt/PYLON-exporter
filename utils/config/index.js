@@ -11,7 +11,7 @@ var load = function load() {
         var tasks = config.get('analysis');
         return tasks;
     } catch(e){
-        log.error("No analysis defined within config. Exiting.");
+        log.error(new Error("Unable to process config file. Exiting."));
         process.exit(0);
     }
 };
