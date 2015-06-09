@@ -20,15 +20,25 @@ Run tests:
 
 ## Usage
 
-A request recipe can be written be configured either extending the ```/config/defaults.js``` file, or by creating a 
-new config file and setting it as en environment variable.
+
+A JSON config file is used to define what data to request. Simply edit ```/config/defaults.js``` file to get started.
+
+Execute:
+
+```node app.js```
+
+
+## Overwrite Config
+
+Additional config files can be created that inherit the properties of the ```default.js`` file. This functionality is 
+useful if you have many configurations that may be needed.
 
 NOTE: All config files extend ```defaults.js``` and hence anything specified there will be run in addition to 
 anything specified in a custom configuration file.
 
 **Example Config Recipe**
 
-Create a new file within the ```/config/``` directory called `example.js` with the following configuration:
+Create a new file within the ```/config/``` directory called `foo.js` with the following configuration:
  
 
 ```json
@@ -53,15 +63,13 @@ Create a new file within the ```/config/``` directory called `example.js` with t
  
  ```
 
-Next, set the file using an environment variable:
+Next, set the config file using an environment variable:
 
-```export NODE_ENV=example```
+```export NODE_ENV=foo```
 
 
-Execute:
-
-```node app.js```
-
+When run, the ```default``` config file will be loaded, followed by the ```foo``` config file. ```Foo``` will 
+overwrite any duplicate values within the ```default``` file.
 
 
 ### Nested Requests
