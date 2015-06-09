@@ -31,7 +31,7 @@ Execute:
 ## Overwrite Config
 
 Additional config files can be created that inherit the properties of the ```default.js`` file. This functionality is 
-useful if you have many configurations that may be needed.
+useful if multiple configurations are required.
 
 NOTE: All config files extend ```defaults.js``` and hence anything specified there will be run in addition to 
 anything specified in a custom configuration file.
