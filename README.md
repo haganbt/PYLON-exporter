@@ -4,7 +4,7 @@ Utility for exporting data from a PYLON index. Features:
  
  * Inbuilt queue to support large numbers of requests
  * Parallel requests limit to manage control flow
- * Support for nested requests automatically using result keys as request filters
+ * Nested requests automatically generating requests from result sets
  * Config inheritance
 
 
