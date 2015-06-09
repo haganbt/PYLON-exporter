@@ -10,7 +10,7 @@ var expect = chai.expect
 var taskManager = require('../../lib/taskManager')
     ;
 
-describe.only("Task Manager", function(){
+describe("Task Manager", function(){
 
     it("should create a default task object", function(){
         var taskObj = taskManager.getDefaultTaskObj();
