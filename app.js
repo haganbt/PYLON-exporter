@@ -11,11 +11,13 @@ var configTasks = taskManager.buildFromConfig();
 
 oe.process(configTasks, function(err, data, task){
     if(err){
+
+
         log.error(err);
     } else {
         console.log("\n");
-        log.info("REQUEST ::: " + JSON.stringify(task.json));
-        log.info("RESPONSE ::: " + JSON.stringify(data));
+        //log.info("REQUEST ::: " + JSON.stringify(task.json));
+        //log.info("RESPONSE ::: " + JSON.stringify(data));
 
         var fields = ['key', 'interactions', 'unique_authors'];
 
@@ -24,7 +26,7 @@ oe.process(configTasks, function(err, data, task){
                 function(csVErr, csv) {
                     if (csVErr) { console.log(csVErr); }
 
-                    log.info(csv);
+                    //log.info(csv);
             });
         }
     }
