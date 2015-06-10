@@ -2,7 +2,8 @@
 
 module.exports = {
     "app": {
-        "max_parallel_tasks": 3
+        "max_parallel_tasks": 3,
+        "log_level": "info" // info, warn, debug
     },
     "hash": "b5566a154bb6dcd19b52b3b431e59373",
     "auth": {

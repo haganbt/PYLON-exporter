@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = {
+    "app": {
+        "log_level": "debug"
+    },
     "analysis": {
         "freqDist": [
             {
