@@ -19,7 +19,8 @@ var formatOut = bformat({ outputMode: "short" })
             //TODO add if you want logging to fs
              {
                 level: 'error',
-                path: '/var/tmp/myapp-error.log'  // log ERROR and above to a file
+                // log ERROR and above to a file
+                path: '/var/tmp/myapp-error.log'
              }
             */
         ]
