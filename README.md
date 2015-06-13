@@ -135,6 +135,11 @@ Secondary:
 }
 ```
 
+### Merging Result Sets
+
+Using nested requests assumes that all results should be merged.
+
+
 ### Request Filters
 
 The ```filter``` parameter is supported as expected. The following example would return the top 2 topics where the
