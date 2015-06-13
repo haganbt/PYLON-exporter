@@ -25,6 +25,7 @@
     "json2csv": "^2.3.0",
     "lodash": "3.8.0",
     "moment": "2.10.2",
+    "node-uuid": "^1.4.3",
     "request": "2.55.0",
     "request-debug": "0.1.1"
   },

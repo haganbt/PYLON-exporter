@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = {
+    "app": {
+        "log_level": "debug"
+    },
     "analysis": {
         "freqDist": [
             {
@@ -8,7 +11,7 @@ module.exports = {
                 "threshold": 2,
                 "then": {
                     "target": "fb.parent.author.age",
-                    "threshold": 6
+                    "threshold": 3
                 }
             }
         ]
