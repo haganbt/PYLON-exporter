@@ -11,7 +11,7 @@ module.exports = {
                 "threshold": 2,
                 "then": {
                     "target": "fb.parent.author.age",
-                    "threshold": 6
+                    "threshold": 3
                 }
             }
         ]
