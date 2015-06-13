@@ -5,6 +5,7 @@ var bunyan = require("bunyan")
     , config = require("config")
     ;
 
+/*eslint-disable*/
 var log_level = config.get("app.log_level") || "info";
 
 var formatOut = bformat({ outputMode: "short" })
@@ -27,3 +28,4 @@ var formatOut = bformat({ outputMode: "short" })
     });
 
 module.exports = logger;
+/*eslint-enable*/
