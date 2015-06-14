@@ -14,12 +14,6 @@ module.exports = {
                     "threshold": 3
                 }
             }
-        ],
-        "timeSeries": [
-            {
-                "interval": "week",
-                "span": 1
-            }
         ]
     }
 };
