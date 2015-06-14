@@ -39,7 +39,7 @@ var thenData = {
 };
 
 
-describe("Task Manager", function(){
+describe.only("Task Manager", function(){
 
     it("should create a default task object", function(){
         var taskObj = taskManager.getDefaultTaskObj();
@@ -53,27 +53,38 @@ describe("Task Manager", function(){
     });
 
     it("should build a task array from a response", function(){
-
         var reqOptions = taskManager.buildFromResponse(resData, thenData);
-
         reqOptions.should.be.an('array');
         reqOptions.should.have.length(2);
-
         for (var ind in reqOptions) {
             expect(reqOptions[ind]).
                 to.have.keys("auth", "cache", "json", "method", "uri");
         }
     });
 
-    it("should create objects with a cache signature", function(){
-
+    it("should have built the correct filter from results", function(){
         var reqOptions = taskManager.buildFromResponse(resData, thenData);
+        reqOptions[0].json.filter.
+            should.equal("fb.parent.author.gender ==\"male\"");
 
+        reqOptions[1].json.filter.
+            should.equal("fb.parent.author.gender ==\"female\"");
+    });
+
+    it("should have built the correct target from results", function(){
+        var reqOptions = taskManager.buildFromResponse(resData, thenData);
+        for (var ind in reqOptions) {
+            expect(reqOptions[ind].json.parameters.
+                parameters.target.should.equal("fb.parent.author.age"));
+        }
+    });
+
+    it("should create objects with a cache signature", function(){
+        var reqOptions = taskManager.buildFromResponse(resData, thenData);
         for (var ind in reqOptions) {
             expect(reqOptions[ind].cache.cacheId.should.be.a('string'));
             expect(reqOptions[ind].cache.cacheId.should.have.length(36));
         }
-
         reqOptions[0].cache.mergeKey.should.equal('male');
         reqOptions[1].cache.mergeKey.should.equal('female');
 
