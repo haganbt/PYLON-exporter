@@ -9,7 +9,7 @@ var sinon = require("sinon")
 var expect = chai.expect
     ;
 
-var OperationsEngine = require('../../lib/OperationsEngine')
+var OperationsEngine = require('../../../lib/OperationsEngine')
     ;
 
 chai.use(sinonChai);
