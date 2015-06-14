@@ -9,18 +9,18 @@ var sinon = require("sinon")
 var expect = chai.expect
     ;
 
-var OperationsEngine = require('../../lib/OperationsEngine')
+var OperationsEngine = require('../../../lib/OperationsEngine')
     ;
 
 chai.use(sinonChai);
 
-describe("Operations Engine", function(){
+describe.skip("Operations Engine", function(){
 
-    it.skip("can be called", sinon.test(function () {
-
-
+    it("can be called", sinon.test(function () {
 
 
+
+        //var stub = sinon.createStubInstance(OperationsEngine);
 
 
 
