@@ -18,11 +18,11 @@ describe("Merge Cache", function(){
         expect(id.should.have.length(36));
     });
 
-    it("should increment the taskCount when adding a key", function(){
+    it("should increment the remainingTasks when adding a key", function(){
         //todo
     });
 
-    it("should decrement the taskCount when adding data", function(){
+    it("should decrement the remainingTasks when adding data", function(){
         //todo
     });
 
