@@ -15,21 +15,17 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe("Frequency distribution", function() {
+describe.only("Frequency distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
     it("should succeed with a single target config", function(done){
-        var config = taskManager.getDefaultTaskObj()
-            , reqConfig = {
-                    "target": "fb.parent.author.gender",
-                    "threshold": 2
-                }
-            ;
 
-        config.json.parameters.parameters = reqConfig;
+        var taskConfig = require('../support/recipes/single.parent.task.js');
 
-        oe.process(config, function(err, data, task){
+        var tasks = taskManager.buildFromConfig(taskConfig);
+
+        oe.process(tasks, function(err, data, task){
             if(err){
                 log.error(err);
             }
