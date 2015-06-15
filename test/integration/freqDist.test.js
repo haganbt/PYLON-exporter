@@ -15,11 +15,11 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe("A frequency distribution", function() {
+describe("Frequency distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
-    it("with a single target should succeed", function(done){
+    it("should succeed with a single target config", function(done){
         var config = taskManager.getDefaultTaskObj()
             , reqConfig = {
                     "target": "fb.parent.author.gender",
