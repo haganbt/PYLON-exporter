@@ -15,7 +15,7 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe.only("Frequency distribution", function() {
+describe("Frequency distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
