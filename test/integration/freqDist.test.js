@@ -71,5 +71,4 @@ describe("Frequency Distribution", function() {
             done();
         });
     });
-
 });
