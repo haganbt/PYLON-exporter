@@ -10,7 +10,7 @@ var expect = chai.expect
 var taskManager = require('../../../lib/taskManager')
     ;
 
-describe.only("Task Manager buildFromConfig", function(){
+describe("Task Manager buildFromConfig", function(){
 
     it("should build a valid task object - single target task", function(){
 
@@ -33,7 +33,7 @@ describe.only("Task Manager buildFromConfig", function(){
         expect(config[0].json.parameters.parameters.threshold).to.equal(2);
     });
 
-    it("should build a valid task object - 2 targets merged", function(){
+    it.only("should build a valid task object - 2 targets merged", function(){
 
         var taskConfig = require('../../support/recipes/fd.merged.parent.task');
         var config = taskManager.buildFromConfig(taskConfig);
@@ -52,6 +52,21 @@ describe.only("Task Manager buildFromConfig", function(){
             .to.equal("fb.parent.author.gender");
 
         expect(config[0].json.parameters.parameters.threshold).to.equal(2);
+
+
+        expect(config[1].json)
+            .to.have.keys("hash", "start", "end", "parameters");
+
+        expect(config[1].json.parameters)
+            .to.have.keys("analysis_type", "parameters");
+
+        expect(config[1].json.parameters.analysis_type).to.equal("freqDist");
+        expect(config[1].json.parameters.parameters.target)
+            .to.equal("fb.parent.author.gender");
+
+        expect(config[1].json.parameters.parameters.threshold).to.equal(2);
+
+
     });
 
     it.only("should build a valid task object - merged child", function(){
