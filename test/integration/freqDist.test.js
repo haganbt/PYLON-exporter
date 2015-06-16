@@ -55,4 +55,21 @@ describe("Frequency distribution", function() {
         });
     });
 
+    it("should merge a nested request", function(done){
+        var taskConfig = require('../support/recipes/fd.merged.child.task');
+        var tasks = taskManager.buildFromConfig(taskConfig);
+
+        oe.process(tasks, function(err, data, task){
+            if(err){
+                log.error(err);
+            }
+            should.not.exist(err);
+            data.should.be.an('object');
+            task.should.be.an('object');
+
+            expect(data).to.have.keys("male", "female");
+            done();
+        });
+    });
+
 });
