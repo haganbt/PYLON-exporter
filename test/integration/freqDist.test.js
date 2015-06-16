@@ -49,7 +49,8 @@ describe("Frequency distribution", function() {
             data.should.be.an('object');
             task.should.be.an('object');
 
-            expect(data).to.have.keys("fb.parent.author.gender", "fb.parent.author.age");
+            expect(data).to.have.keys(
+                "fb.parent.author.gender", "fb.parent.author.age");
             done();
         });
     });
