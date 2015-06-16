@@ -3,6 +3,8 @@
 # But not these files...
 !.gitignore
 !default.js
+!test.js
+!production.js
 
 # ...even if they are in subdirectories
 !*/
