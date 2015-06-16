@@ -27,7 +27,6 @@ describe.only("Frequency distribution", function() {
             if(err){
                 log.error(err);
             }
-            log.debug(data);
             should.not.exist(err);
             data.should.be.an('object');
             task.should.be.an('object');
