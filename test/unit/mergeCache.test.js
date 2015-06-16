@@ -7,7 +7,7 @@ var chai = require("chai")
 var expect = chai.expect
     ;
 
-var mergeCache = require('../../../lib/mergeCache')
+var mergeCache = require('../../lib/mergeCache')
     ;
 
 describe("Merge Cache", function(){
