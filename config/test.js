@@ -9,7 +9,7 @@ module.exports = {
             [
                 {
                     "target": "links.domain",
-                    "threshold": 1
+                    "threshold": 2
                 },
                 {
                     "target": "fb.parent.author.gender",
@@ -17,7 +17,7 @@ module.exports = {
                 }
             ],
             {
-                "target": "fb.parent.topics.name",
+                "target": "links.url",
                 "threshold": 2
             },
             {

@@ -10,7 +10,7 @@ var expect = chai.expect
 var operator = require("../../../utils/operator")
     ;
 
-describe("Operator lookup", function(){
+describe("Operator Lookup", function(){
 
     it("should return the default for an invalid target ", function(){
         var testOp = operator.get("foo");
