@@ -55,7 +55,7 @@ describe("Frequency Distribution", function() {
         });
     });
 
-    it("should merge a nested request", function(done){
+    it.skip("should merge a nested request", function(done){
         var taskConfig = require('../support/recipes/fd.merged.child.task');
         var tasks = taskManager.buildFromConfig(taskConfig);
 
