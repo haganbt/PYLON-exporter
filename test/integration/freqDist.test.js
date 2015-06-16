@@ -20,7 +20,7 @@ describe("Frequency distribution", function() {
     this.timeout(10 * 60 * 1000);
 
     it("should succeed with a single target config", function(done){
-        var taskConfig = require('../support/recipes/single.parent.task.js');
+        var taskConfig = require('../support/recipes/fd.single.parent.task');
         var tasks = taskManager.buildFromConfig(taskConfig);
 
         oe.process(tasks, function(err, data, task){
@@ -38,7 +38,7 @@ describe("Frequency distribution", function() {
     });
 
     it("should merge two parent requests", function(done){
-        var taskConfig = require('../support/recipes/merged.parent.task.js');
+        var taskConfig = require('../support/recipes/fd.merged.parent.task');
         var tasks = taskManager.buildFromConfig(taskConfig);
 
         oe.process(tasks, function(err, data, task){
