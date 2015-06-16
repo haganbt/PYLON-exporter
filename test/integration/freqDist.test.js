@@ -20,7 +20,7 @@ describe("Frequency Distribution", function() {
     this.timeout(10 * 60 * 1000);
 
     it("should succeed with a single target config", function(done){
-        var taskConfig = require('../support/recipes/fd.single.parent.task');
+        var taskConfig = require('../support/recipes/fd.single.target.task');
         var tasks = taskManager.buildFromConfig(taskConfig);
 
         oe.process(tasks, function(err, data, task){
