@@ -39,12 +39,7 @@ var thenData = {
 };
 
 
-describe("Task Manager", function(){
-
-    it("should build tasks from the config file", function(){
-        var tasks = taskManager.buildFromConfig();
-        tasks.should.be.an('array');
-    });
+describe("Task Manager buildFromResponse", function(){
 
     it("should build a task array from a response", function(){
         var reqOptions = taskManager.buildFromResponse(resData, thenData);
