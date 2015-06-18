@@ -10,11 +10,21 @@ var expect = chai.expect
 var taskManager = require('../../../lib/taskManager')
     ;
 
-describe.only("Task Manager buildFromConfig", function(){
+describe("Task Manager buildFromConfig", function(){
 
     it("should build a valid task object - single target task", function(){
 
-        var taskConfig = require('../../support/recipes/fd.single.target.task');
+        //var taskConfig = require('../../support/recipes/fd.single.target.task');
+        var taskConfig= {
+                "freqDist": [
+                    {
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2,
+                        "filter": "links.domain exists"
+                    }
+                ]
+            };
+
         var config = taskManager.buildFromConfig(taskConfig);
 
         config.should.be.an('array');
@@ -35,7 +45,24 @@ describe.only("Task Manager buildFromConfig", function(){
 
     it("should build a valid task object - 2 targets merged", function(){
 
-        var taskConfig = require('../../support/recipes/fd.merged.parent.task');
+        //var taskConfig = require('../../support/recipes/fd.merged.parent.task');
+        var taskConfig = {
+            "freqDist": [
+                [
+                    {
+                        "target": "fb.parent.author.gender",
+                        "threshold": 3,
+                        "filter": "links.domain exists"
+                    },
+                    {
+                        "target": "fb.parent.author.age",
+                        "threshold": 5,
+                        "filter": "not links.domain exists"
+                    }
+                ]
+            ]
+        };
+
         var config = taskManager.buildFromConfig(taskConfig);
 
         config.should.be.an('array');
@@ -52,7 +79,7 @@ describe.only("Task Manager buildFromConfig", function(){
         expect(config[0].json.parameters.parameters.target)
             .to.equal("fb.parent.author.gender");
 
-        expect(config[0].json.parameters.parameters.threshold).to.equal(2);
+        expect(config[0].json.parameters.parameters.threshold).to.equal(3);
 
 
         expect(config[1].json)
@@ -66,14 +93,28 @@ describe.only("Task Manager buildFromConfig", function(){
         expect(config[1].json.parameters.parameters.target)
             .to.equal("fb.parent.author.age");
 
-        expect(config[1].json.parameters.parameters.threshold).to.equal(2);
+        expect(config[1].json.parameters.parameters.threshold).to.equal(5);
 
 
     });
 
     it("should build a valid task object - merged child", function(){
 
-        var taskConfig = require('../../support/recipes/fd.merged.child.task');
+        //var taskConfig = require('../../support/recipes/fd.merged.child.task');
+        var taskConfig = {
+            "freqDist": [
+                {
+                    "target": "fb.parent.author.gender",
+                    "threshold": 2,
+                    "filter": "links.domain exists",
+                    "then": {
+                        "target": "fb.parent.author.age",
+                        "threshold": 4
+                    }
+                }
+            ]
+        };
+
         var config = taskManager.buildFromConfig(taskConfig);
 
         config.should.be.an('array');
