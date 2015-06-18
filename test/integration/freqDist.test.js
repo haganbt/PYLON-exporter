@@ -15,13 +15,13 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe("Frequency Distribution", function() {
+describe.skip("Frequency Distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
     it("should succeed with a single target config", function(done){
         //var taskConfig = require('../support/recipes/fd.single.target.task');
-        var taskConfig= {
+        var taskConfig = {
             "freqDist": [
                 {
                     "target": "fb.parent.author.gender",
