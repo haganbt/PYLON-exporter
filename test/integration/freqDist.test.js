@@ -15,7 +15,7 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe.skip("Frequency Distribution", function() {
+describe("Frequency Distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
@@ -100,13 +100,12 @@ describe.skip("Frequency Distribution", function() {
             if(err){
                 log.error(err);
             }
-            console.log(data);
-
             should.not.exist(err);
             data.should.be.an('object');
             data.analysis.results.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis.results).to.have.keys("male", "female");
+            expect(data.analysis.results[0].key).to.equal("male");
+            expect(data.analysis.results[1].key).to.equal("female");
             done();
         });
     });
