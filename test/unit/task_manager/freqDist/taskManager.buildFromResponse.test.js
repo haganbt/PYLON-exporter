@@ -7,7 +7,7 @@ var chai = require("chai")
 var expect = chai.expect
     ;
 
-var taskManager = require('../../../lib/taskManager')
+var taskManager = require('../../../../lib/taskManager')
     ;
 
 var resData = {
@@ -39,7 +39,7 @@ var thenData = {
 };
 
 
-describe("Task Manager buildFromResponse", function(){
+describe("Task Manager buildFromResponse - freqDist", function(){
 
     it("should build a task array from a response", function(){
         var reqOptions = taskManager.buildFromResponse(resData, thenData);
