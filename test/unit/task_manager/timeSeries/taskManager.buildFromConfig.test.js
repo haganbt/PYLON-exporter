@@ -44,7 +44,7 @@ describe("Task Manager buildFromConfig - timeSeries", function(){
     });
 
 
-    it.only("should build from - 2 targets merged", function(){
+    it("should build from - 2 targets merged", function(){
 
         var taskConfig = {
             "timeSeries": [
