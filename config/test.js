@@ -6,26 +6,12 @@ module.exports = {
     },
     "analysis": {
         "freqDist": [
-            [
-                {
-                    "target": "links.domain",
-                    "threshold": 2
-                },
-                {
-                    "target": "fb.parent.author.gender",
-                    "threshold": 2
-                }
-            ],
-            {
-                "target": "links.url",
-                "threshold": 2
-            },
             {
                 "target": "fb.parent.topics.name",
-                "threshold": 5,
+                "threshold": 20,
                 "then": {
                     "target": "fb.parent.topics.name",
-                    "threshold": 2
+                    "threshold": 5
                 }
             }
         ]
