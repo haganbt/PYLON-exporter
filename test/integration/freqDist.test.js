@@ -80,7 +80,6 @@ describe("Frequency Distribution", function() {
     });
 
     it("should merge a nested request", function(done){
-        //var taskConfig = require('../support/recipes/fd.merged.child.task');
         var taskConfig = {
             "freqDist": [
                 {
@@ -104,8 +103,8 @@ describe("Frequency Distribution", function() {
             data.should.be.an('object');
             data.analysis.results.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis.results[0].key).to.equal("male");
-            expect(data.analysis.results[1].key).to.equal("female");
+            expect(data.analysis.results[0].key).to.equal("female");
+            expect(data.analysis.results[1].key).to.equal("male");
             done();
         });
     });

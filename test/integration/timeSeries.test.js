@@ -15,7 +15,7 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe("Time Series", function() {
+describe.skip("Time Series", function() {
 
     this.timeout(10 * 60 * 1000);
 
@@ -48,13 +48,12 @@ describe("Time Series", function() {
         });
     });
 
-    it.skip("should merge two parent requests", function(done){
+    it("should merge two parent requests", function(done){
 
         var taskConfig = {
             "timeSeries": [
                 [
                     {
-                        "id": "bar",
                         "filter": "fb.content contains \"bar\"",
                         "interval": "week",
                         "span": 1
