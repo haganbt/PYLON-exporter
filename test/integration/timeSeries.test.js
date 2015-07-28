@@ -15,7 +15,7 @@ var OperationsEngine = require('../../lib/OperationsEngine')
 
 var oe = new OperationsEngine();
 
-describe.skip("Time Series", function() {
+describe("Time Series", function() {
 
     this.timeout(10 * 60 * 1000);
 
@@ -54,12 +54,12 @@ describe.skip("Time Series", function() {
             "timeSeries": [
                 [
                     {
-                        "filter": "fb.content contains \"bar\"",
+                        "filter": "fb.content contains \"ford\"",
                         "interval": "week",
                         "span": 1
                     },
                     {
-                        "filter": "fb.content contains \"foo\"",
+                        "filter": "fb.content contains \"honda\"",
                         "interval": "week",
                         "span": 1
                     }
@@ -75,12 +75,10 @@ describe.skip("Time Series", function() {
             should.not.exist(err);
             data.should.be.an('object');
             task.should.be.an('object');
-
-            console.log(data);
             done();
         });
     });
-/*
+
     it("should merge a nested request", function(done){
         //var taskConfig = require('../support/recipes/fd.merged.child.task');
         var taskConfig = {
@@ -91,7 +89,7 @@ describe.skip("Time Series", function() {
                     "then": {
                         "target": "fb.parent.author.age",
                         "threshold": 4
-                    }.
+                    }
                 }
             ]
         };
@@ -110,5 +108,5 @@ describe.skip("Time Series", function() {
             expect(data.analysis.results[1].key).to.equal("female");
             done();
         });
-    });*/
+    });
 });

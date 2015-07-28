@@ -7,13 +7,27 @@ module.exports = {
     "analysis": {
         "freqDist": [
             {
-                "target": "fb.parent.topics.name",
-                "threshold": 20,
+                "target": "fb.parent.author.gender",
+                "threshold": 2,
                 "then": {
-                    "target": "fb.parent.topics.name",
-                    "threshold": 5
+                    "target": "fb.parent.author.age",
+                    "threshold": 6
                 }
             }
+        ],
+        "timeSeries": [
+            [
+                {
+                    "filter": "fb.content contains \"ford\"",
+                    "interval": "week",
+                    "span": 1
+                },
+                {
+                    "filter": "fb.content contains \"honda\"",
+                    "interval": "week",
+                    "span": 1
+                }
+            ]
         ]
     }
 };

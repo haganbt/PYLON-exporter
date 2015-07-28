@@ -21,7 +21,7 @@ describe("Frequency Distribution", function() {
 
     it("should succeed with a single target config", function(done){
         //var taskConfig = require('../support/recipes/fd.single.target.task');
-        var taskConfig = {
+        var taskConfig1 = {
             "freqDist": [
                 {
                     "target": "fb.parent.author.gender",
@@ -30,7 +30,7 @@ describe("Frequency Distribution", function() {
                 }
             ]
         };
-        var tasks = taskManager.buildFromConfig(taskConfig);
+        var tasks = taskManager.buildFromConfig(taskConfig1);
 
         oe.process(tasks, function(err, data, task){
             if(err){
@@ -47,7 +47,7 @@ describe("Frequency Distribution", function() {
 
     it("should merge two parent requests", function(done){
         //var taskConfig2 = require('../support/recipes/fd.merged.parent.task');
-        var taskConfig = {
+        var taskConfig2 = {
             "freqDist": [
                 [
                     {
@@ -63,7 +63,7 @@ describe("Frequency Distribution", function() {
                 ]
             ]
         };
-        var tasks = taskManager.buildFromConfig(taskConfig);
+        var tasks = taskManager.buildFromConfig(taskConfig2);
 
         oe.process(tasks, function(err, data, task){
             if(err){
@@ -80,7 +80,7 @@ describe("Frequency Distribution", function() {
     });
 
     it("should merge a nested request", function(done){
-        var taskConfig = {
+        var taskConfig3 = {
             "freqDist": [
                 {
                     "target": "fb.parent.author.gender",
@@ -93,7 +93,7 @@ describe("Frequency Distribution", function() {
             ]
         };
 
-        var tasks = taskManager.buildFromConfig(taskConfig);
+        var tasks = taskManager.buildFromConfig(taskConfig3);
 
         oe.process(tasks, function(err, data, task){
             if(err){
@@ -103,8 +103,8 @@ describe("Frequency Distribution", function() {
             data.should.be.an('object');
             data.analysis.results.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis.results[0].key).to.equal("female");
-            expect(data.analysis.results[1].key).to.equal("male");
+            expect(data.analysis.results[1].key).to.equal("female");
+            expect(data.analysis.results[0].key).to.equal("male");
             done();
         });
     });
