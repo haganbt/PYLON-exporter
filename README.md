@@ -11,7 +11,8 @@ Utility for exporting data from a PYLON index. Features:
 
 ## Setup
 
-If Node is not installed, install it from https://nodejs.org/. Once complete, check by running ```node -v``` from a terminal window.
+If Node is not installed, install it from https://nodejs.org/. Once complete, check by running ```node -v``` from a 
+terminal window to show the install version.
 
 Install node module dependencies:
 
