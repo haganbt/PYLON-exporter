@@ -2,9 +2,9 @@
 
 Utility for exporting data from a PYLON index. Features:
  
- * Inbuilt queue to support large numbers of requests
+ * Inbuilt queue to support large numbers of simultaneous requests
  * Parallel requests limit to manage control flow
- * Nested requests - automatically generating requests from result sets
+ * Nested requests - full support for all targets
  * Merging of related response data sets
  * Config inheritance
 
@@ -75,6 +75,9 @@ Next, set the config file using an environment variable:
 
 When run, the ```default``` config file will be loaded, followed by the ```foo``` config file. ```Foo``` will 
 overwrite any duplicate values within the ```default``` file.
+
+### Merging Result Sets
+todo.
 
 
 ### Nested Requests
