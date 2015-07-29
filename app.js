@@ -11,8 +11,6 @@ var configTasks = taskManager.buildFromConfig();
 
 oe.process(configTasks, function(err, data, task){
     if(err){
-
-
         log.error(err);
     } else {
         console.log("\n");
