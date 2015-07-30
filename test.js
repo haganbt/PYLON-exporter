@@ -1,3 +1,4 @@
+/*eslint-disable*/
 var json2csv = require('json2csv');
 
 var f = {
@@ -123,7 +124,7 @@ f = { 'fb.content contains "ford"':
         { key: 1436745600, interactions: 71900, unique_authors: 51400 },
         { key: 1437350400, interactions: 79300, unique_authors: 55800 },
         { key: 1437955200, interactions: 21000, unique_authors: 16700 } ],
-        'fb.content contains "honda"':
+      'fb.content contains "honda"':
     [ { key: 1434931200, interactions: 1000, unique_authors: 700 },
         { key: 1435536000, interactions: 16200, unique_authors: 9200 },
         { key: 1436140800, interactions: 25000, unique_authors: 18300 },
@@ -196,3 +197,9 @@ json2csv({ data: out }, function(err, csv) {
 
 console.log("***************");
 console.log(JSON.stringify(out));
+
+
+
+
+
+/*eslint-enable*/
