@@ -77,7 +77,24 @@ When run, the ```default``` config file will be loaded, followed by the ```foo``
 overwrite any duplicate values within the ```default``` file.
 
 ### Merging Result Sets
-todo.
+Merging of response data is supported by defining the requests to be merged as an array. A ```name``` property can be
+specified to identify each data set. If a ```name``` is not specified, the ```target``` will be used. If the 
+```target``` is not specified (time series) or is a duplicate, the filter property will be used.
+
+```json
+[
+    {
+        "name": "ford",
+        "filter": "fb.content contains \"ford\"",
+        "interval": "week",
+    },
+    {
+        "name": "honda",
+        "filter": "fb.content contains \"honda\"",
+        "interval": "week",
+    }
+]
+```
 
 
 ### Nested Requests
@@ -98,77 +115,30 @@ Nested requests are configured within the config file using the ```then``` objec
 }
 ```
 
-The above example would generate the following requests:
-
-Primary:
-
-```json
-{
-  "parameters": {
-    "analysis_type": "freqDist",
-    "parameters": {
-      "target": "fb.parent.author.gender",
-      "threshold": 2
-    }
-  }
-}
-```
-
-Secondary:
-
-```json
-{
-  "parameters": {
-    "analysis_type": "freqDist",
-    "parameters": {
-      "target": "fb.parent.author.age",
-      "threshold": 6
-    }
-  },
-  "filter": "fb.parent.author.gender ==\"male\""
-}
-```
-
-```json
-{
-  "parameters": {
-    "analysis_type": "freqDist",
-    "parameters": {
-      "target": "fb.parent.author.age",
-      "threshold": 6
-    }
-  },
-  "filter": "fb.parent.author.gender ==\"female\""
-}
-```
-
-### Merging Result Sets
-
-Using nested requests assumes that all results should be merged.
+Nested requests automatically merge the result sets in to a single data set.
 
 
 ### Request Filters
 
-The ```filter``` parameter is supported as expected. The following example would return the top 2 topics where the
-sentiment was negative:
+The ```filter``` parameter is supported as expected.
 
 ```json
 {
+    "filter": "fb.parent.sentiment == \"negative\"",
     "target": "fb.parent.topics.name",
-    "threshold": 2,
-    "filter": "fb.parent.sentiment == \"negative\""
+    "threshold": 2
 }
 ```
 
 **Nested Filters - Primary**
 
-Request filters can also be used within nested queries:
+The ```filter``` property can also be used within nested queries:
 
 ```json
 {
+    "filter": "fb.sentiment == \"positive\"",
     "target": "links.domain",
     "threshold": 5,
-    "filter": "fb.sentiment == \"positive\"",
     "then": {
         "target": "fb.parent.gender",
         "threshold": 2
@@ -190,9 +160,9 @@ generated filters using an  ```AND`` operator. For example:
     "target": "fb.type",
     "threshold": 4,
     "then": {
-        "target": "fb.parent.author.age",
-        "threshold": 2,
         "filter": "fb.parent.author.gender == \"male\"",
+        "target": "fb.parent.author.age",
+        "threshold": 2
     }
 }
 ```
