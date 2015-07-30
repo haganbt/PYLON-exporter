@@ -18,11 +18,13 @@ module.exports = {
         "timeSeries": [
             [
                 {
+                    "name": "ford",
                     "filter": "fb.content contains \"ford\"",
                     "interval": "week",
                     "span": 1
                 },
                 {
+                    "name": "honda",
                     "filter": "fb.content contains \"honda\"",
                     "interval": "week",
                     "span": 1
