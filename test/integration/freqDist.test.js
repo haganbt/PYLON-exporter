@@ -45,7 +45,7 @@ describe("Frequency Distribution", function() {
         });
     });
 
-    it("should merge two parent requests", function(done){
+    it("should merge two parent requests with different targets", function(done){
         //var taskConfig2 = require('../support/recipes/fd.merged.parent.task');
         var taskConfig2 = {
             "freqDist": [
@@ -105,6 +105,39 @@ describe("Frequency Distribution", function() {
             task.should.be.an('object');
             expect(data.analysis.results[1].key).to.equal("female");
             expect(data.analysis.results[0].key).to.equal("male");
+            done();
+        });
+    });
+
+    it.skip("should error when two parent requests have duplicate targets", function(done){
+        var taskConfig4 = {
+            "freqDist": [
+                [
+                    {
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2
+                    },
+                    {
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2
+                    }
+                ]
+            ]
+        };
+
+        var tasks = taskManager.buildFromConfig(taskConfig4);
+
+        oe.process(tasks, function(err, data, task){
+            if(err){
+                //log.error(err);
+            }
+            console.log(data);
+
+            should.not.exist(err);
+            data.should.be.an('object');
+            task.should.be.an('object');
+            //expect(data).to.have.keys(
+            //    "fb.parent.author.gender", "fb.parent.author.age");
             done();
         });
     });
