@@ -3,7 +3,6 @@
 var log = require('./utils/logger')
     , taskManager = require('./lib/taskManager')
     , OperationsEngine = require('./lib/OperationsEngine')
-    , json2csv = require('json2csv')
     ;
 
 var oe = new OperationsEngine();
@@ -14,21 +13,7 @@ oe.process(configTasks, function(err, data, task){
         log.error(err);
     } else {
         console.log("\n");
-        //log.info("REQUEST ::: " + JSON.stringify(task.json));
+        log.info("REQUEST ::: " + JSON.stringify(task.json));
         log.info("RESPONSE ::: " + JSON.stringify(data));
-
-
-/*
-        if(data.analysis && data.analysis.results){
-            var fields = ['key', 'interactions', 'unique_authors'];
-
-            json2csv({ data: data.analysis.results, fields: fields },
-                function(csVErr, csv) {
-                    if (csVErr) { console.log(csVErr); }
-
-                    log.info(csv);
-            });
-        }
-        */
     }
 });
