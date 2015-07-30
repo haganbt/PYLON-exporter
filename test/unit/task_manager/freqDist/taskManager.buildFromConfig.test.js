@@ -131,4 +131,46 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config[0].json.parameters.parameters.threshold).to.equal(2);
     });
 
+    it("should return empty when duplicate targets used", function(){
+        var taskConfig = {
+            "freqDist": [
+                [
+                    {
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2
+                    },
+                    {
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2
+                    }
+                ]
+            ]
+        };
+        var config = taskManager.buildFromConfig(taskConfig);
+        config.should.be.an('array');
+        expect(config).to.have.length(0);
+    });
+
+    it("should use a name if specified.", function(){
+        var taskConfig = {
+            "freqDist": [
+                [
+                    {
+                        "name": "foo",
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2
+                    },
+                    {
+                        "name": "bar",
+                        "target": "fb.parent.author.gender",
+                        "threshold": 2
+                    }
+                ]
+            ]
+        };
+        var config = taskManager.buildFromConfig(taskConfig);
+        config.should.be.an('array');
+        expect(config[0].cache.mergeKey).to.equal("foo");
+        expect(config[1].cache.mergeKey).to.equal("bar");
+    });
 });
