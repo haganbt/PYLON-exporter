@@ -10,7 +10,7 @@ var expect = chai.expect
 var mergeCache = require('../../lib/mergeCache')
     ;
 
-describe.skip("Merge Cache", function(){
+describe.only("Merge Cache", function(){
 
     it("should return a UIID when setting", function(){
         var id = mergeCache.create();
@@ -30,17 +30,16 @@ describe.skip("Merge Cache", function(){
 
     it("should add a key", function(){
         var id = mergeCache.create();
-        mergeCache.add(id, "foo");
+        mergeCache.addKey(id, "foo");
         var cacheObj = mergeCache.get(id);
-
         expect(cacheObj).to.have.keys("foo", "remainingTasks");
     });
 
     it("should add a value for a given key", function(){
         var id = mergeCache.create();
         //must add the key before the value
-        mergeCache.add(id, "bar");
-        mergeCache.add(id, "bar", {"baz": 123});
+        mergeCache.addKey(id, "bar");
+        mergeCache.addData(id, "bar", {"baz": 123});
         var cacheObj = mergeCache.get(id);
 
         expect(cacheObj).to.have.keys("bar", "remainingTasks");
@@ -50,7 +49,7 @@ describe.skip("Merge Cache", function(){
 
     it("should increment the remainingTasks when adding a key", function(){
         var id = mergeCache.create();
-        mergeCache.add(id, "foo");
+        mergeCache.addKey(id, "foo");
         var cacheObj = mergeCache.get(id);
 
         expect(cacheObj.remainingTasks.should.equal(1));
@@ -58,10 +57,9 @@ describe.skip("Merge Cache", function(){
 
     it("should decrement the remainingTasks when adding data", function(){
         var id = mergeCache.create();
-        mergeCache.add(id, "foo");
-        mergeCache.add(id, "foo", {"baz": 123});
+        mergeCache.addKey(id, "foo");
+        mergeCache.addData(id, "foo", {"baz": 123});
         var cacheObj = mergeCache.get(id);
-
         expect(cacheObj.remainingTasks.should.equal(0));
     });
 
