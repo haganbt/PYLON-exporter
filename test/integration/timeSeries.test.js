@@ -45,40 +45,7 @@ describe("Time Series", function() {
         });
     });
 
-    it("should merge two parent requests, using the filter", function(done){
-        var taskConfig = {
-            "timeSeries": [
-                [
-                    {
-                        "filter": "fb.content contains \"ford\"",
-                        "interval": "week",
-                        "span": 1
-                    },
-                    {
-                        "filter": "fb.content contains \"honda\"",
-                        "interval": "week",
-                        "span": 1
-                    }
-                ]
-            ]
-        };
-        var tasks = taskManager.buildFromConfig(taskConfig);
-
-        oe.process(tasks, function(err, data, task){
-            if(err){
-                log.error(err);
-            }
-            should.not.exist(err);
-            data.should.be.an('object');
-            task.should.be.an('object');
-            expect(data).to.have.keys(
-                "fb.content contains \"ford\"",
-                "fb.content contains \"honda\"");
-            done();
-        });
-    });
-
-    it("should merge two parent requests, using the names", function(done){
+    it("should merge two parent requests, using the merge_id's", function(done){
         var taskConfig = {
             "timeSeries": [
                 [
@@ -104,7 +71,7 @@ describe("Time Series", function() {
                 log.error(err);
             }
             should.not.exist(err);
-            data.should.be.an('object');
+            data.should.be.an('array');
             task.should.be.an('object');
             expect(data).to.have.keys("foo", "bar");
             done();
@@ -137,6 +104,39 @@ describe("Time Series", function() {
             task.should.be.an('object');
             expect(data[0].key).to.equal("male");
             expect(data[1].key).to.equal("female");
+            done();
+        });
+    });
+
+    it("should merge two parent requests, using the filter", function(done){
+        var taskConfig = {
+            "timeSeries": [
+                [
+                    {
+                        "filter": "fb.content contains \"ford\"",
+                        "interval": "week",
+                        "span": 1
+                    },
+                    {
+                        "filter": "fb.content contains \"honda\"",
+                        "interval": "week",
+                        "span": 1
+                    }
+                ]
+            ]
+        };
+        var tasks = taskManager.buildFromConfig(taskConfig);
+
+        oe.process(tasks, function(err, data, task){
+            if(err){
+                log.error(err);
+            }
+            should.not.exist(err);
+            data.should.be.an('object');
+            task.should.be.an('object');
+            expect(data).to.have.keys(
+                "fb.content contains \"ford\"",
+                "fb.content contains \"honda\"");
             done();
         });
     });
