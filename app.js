@@ -19,7 +19,24 @@ oe.process(configTasks, function(err, data, task){
         log.error(err);
     } else {
         console.log("\n");
-        log.info("REQUEST ::: " + JSON.stringify(task.json));
+        //log.info("REQUEST ::: " + JSON.stringify(task.json));
         log.info(JSON.stringify(data, null, 4));
+
+
+        if (Array.isArray(data)) {
+            console.log("todo");
+        } else {
+            console.log("key,interactions,unique_authors");
+
+            Object.keys(data).reduce(
+                function(previousValue, currentValue) {
+                    data[currentValue].forEach(
+                        function(childObj) {
+                           console.log(currentValue + "_" + childObj.key  + "," +
+                               childObj.interactions  + "," + childObj.unique_authors);
+                        });
+                },{}
+            );
+        }
     }
 });
