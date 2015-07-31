@@ -11,7 +11,7 @@ module.exports = {
                 "threshold": 2,
                 "then": {
                     "target": "fb.parent.author.age",
-                    "threshold": 6
+                    "threshold": 2
                 }
             }
         ],
@@ -21,13 +21,13 @@ module.exports = {
                     "name": "ford",
                     "filter": "fb.content contains \"ford\"",
                     "interval": "week",
-                    "span": 1
+                    "span": 2
                 },
                 {
                     "name": "honda",
                     "filter": "fb.content contains \"honda\"",
                     "interval": "week",
-                    "span": 1
+                    "span": 2
                 }
             ]
         ]
