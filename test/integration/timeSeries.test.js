@@ -80,18 +80,18 @@ describe("Time Series", function() {
         });
     });
 
-    it.only("should merge two parent requests, using the names", function(done){
+    it("should merge two parent requests, using the names", function(done){
         var taskConfig = {
             "timeSeries": [
                 [
                     {
-                        "name": "foo",
+                        "merge_id": "foo",
                         "filter": "fb.content contains \"ford\"",
                         "interval": "week",
                         "span": 1
                     },
                     {
-                        "name": "bar",
+                        "merge_id": "bar",
                         "filter": "fb.content contains \"honda\"",
                         "interval": "week",
                         "span": 1
