@@ -19,7 +19,7 @@ describe("Time Series", function() {
 
     this.timeout(10 * 60 * 1000);
 
-    it.only("should succeed with a single target config", function(done){
+    it("should succeed with a single target config", function(done){
         var taskConfig = {
             "timeSeries": [
                 {
@@ -72,7 +72,8 @@ describe("Time Series", function() {
             data.should.be.an('object');
             task.should.be.an('object');
             expect(data).to.have.keys(
-                "fb.content contains \"ford\"", "fb.content contains \"honda\"");
+                "fb.content contains \"ford\"",
+                "fb.content contains \"honda\"");
             done();
         });
     });

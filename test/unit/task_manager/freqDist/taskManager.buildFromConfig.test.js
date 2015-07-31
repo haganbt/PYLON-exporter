@@ -151,17 +151,17 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config).to.have.length(0);
     });
 
-    it("should use a name if specified.", function(){
+    it.only("should use a name if specified.", function(){
         var taskConfig = {
             "freqDist": [
                 [
                     {
-                        "name": "foo",
+                        "merge_id": "foo",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
                     },
                     {
-                        "name": "bar",
+                        "merge_id": "bar",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
                     }
