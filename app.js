@@ -20,9 +20,14 @@ oe.process(configTasks, function(err, data, task){
     } else {
         console.log("\n");
         //log.info("REQUEST ::: " + JSON.stringify(task.json));
-        log.info(JSON.stringify(task.name));
+        if(task.name){
+            log.info(JSON.stringify(task.name));
+        }
         log.info(JSON.stringify(data, null, 4));
 
+        if(task.name){
+            console.log("Name: " + task.name);
+        }
         if (Array.isArray(data)) {
             console.log("key,interactions,unique_authors");
             data.forEach(
