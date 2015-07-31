@@ -37,10 +37,11 @@ describe("Frequency Distribution", function() {
                 log.error(err);
             }
             should.not.exist(err);
-            data.should.be.an('object');
+            data.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis).to.have.keys(
-                "analysis_type", "parameters", "results", "redacted");
+
+            expect(data[0]).to.have.keys(
+                "key", "interactions", "unique_authors");
             done();
         });
     });
@@ -116,13 +117,13 @@ describe("Frequency Distribution", function() {
             "freqDist": [
                 [
                     {
-                        "name": "foo",
+                        "merge_id": "foo",
                         "filter": "links.domain exists",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
                     },
                     {
-                        "name": "bar",
+                        "merge_id": "bar",
                         "filter": "not links.domain exists",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
@@ -165,11 +166,10 @@ describe("Frequency Distribution", function() {
                 log.error(err);
             }
             should.not.exist(err);
-            data.should.be.an('object');
-            data.analysis.results.should.be.an('array');
+            data.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis.results[1].key).to.equal("female");
-            expect(data.analysis.results[0].key).to.equal("male");
+            expect(data[1].key).to.equal("female");
+            expect(data[0].key).to.equal("male");
             done();
         });
     });

@@ -19,7 +19,7 @@ describe("Time Series", function() {
 
     this.timeout(10 * 60 * 1000);
 
-    it("should succeed with a single target config", function(done){
+    it.only("should succeed with a single target config", function(done){
         var taskConfig = {
             "timeSeries": [
                 {
@@ -36,13 +36,10 @@ describe("Time Series", function() {
                 log.error(err);
             }
             should.not.exist(err);
-            data.should.be.an('object');
+            data.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis).to.have.keys(
-                "analysis_type", "parameters", "results", "redacted");
-
-            expect(data.analysis.parameters).to.have.keys(
-                "interval", "span");
+            expect(data[0]).to.have.keys(
+                "key", "interactions", "unique_authors");
 
             done();
         });
@@ -135,11 +132,10 @@ describe("Time Series", function() {
                 log.error(err);
             }
             should.not.exist(err);
-            data.should.be.an('object');
-            data.analysis.results.should.be.an('array');
+            data.should.be.an('array');
             task.should.be.an('object');
-            expect(data.analysis.results[0].key).to.equal("male");
-            expect(data.analysis.results[1].key).to.equal("female");
+            expect(data[0].key).to.equal("male");
+            expect(data[1].key).to.equal("female");
             done();
         });
     });
