@@ -2,7 +2,7 @@
 
 Utility for exporting data from a PYLON index. Features:
  
- * Inbuilt queue to support large numbers of simultaneous requests
+ * Inbuilt queue to support large numbers of requests
  * Parallel requests limit to manage control flow
  * Nested requests - full support for all targets
  * Merging of related response data sets
@@ -25,21 +25,21 @@ Run tests:
 
 ## Usage
 
-
-A JSON config file is used to define what data to request. Simply edit ```/config/defaults.js``` file to get started.
-
-Execute:
-
 ```node app.js```
 
 
-## Overwrite Config
+## Config Recipes
 
-Additional config files can be created that inherit the properties of the ```default.js`` file. This functionality is 
-useful if multiple configurations are required.
+As JSON configuration file is used to specify what data to extract from a PYLON index.
 
-NOTE: All config files extend ```defaults.js``` and hence anything specified there will be run in addition to 
-anything specified in a custom configuration file.
+All config files inherit (and can overwite) properties from ```default.js```. This file is useful to place configurations
+you expect to use reguarly e.g. primary authentication credentials.
+
+To specify which config file to use, set the ```NODE_ENV``` environment variable:
+
+```export NODE_ENV=foo```
+
+If ```NODE_ENV``` is not specified, it will automatically be set to ```test``` i.e. load the test.js config file
 
 **Example Config Recipe**
 
