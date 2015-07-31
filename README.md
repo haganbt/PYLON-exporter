@@ -33,7 +33,7 @@ Run tests:
 As JSON configuration file is used to specify what data to extract from a PYLON index.
 
 All config files inherit (and can overwite) properties from ```/config/default.js```. This file is useful to place 
-configurations you expect to use reguarly e.g. primary authentication credentials.
+configurations you expect to use regularly e.g. primary authentication credentials.
 
 To specify which config file to use, set the ```NODE_ENV``` environment variable:
 
