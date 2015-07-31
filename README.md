@@ -32,18 +32,19 @@ Run tests:
 
 As JSON configuration file is used to specify what data to extract from a PYLON index.
 
-All config files inherit (and can overwite) properties from ```default.js```. This file is useful to place configurations
-you expect to use reguarly e.g. primary authentication credentials.
+All config files inherit (and can overwite) properties from ```/config/default.js```. This file is useful to place 
+configurations you expect to use reguarly e.g. primary authentication credentials.
 
 To specify which config file to use, set the ```NODE_ENV``` environment variable:
 
 ```export NODE_ENV=foo```
 
-If ```NODE_ENV``` is not specified, it will automatically be set to ```test``` i.e. load the test.js config file
+If ```NODE_ENV``` is not specified, it will automatically default to ```test``` i.e. load the ```/config/test.js``` 
+config file.
 
 **Example Config Recipe**
 
-Create a new file within the ```/config/``` directory called `foo.js` with the following configuration:
+Create a new file within the ```/config/``` directory e.g. `foo.js` with the following configuration:
  
 
 ```json
@@ -68,7 +69,7 @@ Create a new file within the ```/config/``` directory called `foo.js` with the f
  
  ```
 
-Next, set the config file using an environment variable:
+Set the config file using an environment variable:
 
 ```export NODE_ENV=foo```
 
