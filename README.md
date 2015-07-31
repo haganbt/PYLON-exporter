@@ -99,6 +99,8 @@ specified to identify each data set. If a ```name``` is not specified, the ```ta
 
 ### Nested Requests
 
+NOTE: native nested queries are not currently supported. This can have redaction implications.
+
 Nested requests are supported whereby each result key from a primary request then automatically generates
 a subsequent secondary request using the key as a ```filter``` parameter.
 
