@@ -80,7 +80,7 @@ overwrite any duplicate values within the ```default``` file.
 ### Merging Result Sets
 Merging of response data is supported by defining the requests to be merged as an array. An ```id``` property can be
 specified to identify each data set. If an ```id``` is not specified, the ```target``` will be used. If the 
-```target``` is not specified (time series) or is a duplicate, the filter property will be used.
+```target``` is not specified (time series) or is a duplicate, the ```filter``` property will be used.
 
 ```json
 [
