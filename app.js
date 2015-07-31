@@ -20,6 +20,6 @@ oe.process(configTasks, function(err, data, task){
     } else {
         console.log("\n");
         log.info("REQUEST ::: " + JSON.stringify(task.json));
-        log.info("RESPONSE ::: " + JSON.stringify(data, null, 4));
+        log.info(JSON.stringify(data, null, 4));
     }
 });
