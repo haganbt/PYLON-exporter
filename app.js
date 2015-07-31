@@ -24,15 +24,19 @@ oe.process(configTasks, function(err, data, task){
 
 
         if (Array.isArray(data)) {
-            console.log("todo");
-        } else {
             console.log("key,interactions,unique_authors");
-
+            data.forEach(
+                function(childObj) {
+                    console.log(childObj.key  + "," +
+                        childObj.interactions  + "," + childObj.unique_authors);
+                });
+        } else {
+            console.log("name,key,interactions,unique_authors");
             Object.keys(data).reduce(
                 function(previousValue, currentValue) {
                     data[currentValue].forEach(
                         function(childObj) {
-                           console.log(currentValue + "_" + childObj.key  + "," +
+                           console.log(currentValue +  "," + childObj.key  + "," +
                                childObj.interactions  + "," + childObj.unique_authors);
                         });
                 },{}
