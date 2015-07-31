@@ -78,19 +78,19 @@ When run, the ```default``` config file will be loaded, followed by the ```foo``
 overwrite any duplicate values within the ```default``` file.
 
 ### Merging Result Sets
-Merging of response data is supported by defining the requests to be merged as an array. A ```merge_id``` property can be
-specified to identify each data set. If a ```merge_id``` is not specified, the ```target``` will be used. If the 
+Merging of response data is supported by defining the requests to be merged as an array. An ```id``` property can be
+specified to identify each data set. If a ```id``` is not specified, the ```target``` will be used. If the 
 ```target``` is not specified (time series) or is a duplicate, the filter property will be used.
 
 ```json
 [
     {
-        "merge_id": "ford",
+        "id": "ford",
         "filter": "fb.content contains \"ford\"",
         "interval": "week",
     },
     {
-        "merge_id": "honda",
+        "id": "honda",
         "filter": "fb.content contains \"honda\"",
         "interval": "week",
     }

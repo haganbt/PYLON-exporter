@@ -156,12 +156,12 @@ describe("Task Manager buildFromConfig - freqDist", function(){
             "freqDist": [
                 [
                     {
-                        "merge_id": "foo",
+                        "id": "foo",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
                     },
                     {
-                        "merge_id": "bar",
+                        "id": "bar",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
                     }

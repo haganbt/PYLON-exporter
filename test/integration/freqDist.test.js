@@ -117,13 +117,13 @@ describe("Frequency Distribution", function() {
             "freqDist": [
                 [
                     {
-                        "merge_id": "foo",
+                        "id": "foo",
                         "filter": "links.domain exists",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
                     },
                     {
-                        "merge_id": "bar",
+                        "id": "bar",
                         "filter": "not links.domain exists",
                         "target": "fb.parent.author.gender",
                         "threshold": 2
