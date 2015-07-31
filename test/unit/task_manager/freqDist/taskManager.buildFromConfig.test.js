@@ -151,7 +151,7 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config).to.have.length(0);
     });
 
-    it.only("should use a name if specified.", function(){
+    it("should use a name if specified.", function(){
         var taskConfig = {
             "freqDist": [
                 [
