@@ -7,12 +7,28 @@ module.exports = {
     "analysis": {
         "freqDist": [
             {
-                "name": "example_freqDist-parent_topics",
+                "name": "example_freqDist",
                 "target": "fb.parent.topics.name",
-                "threshold": 10
+                "threshold": 3
             },
             {
-                "name": "example_nested_query-freqDist_age_by_gender",
+                "example_merged_freqDist": [
+                    {
+                        "id": "ford",
+                        "filter": "fb.parent.content contains \"ford\"",
+                        "target": "fb.parent.author.age",
+                        "threshold": 2
+                    },
+                    {
+                        "id": "honda",
+                        "filter": "fb.parent.content contains \"honda\"",
+                        "target": "fb.parent.author.age",
+                        "threshold": 2
+                    }
+                ]
+            },
+            {
+                "name": "example_nested_query",
                 "target": "fb.parent.author.gender",
                 "threshold": 2,
                 "then": {
@@ -28,7 +44,7 @@ module.exports = {
                 "span": 2
             },
             {
-                "example_merged_timeSeries_brands_by_week": [
+                "example_merged_timeSeries": [
                     {
                         "id": "ford",
                         "filter": "fb.parent.content contains \"ford\"",
