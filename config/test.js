@@ -7,7 +7,12 @@ module.exports = {
     "analysis": {
         "freqDist": [
             {
-                "name": "freqDist_age_by_gender",
+                "name": "example_freqDist-parent_topics",
+                "target": "fb.parent.topics.name",
+                "threshold": 10
+            },
+            {
+                "name": "example_nested_query-freqDist_age_by_gender",
                 "target": "fb.parent.author.gender",
                 "threshold": 2,
                 "then": {
@@ -18,7 +23,12 @@ module.exports = {
         ],
         "timeSeries": [
             {
-                "timeSeries_brands_by_week": [
+                "name": "example_timeSeries",
+                "interval": "week",
+                "span": 2
+            },
+            {
+                "example_merged_timeSeries_brands_by_week": [
                     {
                         "id": "ford",
                         "filter": "fb.parent.content contains \"ford\"",
@@ -32,12 +42,6 @@ module.exports = {
                         "span": 2
                     }
                 ]
-            },
-            {
-                "name": "timeSeries_example",
-                "filter": "fb.parent.content exists",
-                "interval": "week",
-                "span": 2
             }
         ]
     }
