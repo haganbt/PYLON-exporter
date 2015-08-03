@@ -84,13 +84,13 @@ to be merged as an array.
 **Task ID**
 
 An ```id``` property must be specified to identify each data set within a merged task. If an ```id``` is not specified, 
-the exporter will attempt to automatically generate one. If not specified, the ```target``` will be used. If the 
-```target``` is not specified (time series) or is a duplicate, the ```filter``` property will be used. If the 
-```filter``` is a duplicate a concatenation of the ```target``` and ```filter`` property is used.
+the exporter will attempt to automatically generate one. The ```target``` property will be used as default if available.
+If the ```target``` is not specified (e.g. time series) or is a duplicate, the ```filter``` property will be used. If the 
+```filter``` is a duplicate a concatenation of the ```target``` and ```filter``` property is used.
 
 **Task Name**
 
-Task names are used to identify the task and are used to provide a short description of the task.
+Task names are used to provide a short description of the result set e.g. for output file names.
 
 A task name is required as the merged tasks array key and the task array itself as the value.
 
