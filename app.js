@@ -18,7 +18,6 @@ oe.process(configTasks, function(err, data, task){
     if(err){
         log.error(err);
     } else {
-        console.log("\n");
         //log.info("REQUEST ::: " + JSON.stringify(task.json));
         if(task.name){
             log.info(JSON.stringify(task.name));
