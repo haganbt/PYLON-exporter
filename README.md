@@ -78,21 +78,35 @@ When run, the ```default``` config file will be loaded, followed by the ```foo``
 overwrite any duplicate values within the ```default``` file.
 
 ### Merging Result Sets
-Merging of response data is supported by defining the requests to be merged as an array. An ```id``` property can be
-specified to identify each data set. If an ```id``` is not specified, the ```target``` will be used. If the 
-```target``` is not specified (time series) or is a duplicate, the ```filter``` property will be used.
+Merging of response data is supported for both timeSeries and freqDist requests by grouping the request tasks
+to be merged as an array.
+
+**Task ID**
+An ```id``` property must be specified to identify each data set within a merged task. If an ```id``` is not specified, 
+the exporter will attempt to automatically generate one. If not specified, the ```target``` will be used. If the 
+```target``` is not specified (time series) or is a duplicate, the ```filter``` property will be used. If the 
+```filter``` is a duplicate a concatenation of the ```target``` and ```filter`` property is used.
+
+**Task Name**
+Task names are used to identify the task and are used to provide a short description of the task.
+
+A task name is required as the merged tasks array key and the task array itself as the value.
+
+**Example Merged Task**
 
 ```json
-[
+"timeSeries_brands_by_week": [ //<-- task name
     {
-        "id": "ford",
-        "filter": "fb.content contains \"ford\"",
+        "id": "ford", //<-- task id
+        "filter": "fb.parent.content contains \"ford\"",
         "interval": "week",
+        "span": 2
     },
     {
         "id": "honda",
-        "filter": "fb.content contains \"honda\"",
+        "filter": "fb.parent.content contains \"honda\"",
         "interval": "week",
+        "span": 2
     }
 ]
 ```
@@ -100,7 +114,7 @@ specified to identify each data set. If an ```id``` is not specified, the ```tar
 
 ### Nested Requests
 
-NOTE: native nested queries are not currently supported. This can have redaction implications.
+**NOTE: native nested queries are not currently supported.** This can have redaction implications.
 
 Nested requests are supported whereby each result key from a primary request then automatically generates
 a subsequent secondary request using the key as a ```filter``` parameter.
@@ -109,6 +123,7 @@ Nested requests are configured within the config file using the ```then``` objec
 
 ```json
 {
+    "name": "freqDist_age_by_gender",
     "target": "fb.parent.author.gender",
     "threshold": 2,
     "then": {
@@ -118,7 +133,7 @@ Nested requests are configured within the config file using the ```then``` objec
 }
 ```
 
-Nested requests automatically merge the result sets in to a single data set.
+Nested requests automatically merge the result sets in to a single output data set.
 
 
 ### Request Filters

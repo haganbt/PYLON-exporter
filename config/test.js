@@ -7,6 +7,7 @@ module.exports = {
     "analysis": {
         "freqDist": [
             {
+                "name": "freqDist_age_by_gender",
                 "target": "fb.parent.author.gender",
                 "threshold": 2,
                 "then": {
@@ -16,20 +17,28 @@ module.exports = {
             }
         ],
         "timeSeries": [
-            [
-                {
-                    "id": "ford",
-                    "filter": "fb.content contains \"ford\"",
-                    "interval": "week",
-                    "span": 2
-                },
-                {
-                    "id": "honda",
-                    "filter": "fb.content contains \"honda\"",
-                    "interval": "week",
-                    "span": 2
-                }
-            ]
+            {
+                "timeSeries_brands_by_week": [
+                    {
+                        "id": "ford",
+                        "filter": "fb.parent.content contains \"ford\"",
+                        "interval": "week",
+                        "span": 2
+                    },
+                    {
+                        "id": "honda",
+                        "filter": "fb.parent.content contains \"honda\"",
+                        "interval": "week",
+                        "span": 2
+                    }
+                ]
+            },
+            {
+                "name": "timeSeries_example",
+                "filter": "fb.parent.content exists",
+                "interval": "week",
+                "span": 2
+            }
         ]
     }
 };
