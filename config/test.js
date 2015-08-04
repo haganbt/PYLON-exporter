@@ -28,7 +28,20 @@ module.exports = {
                 ]
             },
             {
-                "name": "example_nested_query",
+                "name": "example_native_nested",
+                "target": "fb.author.gender",
+                "threshold": 2,
+                "child": {
+                    "target": "fb.author.age",
+                    "threshold": 2,
+                    "child": {
+                        "target": "fb.parent.media_type",
+                        "threshold": 2
+                    }
+                }
+            },
+            {
+                "name": "example_custom_nested",
                 "target": "fb.parent.author.gender",
                 "threshold": 2,
                 "then": {
