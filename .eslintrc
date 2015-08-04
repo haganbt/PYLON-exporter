@@ -24,7 +24,7 @@ rules:
   curly: 1
   yoda: 1
   new-cap: 1
-  camelcase: 1
+  camelcase: 0
   no-underscore-dangle: 0
   quotes: [2, single avoid-escape]
   eol-last: 1
