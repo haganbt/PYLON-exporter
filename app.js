@@ -25,40 +25,43 @@ oe.process(configTasks, function(err, data, task){
         log.info(JSON.stringify(task.name));
         log.info(JSON.stringify(data, null, 4));
 
-        appendFile("\n\nName: " + task.name + "\n-------------------------------");
-        appendFile(JSON.stringify(data) + "\n");
+        var csv = jsonToCsv(data);
+        log.info(csv);
 
-        if (Array.isArray(data)) {
-            appendFile("key,interactions,unique_authors");
-            data.forEach(
-                function(childObj) {
-                    appendFile(childObj.key  + "," +
-                        childObj.interactions  + "," + childObj.unique_authors);
-                });
-        } else {
-            appendFile("name,key,interactions,unique_authors");
-            Object.keys(data).reduce(
-                function(previousValue, currentValue) {
-                    data[currentValue].forEach(
-                        function(childObj) {
-                            appendFile(currentValue +  "," + childObj.key  + "," +
-                                childObj.interactions  + "," + childObj.unique_authors);
-                        });
-                },{}
-            );
-        }
+        appendFile(csv, task.name);
+
     }
 });
 
+function jsonToCsv(inData){
+    var out = "";
+    if (Array.isArray(inData)) {
+        out += "key,interactions,unique_authors\n";
+        inData.forEach(
+            function(childObj) {
+                out += childObj.key  + "," + childObj.interactions  + "," + childObj.unique_authors + "\n";
+            });
+    } else {
+        out += "name,key,interactions,unique_authors\n";
+        Object.keys(inData).reduce(
+            function(previousValue, currentValue) {
+                inData[currentValue].forEach(
+                    function(childObj) {
+                        out += currentValue +  "," + childObj.key  + "," + childObj.interactions  + "," + childObj.unique_authors + "\n";
+                    });
+            },{}
+        );
+    }
+    return out;
+}
 
 function appendFile(content, filename){
     if(filename === undefined){
         filename = "out";
     }
 
-    fs.appendFile("./output/" + filename + ".txt", "\n" + content, function (err) {
+    fs.appendFile("./output/" + process.env.NODE_ENV
+        + "-" + filename + ".csv", content, function (err) {
         if (err) throw err;
     });
 }
-
-
