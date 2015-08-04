@@ -28,6 +28,11 @@ oe.process(configTasks, function(err, data, task){
         var csv = jsonToCsv(data);
         log.info(csv);
 
+
+        appendFile("NAME: " + task.name + "\n\n", 'all', 'txt');
+        appendFile(JSON.stringify(data, null, 4) + "\n\n", 'all', 'txt');
+        appendFile(csv + "\n\n", 'all', 'txt');
+        appendFile("---------------------------------------\n\n", 'all', 'txt');
         appendFile(csv, task.name);
 
     }
@@ -58,13 +63,17 @@ function jsonToCsv(inData){
     return out;
 }
 
-function appendFile(content, filename){
+function appendFile(content, filename, suffix){
     if(filename === undefined){
         filename = "out";
     }
 
+    if(suffix === undefined){
+        suffix = "csv";
+    }
+
     fs.appendFile("./output/" + process.env.NODE_ENV
-        + "-" + filename + ".csv", content, function (err) {
+        + "-" + filename + "." + suffix, content, function (err) {
         if (err) throw err;
     });
 }
