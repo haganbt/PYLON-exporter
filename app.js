@@ -4,6 +4,8 @@ if(process.env.NODE_ENV === undefined){
     process.env.NODE_ENV = "test";
 }
 
+var fs = require('fs');
+
 var log = require('./utils/logger')
     , taskManager = require('./lib/taskManager')
     , OperationsEngine = require('./lib/OperationsEngine')
@@ -23,25 +25,40 @@ oe.process(configTasks, function(err, data, task){
         log.info(JSON.stringify(task.name));
         log.info(JSON.stringify(data, null, 4));
 
-        console.log("Name: " + task.name);
+        appendFile("\n\nName: " + task.name + "\n-------------------------------");
+        appendFile(JSON.stringify(data) + "\n");
+
         if (Array.isArray(data)) {
-            console.log("key,interactions,unique_authors");
+            appendFile("key,interactions,unique_authors");
             data.forEach(
                 function(childObj) {
-                    console.log(childObj.key  + "," +
+                    appendFile(childObj.key  + "," +
                         childObj.interactions  + "," + childObj.unique_authors);
                 });
         } else {
-            console.log("name,key,interactions,unique_authors");
+            appendFile("name,key,interactions,unique_authors");
             Object.keys(data).reduce(
                 function(previousValue, currentValue) {
                     data[currentValue].forEach(
                         function(childObj) {
-                           console.log(currentValue +  "," + childObj.key  + "," +
-                               childObj.interactions  + "," + childObj.unique_authors);
+                            appendFile(currentValue +  "," + childObj.key  + "," +
+                                childObj.interactions  + "," + childObj.unique_authors);
                         });
                 },{}
             );
         }
     }
 });
+
+
+function appendFile(content, filename){
+    if(filename === undefined){
+        filename = "out";
+    }
+
+    fs.appendFile("./output/" + filename + ".txt", "\n" + content, function (err) {
+        if (err) throw err;
+    });
+}
+
+
