@@ -19,7 +19,7 @@ describe("Frequency Distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
-    it("should succeed with a single target config", function(done){
+    it("single target", function(done){
         //var taskConfig = require('../support/recipes/fd.single.target.task');
         var taskConfig1 = {
             "freqDist": [
@@ -31,7 +31,6 @@ describe("Frequency Distribution", function() {
             ]
         };
         var tasks = taskManager.buildFromConfig(taskConfig1);
-
         oe.process(tasks, function(err, data, task){
             if(err){
                 log.error(err);
@@ -39,7 +38,6 @@ describe("Frequency Distribution", function() {
             should.not.exist(err);
             data.should.be.an('array');
             task.should.be.an('object');
-
             expect(data[0]).to.have.keys(
                 "key", "interactions", "unique_authors");
             done();
@@ -50,18 +48,20 @@ describe("Frequency Distribution", function() {
         //var taskConfig2 = require('../support/recipes/fd.merged.parent.task');
         var taskConfig2 = {
             "freqDist": [
-                [
-                    {
-                        "target": "fb.parent.author.gender",
-                        "threshold": 3,
-                        "filter": "links.domain exists"
-                    },
-                    {
-                        "target": "fb.parent.author.age",
-                        "threshold": 5,
-                        "filter": "not links.domain exists"
-                    }
-                ]
+                {
+                    "example_name": [
+                        {
+                            "target": "fb.parent.author.gender",
+                            "threshold": 3,
+                            "filter": "links.domain exists"
+                        },
+                        {
+                            "target": "fb.parent.author.age",
+                            "threshold": 5,
+                            "filter": "links.domain exists"
+                        }
+                    ]
+                }
             ]
         };
         var tasks = taskManager.buildFromConfig(taskConfig2);
@@ -73,9 +73,8 @@ describe("Frequency Distribution", function() {
             should.not.exist(err);
             data.should.be.an('object');
             task.should.be.an('object');
-
             expect(data).to.have.keys(
-                "fb.parent.author.gender", "fb.parent.author.age");
+                "fb.parent.author.gender_links.domain exists", "fb.parent.author.age_links.domain exists");
             done();
         });
     });
@@ -83,18 +82,20 @@ describe("Frequency Distribution", function() {
     it("should merge two requests, same targets, different filters", function(done){
         var taskConfig = {
             "freqDist": [
-                [
-                    {
-                        "filter": "links.domain exists",
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
-                    },
-                    {
-                        "filter": "not links.domain exists",
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
-                    }
-                ]
+                {
+                    "example_name": [
+                        {
+                            "filter": "links.domain exists",
+                            "target": "fb.parent.author.gender",
+                            "threshold": 2
+                        },
+                        {
+                            "filter": "not links.domain exists",
+                            "target": "fb.parent.author.gender",
+                            "threshold": 2
+                        }
+                    ]
+                }
             ]
         };
         var tasks = taskManager.buildFromConfig(taskConfig);
@@ -107,28 +108,30 @@ describe("Frequency Distribution", function() {
             data.should.be.an('object');
             task.should.be.an('object');
             expect(data).to.have.keys(
-                "fb.parent.author.gender", "fb.parent.author.gender_not links.domain exists");
+                "fb.parent.author.gender_links.domain exists", "fb.parent.author.gender_not links.domain exists");
             done();
         });
     });
 
-    it("should merge two requests using the name property", function(done){
+    it("should merge two requests using the id property", function(done){
         var taskConfig = {
             "freqDist": [
-                [
-                    {
-                        "id": "foo",
-                        "filter": "links.domain exists",
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
-                    },
-                    {
-                        "id": "bar",
-                        "filter": "not links.domain exists",
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
-                    }
-                ]
+                {
+                    "example_name": [
+                        {
+                            "id": "foo",
+                            "filter": "links.domain exists",
+                            "target": "fb.parent.author.gender",
+                            "threshold": 2
+                        },
+                        {
+                            "id": "bar",
+                            "filter": "not links.domain exists",
+                            "target": "fb.parent.author.gender",
+                            "threshold": 2
+                        }
+                    ]
+                }
             ]
         };
         var tasks = taskManager.buildFromConfig(taskConfig);
@@ -140,7 +143,8 @@ describe("Frequency Distribution", function() {
             should.not.exist(err);
             data.should.be.an('object');
             task.should.be.an('object');
-            expect(data).to.have.keys("foo", "bar");
+            expect(data).to.have.keys(
+                "foo", "bar");
             done();
         });
     });
@@ -160,16 +164,15 @@ describe("Frequency Distribution", function() {
         };
 
         var tasks = taskManager.buildFromConfig(taskConfig3);
-
         oe.process(tasks, function(err, data, task){
             if(err){
                 log.error(err);
             }
             should.not.exist(err);
-            data.should.be.an('array');
+            data.should.be.an('object');
             task.should.be.an('object');
-            expect(data[1].key).to.equal("female");
-            expect(data[0].key).to.equal("male");
+            expect(data.male).to.be.an('array');
+            expect(data.female).to.be.an('array');
             done();
         });
     });
