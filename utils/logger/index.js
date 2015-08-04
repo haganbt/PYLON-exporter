@@ -15,15 +15,12 @@ var formatOut = bformat({ outputMode: "short" })
             {
                 level: log_level,
                 stream: formatOut
-            }
-            /*
-            //TODO add if you want logging to fs
-             {
-                level: 'error',
+            }/*,
+            {
+                level: 'info',
                 // log ERROR and above to a file
-                path: '/var/tmp/myapp-error.log'
-             }
-            */
+                path: './output/test.log'
+            }*/
         ]
     });
 
