@@ -39,7 +39,8 @@ function jsonToCsv(inData){
         out += "key,interactions,unique_authors\n";
         inData.forEach(
             function(childObj) {
-                out += childObj.key  + "," + childObj.interactions  + "," + childObj.unique_authors + "\n";
+                out += childObj.key  + "," + childObj.interactions
+                    + "," + childObj.unique_authors + "\n";
             });
     } else {
         out += "name,key,interactions,unique_authors\n";
@@ -47,7 +48,9 @@ function jsonToCsv(inData){
             function(previousValue, currentValue) {
                 inData[currentValue].forEach(
                     function(childObj) {
-                        out += currentValue +  "," + childObj.key  + "," + childObj.interactions  + "," + childObj.unique_authors + "\n";
+                        out += currentValue +  ","
+                            + childObj.key  + "," + childObj.interactions
+                            + "," + childObj.unique_authors + "\n";
                     });
             },{}
         );
