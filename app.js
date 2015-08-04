@@ -49,6 +49,9 @@ function jsonToCsv(inData){
             });
     } else {
         out += "name,key,interactions,unique_authors\n";
+        if(inData.redacted){
+            return "redacted";
+        }
         Object.keys(inData).reduce(
             function(previousValue, currentValue) {
                 inData[currentValue].forEach(
