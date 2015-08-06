@@ -1,12 +1,16 @@
 # PYLON-exporter
 
-Utility for exporting data from a PYLON index. Features:
+Utility for exporting data from a PYLON index. PYLON-exporter mandates a config driven approach to data collection, 
+rather than code. It is the goal of this utility to support any combination of data extraction from a PYLON index.
+
+Features:
  
+ * Simplified config driven approach abstracts complexities of data collection and merging
  * Inbuilt queue to support large numbers of requests
  * Parallel requests limit to manage control flow
- * Nested requests - full support for all targets
- * Merging of related response data sets
- * Config inheritance
+ * Data merging
+ * Nested requests - native as well as custom nested requests
+ * Export as JSON or CSV
 
 
 ## Setup
@@ -79,22 +83,7 @@ overwrite any duplicate values within the ```default``` file.
 
 ### Merging Result Sets
 Merging of response data is supported for both timeSeries and freqDist requests by grouping the request tasks
-to be merged as an array.
-
-**Task ID**
-
-An ```id``` property must be specified to identify each data set within a merged task. If an ```id``` is not specified, 
-the exporter will attempt to automatically generate one. The ```target``` property will be used as default if available.
-If the ```target``` is not specified (e.g. time series) or is a duplicate, the ```filter``` property will be used. If the 
-```filter``` is a duplicate a concatenation of the ```target``` and ```filter``` property is used.
-
-**Task Name**
-
-Task names are used to provide a short description of the result set e.g. for output file names.
-
-A task name is required as the merged tasks array key and the task array itself as the value.
-
-**Example Merged Task**
+to be merged as an array:
 
 ```json
 "timeSeries_brands_by_week": [ //<-- task name
@@ -113,29 +102,105 @@ A task name is required as the merged tasks array key and the task array itself 
 ]
 ```
 
+**Task ID**
+
+An ```id``` property can be specified to identify each data set within a merged task with a human readable name. For
+example, using the example configuration above where ```id``` properties have been specified as ```ford``` and 
+```honda``` would return the following JSON response:
+
+```json
+ {
+      "ford": [
+          {
+              "key": "25-34",
+              "interactions": 565500,
+              "unique_authors": 432800
+          },
+          ....
+      ],
+      "honda": [
+          {
+              "key": "25-34",
+              "interactions": 366500,
+              "unique_authors": 296600
+          },
+          ....
+      ]
+  }
+```
+
+If an ```id``` is not specified, the exporter will attempt to automatically generate one. The ```target``` property 
+will be used as default if present. If the ```target``` is not specified (e.g. time series) or is a duplicate, 
+the ```filter``` property will be used. If the ```filter``` is a duplicate a concatenation of the ```target``` 
+and ```filter``` property is used.
+
+
+**Task Name**
+
+Task names are used to provide a short description of the result set and also used for output file names.
+
+A task name property is specified as the merged tasks array key and the task array itself as the value:
+
+```json
+"the_name_of_the_merged_task": [ //<-- task name
+    {
+        ... // task 1
+    },
+    {
+        ... // task 2
+    }
+]
+```
+
 
 ### Nested Requests
 
-**NOTE: native nested queries are not currently supported.** This can have redaction implications.
+Two types of nested requests are supported: **native** nested and **custom** nested requests:
 
-Nested requests are supported whereby each result key from a primary request then automatically generates
-a subsequent secondary request using the key as a ```filter``` parameter.
+**Native Nested Requests
+
+Native nested requests are supported using the same simplified format:
+
+```json
+"freqDist": [
+    {
+        "name": "example_native_nested",
+        "target": "fb.author.gender",
+        "threshold": 2,
+        "child": {
+            "target": "fb.author.age",
+            "threshold": 2,
+            "child": {
+                "target": "fb.parent.media_type",
+                "threshold": 2
+            }
+        }
+    }
+]    
+```            
+
+**Custom Nested Requests**
+
+Custom nested requests offer the flexibility to use any combination of targets for requests.
+
+Each result key from a primary request then automatically generates a subsequent secondary request using the key 
+as a ```filter``` parameter.
 
 Nested requests are configured within the config file using the ```then``` object:
 
 ```json
-{
-    "name": "freqDist_age_by_gender",
-    "target": "fb.parent.author.gender",
-    "threshold": 2,
-    "then": {
-        "target": "fb.parent.author.age",
-        "threshold": 6
+"freqDist": [
+    {
+        "name": "freqDist_age_by_gender",
+        "target": "fb.parent.author.gender",
+        "threshold": 2,
+        "then": {
+            "target": "fb.parent.author.age",
+            "threshold": 6
+        }
     }
-}
+]
 ```
-
-Nested requests automatically merge the result sets in to a single output data set.
 
 
 ### Request Filters
@@ -149,6 +214,8 @@ The ```filter``` parameter is supported as expected.
     "threshold": 2
 }
 ```
+
+##To be re-written
 
 **Nested Filters - Primary**
 
