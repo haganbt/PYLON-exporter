@@ -7,7 +7,7 @@ var chai = require("chai")
 var expect = chai.expect
     ;
 
-var operator = require("../../../utils/operator")
+var operator = require("../../../utils/operator/index")
     ;
 
 describe("Operator Lookup", function(){
