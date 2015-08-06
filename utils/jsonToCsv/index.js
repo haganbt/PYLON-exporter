@@ -36,7 +36,6 @@ var jsonToCsv = function jsonToCsv(inObj, cb) {
                 if(inObj[currentValue].redacted){
                     out += currentValue  + ",redacted\n";
                 } else {
-                    console.log("____________________" + inObj[currentValue]);
                     inObj[currentValue].forEach(
                         function(childObj) {
                             out += currentValue +  ","
