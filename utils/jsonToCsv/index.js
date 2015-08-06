@@ -18,7 +18,7 @@ var jsonToCsv = function jsonToCsv(inObj, cb) {
     var out = "";
 
     if(inObj.redacted){
-        cb(null, "redacted");
+        return cb(null, "redacted");
     }
 
     if (Array.isArray(inObj)) {
@@ -32,9 +32,11 @@ var jsonToCsv = function jsonToCsv(inObj, cb) {
         out += "name,key,interactions,unique_authors\n";
         Object.keys(inObj).reduce(
             function(previousValue, currentValue) {
+
                 if(inObj[currentValue].redacted){
                     out += currentValue  + ",redacted\n";
                 } else {
+                    console.log("____________________" + inObj[currentValue]);
                     inObj[currentValue].forEach(
                         function(childObj) {
                             out += currentValue +  ","
@@ -45,7 +47,7 @@ var jsonToCsv = function jsonToCsv(inObj, cb) {
             },{}
         );
     }
-    cb(null, out);
+    return cb(null, out);
 };
 
 exports.jsonToCsv = jsonToCsv;
