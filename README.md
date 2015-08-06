@@ -186,24 +186,27 @@ Native nested requests are supported using the same simplified format:
 
 **Custom Nested Requests**
 
-Custom nested requests offer the flexibility to use any combination of targets for requests. Currently, native 
-nested requests can only contain low cardinality targets. For example, requesteing the top topics by brand would 
-not be possible using a native nested query as the ```fb.topics.name``` target is not supported. 
+Custom nested requests offer the flexibility to use any combination of targets and filters for requests. 
+Currently, native nested requests can only contain low cardinality targets. For example, requesting the top topics 
+by gender would not be possible using a native nested query as the ```fb.topics.name``` target is not supported. 
 
 Custom nested requests use each result key from a primary request to automatically generates a subsequent 
 secondary request using the key as a ```filter``` parameter.
+
+NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
+i.e. each individual request must have a an audience size > 1000 unique authors. 
 
 Nested requests are configured within the config file using the ```then``` object:
 
 ```json
 "freqDist": [
     {
-        "name": "freqDist_age_by_gender",
+        "name": "freqDist_topics_by_gender",
         "target": "fb.parent.author.gender",
         "threshold": 2,
         "then": {
-            "target": "fb.parent.author.age",
-            "threshold": 6
+            "target": "fb.topics.name",
+            "threshold": 5
         }
     }
 ]
