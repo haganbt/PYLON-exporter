@@ -186,10 +186,12 @@ Native nested requests are supported using the same simplified format:
 
 **Custom Nested Requests**
 
-Custom nested requests offer the flexibility to use any combination of targets for requests.
+Custom nested requests offer the flexibility to use any combination of targets for requests. Currently, native 
+nested requests can only contain low cardinality targets. For example, requesteing the top topics by brand would 
+not be possible using a native nested query as the ```fb.topics.name``` target is not supported. 
 
-Each result key from a primary request then automatically generates a subsequent secondary request using the key 
-as a ```filter``` parameter.
+Custom nested requests use each result key from a primary request to automatically generates a subsequent 
+secondary request using the key as a ```filter``` parameter.
 
 Nested requests are configured within the config file using the ```then``` object:
 
