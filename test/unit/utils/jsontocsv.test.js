@@ -26,7 +26,7 @@ describe.only("JSON to CSV converter", function(){
         });
     });
 
-    it("should return CSV from a single array Of Objects", function(done){
+    it("should process a single array Of Objects", function(done){
         var payload = require("../../support/recipes/response.payloads");
         converter.jsonToCsv(payload.arrayOfObjects, function(err, result){
             if(err){
@@ -42,9 +42,9 @@ describe.only("JSON to CSV converter", function(){
         });
     });
 
-    it("should return CSV from a single array Of Objects - redacted", function(done){
+    it("should process a single array Of Objects - redacted", function(done){
         var payload = require("../../support/recipes/response.payloads");
-        converter.jsonToCsv(payload.arrayOfObjectsRedacted, function(err, result){
+        converter.jsonToCsv(payload.arrayOfObjRedacted, function(err, result){
             if(err){
                 log.error(err);
             }
@@ -56,7 +56,7 @@ describe.only("JSON to CSV converter", function(){
     });
 
 
-    it("should return CSV from a merged object", function(done){
+    it("should process a merged object", function(done){
         var payload = require("../../support/recipes/response.payloads");
         converter.jsonToCsv(payload.mergedObject, function(err, result){
             if(err){
@@ -73,9 +73,9 @@ describe.only("JSON to CSV converter", function(){
         });
     });
 
-    it("should return CSV from a merged object - single object redacted", function(done){
+    it("should process a merged object - single obj redacted", function(done){
         var payload = require("../../support/recipes/response.payloads");
-        converter.jsonToCsv(payload.mergedObjectSingleRedacted, function(err, result){
+        converter.jsonToCsv(payload.mrgObjSingleRedacted, function(err, result){
             if(err){
                 log.error(err);
             }
@@ -89,9 +89,9 @@ describe.only("JSON to CSV converter", function(){
         });
     });
 
-    it("should return CSV from a merged object - double object redacted", function(done){
+    it("should process a merged object - double obj redacted", function(done){
         var payload = require("../../support/recipes/response.payloads");
-        converter.jsonToCsv(payload.mergedObjectDoubleRedacted, function(err, result){
+        converter.jsonToCsv(payload.mrgObjDoubleRedact, function(err, result){
             if(err){
                 log.error(err);
             }
@@ -103,9 +103,9 @@ describe.only("JSON to CSV converter", function(){
         });
     });
 
-    it("should return CSV from 1 level native nested object", function(done){
+    it("should process 1 level native nested object", function(done){
         var payload = require("../../support/recipes/response.payloads");
-        converter.jsonToCsv(payload.OneLevelNestedObjects, function(err, result){
+        converter.jsonToCsv(payload.OneLevelNestObj, function(err, result){
             if(err){
                 log.error(err);
             }
@@ -122,15 +122,16 @@ describe.only("JSON to CSV converter", function(){
         });
     });
 
-    it.only("should return CSV from 2 level native nested object", function(done){
+    it.only("should process 2 level native nested object", function(done){
         var payload = require("../../support/recipes/response.payloads");
-        converter.jsonToCsv(payload.TwoLevelNestedObjects, function(err, result){
+        converter.jsonToCsv(payload.TwoLevelNestObj, function(err, result){
             if(err){
                 log.error(err);
             }
             should.not.exist(err);
             result.should.be.an('string');
-            expect(result).to.eql("name,category,key,interactions,unique_authors\n" +
+            expect(result).to.eql("name,category,key,interactions," +
+                "unique_authors\n" +
                 "BMW,male,18-24,1293900,810600\n" +
                 "BMW,female,25-34,499700,404400\n" +
                 "BMW,female,18-24,420500,323400\n" +

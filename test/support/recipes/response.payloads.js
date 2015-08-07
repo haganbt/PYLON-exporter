@@ -22,7 +22,7 @@ var arrayOfObjects = [
         }
 ];
 
-var arrayOfObjectsRedacted = {
+var arrayOfObjRedacted = {
     "redacted": true
 };
 
@@ -55,7 +55,7 @@ var mergedObject = {
     ]
 };
 
-var mergedObjectSingleRedacted = {
+var mrgObjSingleRedacted = {
     "ford": {
         "redacted": true
     },
@@ -73,7 +73,7 @@ var mergedObjectSingleRedacted = {
     ]
 };
 
-var mergedObjectDoubleRedacted = {
+var mrgObjDoubleRedact = {
     "ford": {
         "redacted": true
     },
@@ -82,7 +82,7 @@ var mergedObjectDoubleRedacted = {
     }
 };
 
-var OneLevelNestedObjects = [
+var OneLevelNestObj = [
     {
         "key": "BMW",
         "interactions": 5963300,
@@ -160,7 +160,7 @@ var OneLevelNestedObjects = [
     }
 ];
 
-var TwoLevelNestedObjects = [
+var TwoLevelNestObj = [
     {
         "key": "BMW",
         "interactions": 5954400,
@@ -359,9 +359,9 @@ var TwoLevelNestedObjects = [
 ];
 
 exports.arrayOfObjects = arrayOfObjects;
-exports.arrayOfObjectsRedacted = arrayOfObjectsRedacted;
+exports.arrayOfObjRedacted = arrayOfObjRedacted;
 exports.mergedObject = mergedObject;
-exports.mergedObjectSingleRedacted = mergedObjectSingleRedacted;
-exports.mergedObjectDoubleRedacted = mergedObjectDoubleRedacted;
-exports.OneLevelNestedObjects = OneLevelNestedObjects;
-exports.TwoLevelNestedObjects = TwoLevelNestedObjects;
+exports.mrgObjSingleRedacted = mrgObjSingleRedacted;
+exports.mrgObjDoubleRedact = mrgObjDoubleRedact;
+exports.OneLevelNestObj = OneLevelNestObj;
+exports.TwoLevelNestObj = TwoLevelNestObj;
