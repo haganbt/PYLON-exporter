@@ -12,7 +12,7 @@ var converter = require("../../../utils/jsonToCsv")
     , log = require('../../../utils/logger')
     ;
 
-describe.only("JSON to CSV converter", function(){
+describe("JSON to CSV converter", function(){
 
     it("should return a string", function(done){
         var inObj = [];
