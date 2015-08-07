@@ -27,7 +27,7 @@ describe("Frequency Distribution", function() {
                     "name": "test_name",
                     "filter": "fb.parent.content exists",
                     "target": "fb.parent.author.gender",
-                    "threshold": 2,
+                    "threshold": 2
                 }
             ]
         };
@@ -75,7 +75,8 @@ describe("Frequency Distribution", function() {
             data.should.be.an('object');
             task.should.be.an('object');
             expect(data).to.have.keys(
-                "fb.parent.author.gender_links.domain exists", "fb.parent.author.age_links.domain exists");
+                "fb.parent.author.gender_links.domain exists",
+                "fb.parent.author.age_links.domain exists");
             done();
         });
     });
