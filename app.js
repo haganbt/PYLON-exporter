@@ -27,9 +27,9 @@ oe.process(configTasks, function(err, data, task){
         log.info(JSON.stringify(data, null, 4));
 
 
-        converter.jsonToCsv(data, function(err, result){
-            if(err){
-                log.error(err);
+        converter.jsonToCsv(data, function(csvErr, result){
+            if(csvErr){
+                log.error(csvErr);
             }
             log.info(result);
         });
@@ -58,6 +58,8 @@ function appendFile(content, filename, suffix){
 
     fs.appendFile("./output/" + process.env.NODE_ENV
         + "-" + filename + "." + suffix, content, function (err) {
-        if (err) throw err;
+        if (err) {
+            throw err;
+        }
     });
 }
