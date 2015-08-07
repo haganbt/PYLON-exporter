@@ -19,14 +19,15 @@ describe("Frequency Distribution", function() {
 
     this.timeout(10 * 60 * 1000);
 
-    it("single target", function(done){
+    it("with a single target", function(done){
         //var taskConfig = require('../support/recipes/fd.single.target.task');
         var taskConfig1 = {
             "freqDist": [
                 {
+                    "name": "test_name",
+                    "filter": "fb.parent.content exists",
                     "target": "fb.parent.author.gender",
                     "threshold": 2,
-                    "filter": "links.domain exists"
                 }
             ]
         };
@@ -44,21 +45,21 @@ describe("Frequency Distribution", function() {
         });
     });
 
-    it("should merge parent requests, different targets", function(done){
+    it("should merge requests, different targets", function(done){
         //var taskConfig2 = require('../support/recipes/fd.merged.parent.task');
         var taskConfig2 = {
             "freqDist": [
                 {
                     "example_name": [
                         {
+                            "filter": "links.domain exists",
                             "target": "fb.parent.author.gender",
-                            "threshold": 3,
-                            "filter": "links.domain exists"
+                            "threshold": 3
                         },
                         {
+                            "filter": "links.domain exists",
                             "target": "fb.parent.author.age",
-                            "threshold": 5,
-                            "filter": "links.domain exists"
+                            "threshold": 5
                         }
                     ]
                 }
