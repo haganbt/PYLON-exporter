@@ -194,7 +194,7 @@ Custom nested requests use each result key from a primary request to automatical
 secondary request using the key as a ```filter``` parameter.
 
 NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
-i.e. each individual request must have a an audience size > 1000 unique authors. 
+i.e. each individual request must have an audience size of > 1000 unique authors. 
 
 Nested requests are configured within the config file using the ```then``` object:
 
