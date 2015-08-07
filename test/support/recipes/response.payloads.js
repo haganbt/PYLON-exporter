@@ -82,7 +82,7 @@ var mergedObjectDoubleRedacted = {
     }
 };
 
-var OneLevelNestedObjects =  [
+var OneLevelNestedObjects = [
     {
         "key": "BMW",
         "interactions": 5963300,
