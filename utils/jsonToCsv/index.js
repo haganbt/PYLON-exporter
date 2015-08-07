@@ -17,11 +17,18 @@ var jsonToCsv = function jsonToCsv(inObj, cb) {
     }
 
     if (Array.isArray(inObj)) {
-        if(inObj[0] && inObj[0].child){
+        // single level nested
+        if (inObj[0] && inObj[0].child && !inObj[0].child.results[0].child){
             out = "category,key,interactions,unique_authors\n";
+        // two level nested
+        } else if(inObj[0] && inObj[0].child && inObj[0].child.results[0]
+                                        && inObj[0].child.results[0].child){
+            out = "name,category,key,interactions,unique_authors\n";
+        // single item array
         } else {
             out = "key,interactions,unique_authors\n";
         }
+
         inObj.forEach(function(level0) {
             // nested result set
             if(level0.child){
@@ -49,7 +56,7 @@ var jsonToCsv = function jsonToCsv(inObj, cb) {
             }
         });
     } else {
-        out += "category,key,interactions,unique_authors\n";
+        out = "category,key,interactions,unique_authors\n";
         Object.keys(inObj).reduce(
             function(previousValue, currentValue) {
 

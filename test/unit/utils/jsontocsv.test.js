@@ -12,7 +12,7 @@ var converter = require("../../../utils/jsonToCsv")
     , log = require('../../../utils/logger')
     ;
 
-describe("JSON to CSV converter", function(){
+describe.only("JSON to CSV converter", function(){
 
     it("should return a string", function(done){
         var inObj = [];
@@ -122,7 +122,7 @@ describe("JSON to CSV converter", function(){
         });
     });
 
-    it("should return CSV from 2 level native nested object", function(done){
+    it.only("should return CSV from 2 level native nested object", function(done){
         var payload = require("../../support/recipes/response.payloads");
         converter.jsonToCsv(payload.TwoLevelNestedObjects, function(err, result){
             if(err){
@@ -130,7 +130,7 @@ describe("JSON to CSV converter", function(){
             }
             should.not.exist(err);
             result.should.be.an('string');
-            expect(result).to.eql("category,key,interactions,unique_authors\n" +
+            expect(result).to.eql("name,category,key,interactions,unique_authors\n" +
                 "BMW,male,18-24,1293900,810600\n" +
                 "BMW,female,25-34,499700,404400\n" +
                 "BMW,female,18-24,420500,323400\n" +
