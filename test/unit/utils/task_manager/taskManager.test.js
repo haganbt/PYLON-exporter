@@ -7,7 +7,7 @@ var chai = require("chai")
 var expect = chai.expect
     ;
 
-var taskManager = require('../../../lib/taskManager')
+var taskManager = require('../../../../lib/taskManager')
     ;
 
 describe("Task Manager", function(){
