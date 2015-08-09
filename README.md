@@ -174,7 +174,7 @@ and ```filter``` property is used.
 
 Two types of nested tasks are supported: **native** nested and **custom** nested tasks:
 
-**Native Nested Tasks
+**Native Nested Tasks**
 
 Native nested tasks are supported using the same simplified format using a ```child``` object:
 
