@@ -230,8 +230,8 @@ done by auto generating the ```filter``` parameters for the secondary tasks e.g.
 "filter": "(fb.author.gender =="female")"
 ```
 
-NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
-i.e. each individual request must have an audience size of > 1000 unique authors. 
+***NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
+i.e. each individual request must have an audience size of > 1000 unique authors.***
 
 
 **Using Filters with Custom Nested Tasks**
