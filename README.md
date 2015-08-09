@@ -39,7 +39,7 @@ Run tests:
   * Edit ```/config/test.js``` as required.
 
 For an example of all available config options see [/config/all.js](https://github.com/haganbt/PYLON-exporter/blob/master/config/all.js). 
-To use this config file or any other, see [Config Recipes](#config-recipes) section below.
+To use this config file or any other, see [Config Recipes](https://github.com/haganbt/PYLON-exporter#config-recipes) section below.
 
 
 ## Config Recipes
