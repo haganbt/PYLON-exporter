@@ -8,8 +8,8 @@ Features:
  * Simplified config driven approach abstracts complexities of data collection and merging
  * Inbuilt queue to support large numbers of requests
  * Parallel requests limit to manage control flow
- * Data merging
- * Nested requests - native as well as custom nested requests
+ * Custom result set merging
+ * Nested requests - native and custom
  * Export as JSON or CSV
 
 
