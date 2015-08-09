@@ -48,12 +48,14 @@ To specify which config file to use, set the ```NODE_ENV``` environment variable
 
 ```export NODE_ENV=foo```
 
-If ```NODE_ENV``` is not specified, it will automatically default to ```test``` i.e. load the ```/config/test.js``` 
+If ```NODE_ENV``` is not specified, the ```test``` config file will be used i.e.load the ```/config/test.js``` 
 config file.
 
 **Example Config Recipe**
 
-Create a new file within the ```/config/``` directory e.g. `foo.js` with the following configuration:
+To create a new config file, simply create a new ```.js``` file within the ```/config/``` directory e.g. `foo.js`. 
+This file must export an object with an ```analysis``` object containing either a ```freqDist``` or ```timeSeries```
+ objects or both.
  
 
 ```json
@@ -63,7 +65,7 @@ Create a new file within the ```/config/``` directory e.g. `foo.js` with the fol
      "analysis": {
          "freqDist": [
              {
-                 "target": "fb.parent.author.gender",
+                 "target": "fb.author.gender",
                  "threshold": 2
              }
          ],
@@ -86,21 +88,49 @@ Set the config file using an environment variable:
 When run, the ```default``` config file will be loaded, followed by the ```foo``` config file. ```Foo``` will 
 overwrite any duplicate values within the ```default``` file.
 
+
+### Request Filters
+
+The ```filter``` parameter is supported as expected.
+
+```json
+{
+    "filter": "fb.sentiment == \"negative\"",
+    "target": "fb.topics.name",
+    "threshold": 2
+}
+```
+
+### Task names
+Task names are used to provide a short, human readable description of the result set being generated which is included
+as part of the output. If files are being generated, the ```name``` property is also used as the file name.
+
+```json
+{
+    "name": "freqDist_topics_sentiment_negative", //<-- task name
+    "filter": "fb.sentiment == \"negative\"",
+    "target": "fb.topics.name",
+    "threshold": 2
+}
+```
+
+
 ### Merging Result Sets
 Merging of response data is supported for both timeSeries and freqDist requests by grouping the request tasks
-to be merged as an array:
+to be merged as an array. A task name property is specified as the merged tasks array key and the task array itself 
+as the value:
 
 ```json
 "timeSeries_brands_by_week": [ //<-- task name
     {
         "id": "ford", //<-- task id
-        "filter": "fb.parent.content contains \"ford\"",
+        "filter": "fb.content contains \"ford\"",
         "interval": "week",
         "span": 2
     },
     {
         "id": "honda",
-        "filter": "fb.parent.content contains \"honda\"",
+        "filter": "fb.content contains \"honda\"",
         "interval": "week",
         "span": 2
     }
@@ -110,7 +140,7 @@ to be merged as an array:
 **Task ID**
 
 An ```id``` property can be specified to identify each data set within a merged task with a human readable name. For
-example, using the example configuration above where ```id``` properties have been specified as ```ford``` and 
+example, using the sample configuration above where ```id``` properties have been specified as ```ford``` and 
 ```honda``` would return the following JSON response:
 
 ```json
@@ -140,31 +170,13 @@ the ```filter``` property will be used. If the ```filter``` is a duplicate a con
 and ```filter``` property is used.
 
 
-**Task Name**
+### Nested Tasks
 
-Task names are used to provide a short description of the result set and also used for output file names.
+Two types of nested tasks are supported: **native** nested and **custom** nested tasks:
 
-A task name property is specified as the merged tasks array key and the task array itself as the value:
+**Native Nested Tasks
 
-```json
-"the_name_of_the_merged_task": [ //<-- task name
-    {
-        ... // task 1
-    },
-    {
-        ... // task 2
-    }
-]
-```
-
-
-### Nested Requests
-
-Two types of nested requests are supported: **native** nested and **custom** nested requests:
-
-**Native Nested Requests
-
-Native nested requests are supported using the same simplified format:
+Native nested tasks are supported using the same simplified format using a ```child``` object:
 
 ```json
 "freqDist": [
@@ -176,7 +188,7 @@ Native nested requests are supported using the same simplified format:
             "target": "fb.author.age",
             "threshold": 2,
             "child": {
-                "target": "fb.parent.media_type",
+                "target": "fb.media_type",
                 "threshold": 2
             }
         }
@@ -184,17 +196,15 @@ Native nested requests are supported using the same simplified format:
 ]    
 ```            
 
-**Custom Nested Requests**
+**Custom Nested Tasks**
 
-Custom nested requests offer the flexibility to use any combination of targets and filters for requests. 
-Currently, native nested requests can only contain low cardinality targets. For example, requesting the top topics 
-by gender would not be possible using a native nested query as the ```fb.topics.name``` target is not supported. 
+Custom nested tasks offer two significant advantages over native nested tasks. Firstly, any targets can be used for
+both primary and secondary tasks. Native nested tasks are currently restricted to low cardinality targets only. 
+Secondly, the ```filter``` property is supported meaning the secondary tasks can query a different data set than
+the primary if required.
 
-Custom nested requests use each result key from a primary request to automatically generates a subsequent 
-secondary request using the key as a ```filter``` parameter.
-
-NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
-i.e. each individual request must have an audience size of > 1000 unique authors. 
+The workflow for custom nested tasks is simple in that each result key from a primary request is used to generates 
+subsequent secondary requests by using the key as a ```filter``` parameter.
 
 Nested requests are configured within the config file using the ```then``` object:
 
@@ -202,7 +212,7 @@ Nested requests are configured within the config file using the ```then``` objec
 "freqDist": [
     {
         "name": "freqDist_topics_by_gender",
-        "target": "fb.parent.author.gender",
+        "target": "fb.author.gender",
         "threshold": 2,
         "then": {
             "target": "fb.topics.name",
@@ -212,24 +222,22 @@ Nested requests are configured within the config file using the ```then``` objec
 ]
 ```
 
-
-### Request Filters
-
-The ```filter``` parameter is supported as expected.
+The above example would make a primary request using the ```fb.author.gender``` target. With each of the returned keys
+i.e. ```male``` and ```female```, secondary requests would be made using the ```fb.topics.name``` target. This is
+done by auto generating the ```filter``` parameters for the secondary tasks e.g.:
 
 ```json
-{
-    "filter": "fb.parent.sentiment == \"negative\"",
-    "target": "fb.parent.topics.name",
-    "threshold": 2
-}
+"filter": "(fb.author.gender =="female")"
 ```
 
-##To be re-written
+NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
+i.e. each individual request must have an audience size of > 1000 unique authors. 
 
-**Nested Filters - Primary**
 
-The ```filter``` property can also be used within nested queries:
+**Using Filters with Custom Nested Tasks**
+The ```filter``` property is supported as part of both a primary, secondary or both tasks. Currently these filters 
+operate independently i.e. specifying a filter in the primary task does not in any way get applied to secondary 
+tasks.
 
 ```json
 {
@@ -237,45 +245,30 @@ The ```filter``` property can also be used within nested queries:
     "target": "links.domain",
     "threshold": 5,
     "then": {
-        "target": "fb.parent.gender",
+        "target": "fb.gender",
         "threshold": 2
     }
 }
 ```
-In this instance, the ```filter``` parameter is ***ONLY applied to the primary*** request, not the secondary requests. 
-The first request would be made for the top 5 domains where the sentiment is positive. For each of the domains 
-returned, a subsequent request is made for the gender. These ***secondary requests DO NOT include the filter*** for 
-sentiment as it was only specified as part of the primary request.
 
-**Nested Filters - Secondary**
-
-Specifying a ```filter``` within a nested query results in the specified filter being appended to the automatically 
-generated filters using an  ```AND`` operator. For example: 
+Specifying a ```filter``` as part of a secondary task results in the secondary filter being automatically appended 
+to the primary result keys using an  ```AND`` operator. For example: 
 
 ```json
 {
     "target": "fb.type",
     "threshold": 4,
     "then": {
-        "filter": "fb.parent.author.gender == \"male\"",
-        "target": "fb.parent.author.age",
+        "filter": "fb.author.gender == \"male\"",
+        "target": "fb.author.age",
         "threshold": 2
     }
 }
 ```
-This would generate the following request for each type:
+This would generate the following request for each ```fb.type``` key:
 
 ```json
-{
-  "parameters": {
-    "analysis_type": "freqDist",
-    "parameters": {
-      "target": "fb.parent.author.age",
-      "threshold": 2
-    }
-  },
-  "filter": "fb.parent.author.gender == \"male\" AND fb.type ==\"like\""
-}
+  "filter": "(fb.author.gender == \"male\") AND fb.type ==\"like\""
 ```
 
 Of course both primary and secondary ```filter``` parameters can be used together. For example, if we wanted results
@@ -285,17 +278,15 @@ for Male authors only for both the primary request and secondary:
 {
     "target": "fb.type",
     "threshold": 4,
-    "filter": "fb.parent.author.gender == \"male\"",
+    "filter": "fb.author.gender == \"male\"",
     "then": {
-        "target": "fb.parent.topics.name",
+        "target": "fb.topics.name",
         "threshold": 2
-        "filter": "fb.parent.author.gender == \"male\"",
+        "filter": "fb.author.gender == \"male\"",
     }
 }
 ```            
 
-### TODO
-
-test
+### Feature Requests and Bugs
 
 https://github.com/haganbt/PYLON-exporter/issues
