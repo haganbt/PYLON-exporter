@@ -49,6 +49,8 @@ A JSON configuration file is used to specify what data to extract from a PYLON i
 All config files inherit (and can overwite) properties from ```/config/default.js```. This file is useful to place 
 configurations you expect to use regularly e.g. primary authentication credentials.
 
+**Config File Usage**
+
 To specify which config file to use, set the ```NODE_ENV``` environment variable:
 
 ```export NODE_ENV=foo```
@@ -84,11 +86,6 @@ This file must export an object with an ```analysis``` object containing either 
  };
  
  ```
-
-Set the config file using an environment variable:
-
-```export NODE_ENV=foo```
-
 
 When run, the ```default``` config file will be loaded, followed by the ```foo``` config file. ```Foo``` will 
 overwrite any duplicate values within the ```default``` file.
