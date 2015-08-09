@@ -253,7 +253,7 @@ tasks.
 ```
 
 Specifying a ```filter``` as part of a secondary task results in the secondary filter being automatically appended 
-to the primary result keys using an  ```AND`` operator. For example: 
+to the primary result keys using an  ```AND``` operator. For example: 
 
 ```json
 {
