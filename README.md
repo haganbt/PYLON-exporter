@@ -38,7 +38,7 @@ Run tests:
   * Run ```node app.js```. This will load and execute the ```test.js``` config file as default.
   * Edit ```/config/test.js``` as required.
 
-For an example of all available config options see [/config/all.js!](https://github.com/haganbt/PYLON-exporter/blob/master/config/all.js). 
+For an example of all available config options see [/config/all.js](https://github.com/haganbt/PYLON-exporter/blob/master/config/all.js). 
 To use this config file or any other, see "Config Recipes" section below.
 
 
