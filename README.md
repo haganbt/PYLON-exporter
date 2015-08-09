@@ -34,7 +34,12 @@ Run tests:
 
 ## Quick Start
 
-todo
+  * Edit ```/config/defaults.js``` and set authentication and index credentials.
+  * Run ```node app.js```. This will load and execute the ```test.js``` config file as default.
+  * Edit ```/config/test.js``` as required.
+
+For an example of all available config options see ```/config/all.js``. To use this config file
+or any other, see "Config Recipes" section below.
 
 
 ## Config Recipes
