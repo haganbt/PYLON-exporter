@@ -122,7 +122,7 @@ describe("JSON to CSV converter", function(){
         });
     });
 
-    it.only("should process 2 level native nested object", function(done){
+    it("should process 2 level native nested object", function(done){
         var payload = require("../../support/recipes/response.payloads");
         converter.jsonToCsv(payload.TwoLevelNestObj, function(err, result){
             if(err){
