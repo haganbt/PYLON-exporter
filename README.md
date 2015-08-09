@@ -235,6 +235,7 @@ i.e. each individual request must have an audience size of > 1000 unique authors
 
 
 **Using Filters with Custom Nested Tasks**
+
 The ```filter``` property is supported as part of both a primary, secondary or both tasks. Currently these filters 
 operate independently i.e. specifying a filter in the primary task does not in any way get applied to secondary 
 tasks.
