@@ -13,7 +13,6 @@ var format = config.get("app.format").toLowerCase() || "json"
 var supportedFormats = ["json","csv"]
     ;
 
-
 /**
  * write
  * 
@@ -23,7 +22,6 @@ var supportedFormats = ["json","csv"]
  */
 var write = function write(fileName, content) {
     return new Promise(function(resolve, reject){
-
         if(supportedFormats.indexOf(format) === -1){
             log.warn("Invalid config: app.format. Defaulting to json");
             format = "json";
@@ -31,8 +29,13 @@ var write = function write(fileName, content) {
         if(writeConfig === "false"){
             return resolve();
         }
+        // pretty print json
+        if(format === "json"){
+            content = JSON.stringify(content, null, 4);
+        }
+
         fs.writeFile("./output/" + process.env.NODE_ENV + "-" + fileName
-            + "." + format, content + "\n", function (err) {
+            + "." + format, content, "utf8", function (err) {
             if (err) {
                 reject(err);
             } else {

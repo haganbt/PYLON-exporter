@@ -25,7 +25,7 @@ oe.process(configTasks, function(err, data, task){
 
         converter.jsonToCsv(data)
         .then(function (data){
-            fw.write(task.name, JSON.stringify(data, null, 4));
+            fw.write(task.name, data);
             log.info(data);
         })
         .catch(function (err) {
