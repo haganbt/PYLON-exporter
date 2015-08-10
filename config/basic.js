@@ -7,7 +7,7 @@ module.exports = {
     },
     "hash": "<INDEX_HASH>",
     "auth": {
-        "username": "<INDEX_USERNNAME>",
+        "username": "<USERNNAME>",
         "api_key": "<API_KEY>"
     },
     "analysis": {
