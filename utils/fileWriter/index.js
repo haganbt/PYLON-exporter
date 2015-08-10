@@ -6,6 +6,7 @@ var Promise = require("bluebird")
     ;
 
 var format = config.get("app.format").toLowerCase() || "json"
+    , write = config.get("app.write_to_file") || "false"
     ;
 
 var supportedFormats = ["json,csv"]
@@ -21,9 +22,13 @@ var supportedFormats = ["json,csv"]
  */
 var appendFile = function appendFile(fileName, content) {
     return new Promise(function(resolve, reject){
-        if(supportedFormats.indexOf(format) === '-1'){
-            reject(new Error('Invalid file format specified in config.'));
+        if(supportedFormats.indexOf(format) === "-1"){
+            return reject(new Error('Invalid file format specified in config.'));
         }
+        if(write === "false"){
+            return resolve();
+        }
+
         fs.appendFile("./output/" + process.env.NODE_ENV + "-" + fileName
             + "." + format, content + "\n", function (err) {
             if (err) {
