@@ -35,8 +35,14 @@ var write = function write(fileName, content) {
             content = JSON.stringify(content, null, 4);
         }
 
+        // crrate dir
+        var dir = "./output/" + process.env.NODE_ENV;
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+
         var ts = moment().format("dddd.Do-HH.mm.ss");
-        fs.writeFile("./output/" + process.env.NODE_ENV + "-" + fileName + "-"
+        fs.writeFile(dir + "/" + fileName + "-"
             + ts + "." + format, content, "utf8", function (err) {
             if (err) {
                 reject(err);
