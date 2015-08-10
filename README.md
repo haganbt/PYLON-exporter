@@ -1,4 +1,4 @@
-# PYLON-exporter
+# SE-PYLON-exporter
 
 Utility for exporting data from a PYLON index. PYLON-exporter mandates a config driven approach to data collection, 
 rather than code. It is the goal of this utility to support any combination of data extraction from a PYLON index.
