@@ -23,22 +23,22 @@ oe.process(configTasks, function(err, data, task){
         //log.info("REQUEST ::: " + JSON.stringify(task.json));
 
         log.info("NAME: " + JSON.stringify(task.name));
-        log.info(JSON.stringify(data, null, 4));
+        //log.info(JSON.stringify(data, null, 4));
 
-
+/*
         fw.appendFile(task.name, JSON.stringify(data, null, 4))
         .catch(function (err) {
             log.error(err);
         });
-
-
-        //todo - use promises
-        converter.jsonToCsv(data, function(csvErr, result){
-            if(csvErr){
-                log.error(csvErr);
-            }
-            log.info(result);
+*/
+        converter.jsonToCsv(data)
+        .then(function (csvData){
+            log.info(csvData)
+        })
+        .catch(function (err) {
+            log.error(err);
         });
+
 
     }
 });
