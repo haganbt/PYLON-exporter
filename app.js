@@ -4,12 +4,11 @@ if(process.env.NODE_ENV === undefined){
     process.env.NODE_ENV = "test";
 }
 
-var fs = require('fs');
-
 var log = require('./utils/logger')
     , taskManager = require('./lib/taskManager')
     , OperationsEngine = require('./lib/OperationsEngine')
     , converter = require("./utils/jsonToCsv")
+    , fw = require("./utils/fileWriter")
     ;
 
 log.info("Using config file: " + process.env.NODE_ENV);
@@ -27,6 +26,13 @@ oe.process(configTasks, function(err, data, task){
         log.info(JSON.stringify(data, null, 4));
 
 
+        fw.appendFile(task.name, JSON.stringify(data, null, 4))
+        .catch(function (err) {
+            log.error(err);
+        });
+
+
+        //todo - use promises
         converter.jsonToCsv(data, function(csvErr, result){
             if(csvErr){
                 log.error(csvErr);
@@ -34,32 +40,6 @@ oe.process(configTasks, function(err, data, task){
             log.info(result);
         });
 
-
-
-/*
-        appendFile("NAME: " + task.name + "\n\n", 'all', 'txt');
-        appendFile(JSON.stringify(data, null, 4) + "\n\n", 'all', 'txt');
-        appendFile(csv + "\n\n", 'all', 'txt');
-        appendFile("---------------------------------------\n\n", 'all', 'txt');
-        appendFile(csv, task.name);
-*/
     }
 });
 
-
-function appendFile(content, filename, suffix){
-    if(filename === undefined){
-        filename = "out";
-    }
-
-    if(suffix === undefined){
-        suffix = "csv";
-    }
-
-    fs.appendFile("./output/" + process.env.NODE_ENV
-        + "-" + filename + "." + suffix, content, function (err) {
-        if (err) {
-            throw err;
-        }
-    });
-}

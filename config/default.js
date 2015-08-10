@@ -2,7 +2,9 @@
 
 module.exports = {
     "app": {
-        "max_parallel_tasks": 3,
+        "format": "json", // json, csv
+        "write_to_file": false, // true, false
+        "max_parallel_tasks": 3, // number of parallel requests
         "log_level": "info" // info, warn, debug
     },
     "hash": "fd4f0cfef1807e327476ff60288bea78",
