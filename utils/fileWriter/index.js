@@ -3,6 +3,7 @@
 var Promise = require("bluebird")
     , fs = require("fs")
     , config = require("config")
+    , moment = require("moment")
     ;
 
 var format = config.get("app.format").toLowerCase() || "json"
@@ -34,8 +35,9 @@ var write = function write(fileName, content) {
             content = JSON.stringify(content, null, 4);
         }
 
-        fs.writeFile("./output/" + process.env.NODE_ENV + "-" + fileName
-            + "." + format, content, "utf8", function (err) {
+        var ts = moment().format("dddd.Do-HH.mm.ss");
+        fs.writeFile("./output/" + process.env.NODE_ENV + "-" + fileName + "-"
+            + ts + "." + format, content, "utf8", function (err) {
             if (err) {
                 reject(err);
             } else {
