@@ -1,7 +1,7 @@
 'use strict';
 
 if(process.env.NODE_ENV === undefined){
-    process.env.NODE_ENV = "all";
+    process.env.NODE_ENV = "basic";
 }
 
 var log = require('./utils/logger')
