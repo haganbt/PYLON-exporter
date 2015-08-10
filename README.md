@@ -41,6 +41,27 @@ Run tests:
 For an example of all available config options see [/config/all.js](https://github.com/haganbt/PYLON-exporter/blob/master/config/all.js). 
 To use this config file or any other, see [Config Recipes](https://github.com/haganbt/PYLON-exporter#config-recipes) section below.
 
+## Output Format
+
+JSON and CSV output formats are supported with JSON as default. Configure the output format by setting a. ```app.format``` 
+property within the configuration file: 
+
+```json
+"app": {
+    "format": "json" // json, csv
+    }
+```
+
+## Output Files
+
+Output data can be exported to disk by setting an an ```app.write_to_file``` property. All files are written to the
+```/output``` directory with a sub directory being created using the config file name e/g/ ```/output/test```:
+
+```json
+"app": {
+    "write_to_file": false, // true, false
+    }
+```
 
 ## Config Recipes
 
