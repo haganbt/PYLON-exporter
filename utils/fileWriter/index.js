@@ -35,7 +35,7 @@ var write = function write(fileName, content) {
             content = JSON.stringify(content, null, 4);
         }
 
-        // crrate dir
+        // create dir
         var dir = "./output/" + process.env.NODE_ENV;
         if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
