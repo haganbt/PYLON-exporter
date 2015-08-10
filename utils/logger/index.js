@@ -10,7 +10,7 @@ var log_level = config.get("app.log_level") || "info";
 
 var formatOut = bformat({ outputMode: "short" })
     , logger = bunyan.createLogger({
-        name: "PYLON-exporter",
+        name: "SE-PYLON-exporter",
         streams: [
             {
                 level: log_level,
