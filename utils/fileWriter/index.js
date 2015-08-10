@@ -14,6 +14,7 @@ var format = config.get("app.format").toLowerCase() || "json"
 var supportedFormats = ["json","csv"]
     ;
 
+var ts = moment().format("YYYY-MM-DD-HH.mm.ss");
 /**
  * write
  * 
@@ -35,15 +36,14 @@ var write = function write(fileName, content) {
             content = JSON.stringify(content, null, 4);
         }
 
-        // crrate dir
-        var dir = "./output/" + process.env.NODE_ENV;
+        // create dir
+        var dir = "./output/" + process.env.NODE_ENV + "-" + ts;
         if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }
 
-        var ts = moment().format("dddd.Do-HH.mm.ss");
-        fs.writeFile(dir + "/" + fileName + "-"
-            + ts + "." + format, content, "utf8", function (err) {
+
+        fs.writeFile(dir + "/" + process.env.NODE_ENV + "-" + fileName + "." + format, content, "utf8", function (err) {
             if (err) {
                 reject(err);
             } else {
