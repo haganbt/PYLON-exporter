@@ -34,7 +34,7 @@ Run tests:
 
 ## Quick Start
 
-  * Edit ```/config/defaults.js``` and set authentication and index credentials.
+  * Edit ```/config/basic.js``` and set authentication and index credentials.
   * Run ```node app.js```. This will load and execute the ```basic.js``` config file as default.
   * Edit ```/config/basic.js``` as required.
 
