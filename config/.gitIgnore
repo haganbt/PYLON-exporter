@@ -6,6 +6,7 @@
 !basic.js
 !all.js
 !test.js
+!standard-tableau.js
 !production.js
 
 # ...even if they are in subdirectories
