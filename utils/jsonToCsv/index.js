@@ -1,5 +1,12 @@
 "use strict";
 
+var Promise = require("bluebird")
+    , config = require("config")
+    ;
+
+var format = config.get("app.format").toLowerCase() || "json"
+    ;
+
 /**
  * jsonToCsv - process the 3 JSON object types. See
  * /test/support/recipes/response.payloads.js for
@@ -11,8 +18,13 @@
 var jsonToCsv = function jsonToCsv(inObj) {
     return new Promise(function(resolve, reject){
         var out = "";
+
+        if(format !== "csv"){
+            return resolve(inObj);
+        }
+
         if(inObj.redacted){
-            reject("redacted");
+            return reject("redacted");
         }
         if (Array.isArray(inObj)) {
             // single level nested
