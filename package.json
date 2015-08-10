@@ -25,18 +25,18 @@
     "config": "1.13.0",
     "lodash": "3.8.0",
     "moment": "2.10.2",
-    "node-uuid": "^1.4.3",
+    "node-uuid": "1.4.3",
     "request": "2.55.0",
     "request-debug": "0.1.1"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
+    "chai": "2.3.0",
     "eslint": "0.21.0",
     "expect": "1.6.0",
     "istanbul": "0.3.14",
     "mocha": "2.2.4",
     "should": "6.0.1",
-    "sinon": "^1.15.3",
-    "sinon-chai": "^2.8.0"
+    "sinon": "1.15.3",
+    "sinon-chai": "2.8.0"
   }
 }
