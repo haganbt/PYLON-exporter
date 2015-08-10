@@ -3,6 +3,9 @@
 # But not these files...
 !.gitignore
 !test.js
+!basic.js
+!all.js
+!test.js
 !production.js
 
 # ...even if they are in subdirectories
