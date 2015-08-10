@@ -21,24 +21,16 @@ oe.process(configTasks, function(err, data, task){
         log.error(err);
     } else {
         //log.info("REQUEST ::: " + JSON.stringify(task.json));
-
         log.info("NAME: " + JSON.stringify(task.name));
-        //log.info(JSON.stringify(data, null, 4));
 
-/*
-        fw.appendFile(task.name, JSON.stringify(data, null, 4))
-        .catch(function (err) {
-            log.error(err);
-        });
-*/
         converter.jsonToCsv(data)
-        .then(function (csvData){
-            log.info(csvData)
+        .then(function (data){
+            fw.write(task.name, JSON.stringify(data, null, 4));
+            log.info(data);
         })
         .catch(function (err) {
             log.error(err);
         });
-
 
     }
 });

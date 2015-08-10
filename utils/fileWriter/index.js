@@ -6,30 +6,32 @@ var Promise = require("bluebird")
     ;
 
 var format = config.get("app.format").toLowerCase() || "json"
-    , write = config.get("app.write_to_file") || "false"
+    , writeConfig = config.get("app.write_to_file") || "false"
+    , log = require('../logger')
     ;
 
-var supportedFormats = ["json,csv"]
+var supportedFormats = ["json","csv"]
     ;
 
 
 /**
- * appendFile
+ * write
  * 
  * @param fileName - string
  * @param content - string
  * @returns {bluebird promise}
  */
-var appendFile = function appendFile(fileName, content) {
+var write = function write(fileName, content) {
     return new Promise(function(resolve, reject){
-        if(supportedFormats.indexOf(format) === "-1"){
-            return reject(new Error('Invalid file format specified in config.'));
+
+        if(supportedFormats.indexOf(format) === -1){
+            log.warn("Invalid config: app.format. Defaulting to json");
+            format = "json";
         }
-        if(write === "false"){
+        if(writeConfig === "false"){
             return resolve();
         }
-
-        fs.appendFile("./output/" + process.env.NODE_ENV + "-" + fileName
+        fs.writeFile("./output/" + process.env.NODE_ENV + "-" + fileName
             + "." + format, content + "\n", function (err) {
             if (err) {
                 reject(err);
@@ -40,4 +42,4 @@ var appendFile = function appendFile(fileName, content) {
     });
 };
 
-exports.appendFile = appendFile;
+exports.write = write;
