@@ -1,6 +1,15 @@
 "use strict";
 
 module.exports = {
+    "app": {
+        "format": "json", // json, csv
+        "write_to_file": false, // true, false
+    },
+    "hash": "<INDEX_HASH>",
+    "auth": {
+        "username": "<INDEX_USERNNAME>",
+        "api_key": "<API_KEY>"
+    },
     "analysis": {
         "freqDist": [
             {
