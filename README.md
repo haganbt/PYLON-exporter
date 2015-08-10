@@ -35,8 +35,8 @@ Run tests:
 ## Quick Start
 
   * Edit ```/config/defaults.js``` and set authentication and index credentials.
-  * Run ```node app.js```. This will load and execute the ```all.js``` config file as default.
-  * Edit ```/config/all.js``` as required.
+  * Run ```node app.js```. This will load and execute the ```basic.js``` config file as default.
+  * Edit ```/config/basic.js``` as required.
 
 For an example of all available config options see [/config/all.js](https://github.com/haganbt/PYLON-exporter/blob/master/config/all.js). 
 To use this config file or any other, see [Config Recipes](https://github.com/datasift/SE-PYLON-exporter#config-recipes) section below.
