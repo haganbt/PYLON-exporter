@@ -22,6 +22,20 @@ var arrayOfObjects = [
         }
 ];
 
+
+var arrayOfObjectsTs = [ { key: 1435795200,
+    interactions: 1427400,
+    unique_authors: 1003600 },
+    { key: 1437004800,
+        interactions: 6715000,
+        unique_authors: 4535800 },
+    { key: 1438214400,
+        interactions: 5860700,
+        unique_authors: 3911900 }
+];
+
+
+
 var arrayOfObjRedacted = {
     "redacted": true
 };
@@ -51,6 +65,43 @@ var mergedObject = {
             "key": "18-24",
             "interactions": 269700,
             "unique_authors": 204200
+        }
+    ]
+};
+
+var mergedObjectTs = {
+    "ford": [
+        {
+            "key": 1435795200,
+            "interactions": 665600,
+            "unique_authors": 442100
+        },
+        {
+            "key": 1437004800,
+            "interactions": 2487200,
+            "unique_authors": 1576900
+        },
+        {
+            "key": 1438214400,
+            "interactions": 2049100,
+            "unique_authors": 1391500
+        }
+    ],
+    "honda": [
+        {
+            "key": 1435795200,
+            "interactions": 193000,
+            "unique_authors": 151900
+        },
+        {
+            "key": 1437004800,
+            "interactions": 958600,
+            "unique_authors": 786000
+        },
+        {
+            "key": 1438214400,
+            "interactions": 727000,
+            "unique_authors": 570800
         }
     ]
 };
@@ -359,8 +410,10 @@ var TwoLevelNestObj = [
 ];
 
 exports.arrayOfObjects = arrayOfObjects;
+exports.arrayOfObjectsTs = arrayOfObjectsTs;
 exports.arrayOfObjRedacted = arrayOfObjRedacted;
 exports.mergedObject = mergedObject;
+exports.mergedObjectTs = mergedObjectTs;
 exports.mrgObjSingleRedacted = mrgObjSingleRedacted;
 exports.mrgObjDoubleRedact = mrgObjDoubleRedact;
 exports.OneLevelNestObj = OneLevelNestObj;

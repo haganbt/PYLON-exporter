@@ -43,11 +43,29 @@ describe("JSON to CSV converter", function(){
             });
     });
 
-    it.skip("should process a single array Of Objects - redacted", function(done){
+    it("should process a single array Of Objects - timeSeries", function(done){
+        var payload = require("../../support/recipes/response.payloads");
+        converter.jsonToCsv(payload.arrayOfObjectsTs, "timeSeries")
+            .then(function(result){
+                result.should.be.an('string');
+                expect(result).to.eql("key,interactions,unique_authors\n" +
+                    "2015-07-02 00:00:00,1427400,1003600\n" +
+                    "2015-07-16 00:00:00,6715000,4535800\n" +
+                    "2015-07-30 00:00:00,5860700,3911900\n");
+                done();
+            })
+            .catch(function(err){
+                should.not.exist(err);
+                done();
+            });
+    });
+
+    it("should process a single array Of Objects - redacted", function(done){
         var payload = require("../../support/recipes/response.payloads");
         converter.jsonToCsv(payload.arrayOfObjRedacted)
             .then(function(result){
                 result.should.be.an('string');
+                expect(result).to.eql("redacted");
                 done();
             })
             .catch(function(err){
@@ -67,6 +85,27 @@ describe("JSON to CSV converter", function(){
                     "ford,35-44,464500,372200\n" +
                     "honda,25-34,366500,296600\n" +
                     "honda,18-24,269700,204200\n");
+                done();
+            })
+            .catch(function(err){
+                should.not.exist(err);
+                done();
+            });
+    });
+
+    it("should process a merged object - timeSeries", function(done){
+        var payload = require("../../support/recipes/response.payloads");
+        converter.jsonToCsv(payload.mergedObjectTs, "timeSeries")
+            .then(function(result){
+                result.should.be.an('string');
+                expect(result).to.eql("category,key,interactions," +
+                    "unique_authors\n" +
+                    "ford,2015-07-02 00:00:00,665600,442100\n" +
+                    "ford,2015-07-16 00:00:00,2487200,1576900\n" +
+                    "ford,2015-07-30 00:00:00,2049100,1391500\n" +
+                    "honda,2015-07-02 00:00:00,193000,151900\n" +
+                    "honda,2015-07-16 00:00:00,958600,786000\n" +
+                    "honda,2015-07-30 00:00:00,727000,570800\n");
                 done();
             })
             .catch(function(err){
