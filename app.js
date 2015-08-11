@@ -23,7 +23,9 @@ oe.process(configTasks, function(err, data, task){
         //log.info("REQUEST ::: " + JSON.stringify(task.json));
         log.info("NAME: " + JSON.stringify(task.name));
 
-        converter.jsonToCsv(data)
+        var reqType = task.json.parameters.analysis_type || "freqDist";
+
+        converter.jsonToCsv(data, reqType)
         .then(function (data){
             fw.write(task.name, data);
             log.info(data);

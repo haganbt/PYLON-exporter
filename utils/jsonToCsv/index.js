@@ -2,20 +2,26 @@
 
 var Promise = require("bluebird")
     , config = require("config")
+    , moment = require('moment')
     ;
 
 var format = config.get("app.format").toLowerCase() || "json"
     ;
+
+function formatUnix(timeStamp){
+    return new moment.unix(timeStamp).utc().format('YYYY-MM-DD HH:mm:ss');
+}
 
 /**
  * jsonToCsv - process the 3 JSON object types. See
  * /test/support/recipes/response.payloads.js for
  * examples.
  *
- * @param inObj
+ * @param inObj = object
+ * @param reqType - string - freqDist, timeSeries
  * @returns promist(string)
  */
-var jsonToCsv = function jsonToCsv(inObj) {
+var jsonToCsv = function jsonToCsv(inObj, reqType) {
     return new Promise(function(resolve, reject){
         var out = "";
 
@@ -26,6 +32,7 @@ var jsonToCsv = function jsonToCsv(inObj) {
         if(inObj.redacted){
             return reject("redacted");
         }
+
         if (Array.isArray(inObj)) {
             // single level nested
             if (inObj[0] && inObj[0].child && !inObj[0].child.results[0].child){
@@ -61,7 +68,10 @@ var jsonToCsv = function jsonToCsv(inObj) {
                     });
                 } else {
                     // non nested
-                    out += level0.key + "," + level0.interactions + "," +
+                    var thisKey = (reqType === "timeSeries")
+                        ? formatUnix(level0.key) : level0.key;
+
+                    out += thisKey + "," + level0.interactions + "," +
                         level0.unique_authors + "\n";
                 }
             });
@@ -75,8 +85,11 @@ var jsonToCsv = function jsonToCsv(inObj) {
                     } else {
                         inObj[currentValue].forEach(
                             function(childObj) {
+                                var thisKey = (reqType === "timeSeries")
+                                    ? formatUnix(childObj.key) : childObj.key;
+
                                 out += currentValue + "," +
-                                    childObj.key + "," + childObj.interactions +
+                                    thisKey + "," + childObj.interactions +
                                     "," + childObj.unique_authors + "\n";
                             });
                     }
