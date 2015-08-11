@@ -18,7 +18,7 @@ function formatUnix(timeStamp){
  * examples.
  *
  * @param inObj = object
- * @param reqType - string - freqDist, timeSeries
+ * @param reqType (optional) - string - freqDist, timeSeries
  * @returns promist(string)
  */
 var jsonToCsv = function jsonToCsv(inObj, reqType) {
@@ -30,8 +30,13 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
         }
 
         if(inObj.redacted){
-            return reject("redacted");
+            return resolve("redacted");
         }
+
+        if(reqType === undefined){
+            reqType = "freqDist";
+        }
+
 
         if (Array.isArray(inObj)) {
             // single level nested
