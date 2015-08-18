@@ -48,9 +48,18 @@ Below is a summary of all supported config options.
 
 | Option        | Scope           | Description  |
 | ------------- |:-------------:| -----:|
-| start      | global, task | start time - unix timestamp. Defaults to 30 days ago UTC.|
-| end      | global, task | end time - unix timestamp. Defaults to now. |
+| auth.api_key      | global | REQUIRED - The api key used for authentication |
+| auth.username      | global | REQUIRED - The username used for authentication |
+| end      | global, task | OPTIONAL - end time - unix timestamp. Defaults to now |
+| hash      | global | REQUIRED - The hash id of the index to analyze |
+| id      | merged tasks | OPTIONAL - A unique identifier for each merged task result set |
+| name      | task | OPTIONAL - A short, human readable description of the result set |
+| start      | global, task | OPTIONAL - start time - unix timestamp. Defaults to 30 days ago UTC |
 
+
+## Authentication
+
+todo.
 
 ## Output Format
 
