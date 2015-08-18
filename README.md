@@ -153,7 +153,8 @@ As default, the exporter will use a 30 day time range for all tasks. This can be
 on a per task basis. Simply specify a ```start``` and/or ```end``` parameter as a unix timestamp.
 
 **Override All Tasks**
-To override all time ranges for all tasks, specify and/or end as a root key of the config file:
+
+To override time ranges for all tasks, specify a ```start``` and/or ```end``` parameter as a root key of the config file:
 
 ```json
 "start": <UNIX_TS>,
