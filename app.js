@@ -24,7 +24,6 @@ oe.process(configTasks, function(err, data, task){
         log.info("NAME: " + JSON.stringify(task.name));
 
         var reqType = task.json.parameters.analysis_type;
-
         converter.jsonToCsv(data, reqType)
         .then(function (data){
             fw.write(task.name, data);
