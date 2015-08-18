@@ -3,7 +3,6 @@
  */
 
 "use strict";
-
 module.exports = {
     "app": {
         "format": "csv", // json, csv
