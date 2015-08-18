@@ -47,7 +47,7 @@ To use this config file or any other, see [Config Recipes](https://github.com/da
 Below is a summary of all supported config options.
 
 | Option        | Scope           | Description  |
-| ------------- |:-------------:| -----:|
+|:------------- |:-------------|:-----|
 | auth.api_key      | global | REQUIRED - The api key used for authentication |
 | auth.username      | global | REQUIRED - The username used for authentication |
 | end      | global, task | OPTIONAL - end time - unix timestamp. Defaults to now |
