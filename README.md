@@ -43,7 +43,6 @@ To use this config file or any other, see [Config Recipes](https://github.com/da
 
 
 ## Config Options
-
 Below is a summary of all supported config options.
 
 | Option        | Scope           | Description  |
@@ -58,11 +57,9 @@ Below is a summary of all supported config options.
 
 
 ## Authentication
-
 todo.
 
 ## Output Format
-
 JSON and CSV output formats are supported with JSON as default. Configure the output format by setting a. ```app.format``` 
 property within the configuration file: 
 
@@ -73,7 +70,6 @@ property within the configuration file:
 ```
 
 ## Output Files
-
 Output data can be exported to disk by setting an an ```app.write_to_file``` property. All files are written to the
 ```/output``` directory with a sub directory being created using the config file name e/g/ ```/output/test```:
 
@@ -84,7 +80,6 @@ Output data can be exported to disk by setting an an ```app.write_to_file``` pro
 ```
 
 ## Config Recipes
-
 A JSON configuration file is used to specify what data to extract from a PYLON index.
 
 All config files inherit (and can overwite) properties from ```/config/default.js```. This file is useful to place 
@@ -133,7 +128,6 @@ overwrite any duplicate values within the ```default``` file.
 
 
 ### Request Filters
-
 The ```filter``` parameter is supported as expected.
 
 ```json
@@ -160,6 +154,8 @@ as part of the output. If files are being generated, the ```name``` property is 
 ### Task Time Ranges
 As default, the exporter will use a 30 day time range for all tasks. This can be overridden for all tasks or
 on a per task basis. Simply specify a ```start``` and/or ```end``` parameter as a unix timestamp.
+
+As default ```start``` will be set to now and ```end``` set to now -30 days. Either parameter may be omitted.
 
 **Override All Tasks**
 
@@ -241,7 +237,6 @@ and ```filter``` property is used.
 
 
 ### Nested Tasks
-
 Two types of nested tasks are supported: **native** nested and **custom** nested tasks:
 
 **Native Nested Tasks**
