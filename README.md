@@ -1,5 +1,9 @@
 # SE-PYLON-exporter
 
+***HOTFIX NOTE***
+To accomodate 1.5 release a start and end parameter have been added into default.js config file. Invididual requests in config files will also accept start and stop times. They presently must be specified in unix time.
+*****************
+
 Utility for exporting data from a PYLON index. PYLON-exporter mandates a config driven approach to data collection, 
 rather than code. It is the goal of this utility to support any combination of data extraction from a PYLON index.
 
