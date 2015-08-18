@@ -49,11 +49,11 @@ Below is a summary of all supported config options.
 |:------------- |:-------------|:-----|
 | ```auth.api_key```      | global | The api key used for authentication |
 | ```auth.username``` | global | The username used for authentication |
-| ```end``` | global, task | end time - unix timestamp. Defaults to now |
+| ```end``` | global, task | end time - unix timestamp. Defaults to now UTC |
 | ```hash``` | global | The hash id of the index to analyze |
 | ```id``` | merged tasks | A unique identifier for each merged task result set |
 | ```name``` | task | A short, human readable description of the result set |
-| ```start``` | global, task | start time - unix timestamp. Defaults to 30 days ago UTC |
+| ```start``` | global, task | start time - unix timestamp. Defaults to now -30 days UTC |
 
 
 ## Authentication
