@@ -151,7 +151,7 @@ describe("Frequency Distribution", function() {
         });
     });
 
-    it("should merge a nested request", function(done){
+    it("should merge a custom nested request", function(done){
         var taskConfig3 = {
             "freqDist": [
                 {
@@ -178,4 +178,35 @@ describe("Frequency Distribution", function() {
             done();
         });
     });
+
+    it.skip("FIX ME - should merge a native 1 level nested request", function(done){
+        var taskConfig = {
+            "freqDist": [
+                {
+                    "name": "example_native_nested",
+                    "target": "fb.author.gender",
+                    "threshold": 2,
+                    "child": {
+                        "target": "fb.author.age",
+                        "threshold": 2
+                    }
+                }
+            ]
+        };
+//todo - why is this return format different from running the app?
+        var tasks = taskManager.buildFromConfig(taskConfig);
+        oe.process(tasks, function(err, data, task){
+            if(err){
+                log.error(err);
+            }
+            console.log(JSON.stringify(data));
+            should.not.exist(err);
+            data.should.be.an('array');
+            task.should.be.an('object');
+            expect(data[0]).to.have.keys(
+                "child", "interactions", "key", "unique_authors");
+            done();
+        });
+    });
+
 });

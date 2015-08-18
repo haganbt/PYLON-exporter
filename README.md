@@ -41,6 +41,17 @@ Run tests:
 For an example of all available config options see [/config/all.js](https://github.com/haganbt/PYLON-exporter/blob/master/config/all.js). 
 To use this config file or any other, see [Config Recipes](https://github.com/datasift/SE-PYLON-exporter#config-recipes) section below.
 
+
+## Config Options
+
+Below is a summary of all supported config options.
+
+| Option        | Scope           | Description  |
+| ------------- |:-------------:| -----:|
+| start      | global, task | start time - unix timestamp. Defaults to 30 days ago UTC.|
+| end      | global, task | end time - unix timestamp. Defaults to now. |
+
+
 ## Output Format
 
 JSON and CSV output formats are supported with JSON as default. Configure the output format by setting a. ```app.format``` 
@@ -137,6 +148,32 @@ as part of the output. If files are being generated, the ```name``` property is 
 }
 ```
 
+### Task Time Ranges
+As default, the exporter will use a 30 day time range for all tasks. This can be overridden for all tasks or
+on a per task basis. Simply specify a ```start``` and/or ```end``` parameter as a unix timestamp.
+
+**Override All Tasks**
+To override all time ranges for all tasks, specify and/or end as a root key of the config file:
+
+```json
+"start": <UNIX_TS>,
+"end":  <UNIX_TS>,
+"analysis": {
+    "freqDist": [
+        ....
+```
+
+**Override Per Task**
+
+```json
+{
+    "start": <UNIX_TS>,
+    "end":  <UNIX_TS>,
+    "name": "example_freqDist",
+    "target": "fb.parent.topics.name",
+    "threshold": 3
+}
+```
 
 ### Merging Result Sets
 Merging of response data is supported for both timeSeries and freqDist requests by grouping the request tasks

@@ -1,6 +1,13 @@
 "use strict";
 
 module.exports = {
+    "hash": "fd4f0cfef1807e327476ff60288bea78",
+    "auth": {
+        "username": "CS_2",
+        "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
+    },
+    //"start": <UNIX_TS>, //override default 30 days
+    //"end":  <UNIX_TS>,
     "analysis": {
         "freqDist": [
             {

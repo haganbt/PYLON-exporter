@@ -12,8 +12,7 @@ var taskManager = require('../../../../lib/taskManager')
 
 describe("Task Manager buildFromConfig - freqDist", function(){
 
-    it("should build from - single target task", function(){
-
+    it("should build from single target task", function(){
         var taskConfig = {
                 "freqDist": [
                     {
@@ -42,22 +41,41 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config[0].json.parameters.parameters.threshold).to.equal(2);
     });
 
-    it("should build from - 2 targets merged", function(){
-
+    it("should build from single target task - start/end", function(){
         var taskConfig = {
             "freqDist": [
-                [
-                    {
-                        "target": "fb.parent.author.gender",
-                        "threshold": 3,
-                        "filter": "links.domain exists"
-                    },
-                    {
-                        "target": "fb.parent.author.age",
-                        "threshold": 5,
-                        "filter": "not links.domain exists"
-                    }
-                ]
+                {
+                    "start": 1234,
+                    "end": 5678,
+                    "target": "fb.parent.author.gender",
+                    "threshold": 2,
+                    "filter": "links.domain exists"
+                }
+            ]
+        };
+
+        var config = taskManager.buildFromConfig(taskConfig);
+        expect(config[0].json.start).to.equal(1234);
+        expect(config[0].json.end).to.equal(5678);
+    });
+
+    it("should build from 2 merged tasks", function(){
+        var taskConfig = {
+            "freqDist": [
+                {
+                    "example_merged_freqDist": [
+                        {
+                            "target": "fb.parent.author.gender",
+                            "threshold": 3,
+                            "filter": "links.domain exists"
+                        },
+                        {
+                            "target": "fb.parent.author.age",
+                            "threshold": 5,
+                            "filter": "not links.domain exists"
+                        }
+                    ]
+                }
             ]
         };
 
@@ -92,12 +110,39 @@ describe("Task Manager buildFromConfig - freqDist", function(){
             .to.equal("fb.parent.author.age");
 
         expect(config[1].json.parameters.parameters.threshold).to.equal(5);
-
-
     });
 
-    it("should build from - merged child", function(){
+    it("should build from 2 merged tasks - start/end", function(){
+        var taskConfig = {
+            "freqDist": [
+                {
+                    "example_merged_freqDist": [
+                        {
+                            "start": 1234,
+                            "end": 5678,
+                            "target": "fb.parent.author.gender",
+                            "threshold": 3,
+                            "filter": "links.domain exists"
+                        },
+                        {
+                            "start": 910,
+                            "end": 1213,
+                            "target": "fb.parent.author.age",
+                            "threshold": 5,
+                            "filter": "not links.domain exists"
+                        }
+                    ]
+                }
+            ]
+        };
+        var config = taskManager.buildFromConfig(taskConfig);
+        expect(config[0].json.start).to.equal(1234);
+        expect(config[0].json.end).to.equal(5678);
+        expect(config[1].json.start).to.equal(910);
+        expect(config[1].json.end).to.equal(1213);
+    });
 
+    it("should build from custom merged task", function(){
         var taskConfig = {
             "freqDist": [
                 {
@@ -131,46 +176,45 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config[0].json.parameters.parameters.threshold).to.equal(2);
     });
 
-    it("should return empty when duplicate targets used", function(){
+    it("should build from custom merged task - parent start/end", function(){
         var taskConfig = {
             "freqDist": [
-                [
-                    {
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
-                    },
-                    {
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
+                {
+                    "start": 1234,
+                    "end": 5678,
+                    "target": "fb.parent.author.gender",
+                    "threshold": 2,
+                    "filter": "links.domain exists",
+                    "then": {
+                        "target": "fb.parent.author.age",
+                        "threshold": 4
                     }
-                ]
+                }
             ]
         };
         var config = taskManager.buildFromConfig(taskConfig);
-        config.should.be.an('array');
-        expect(config).to.have.length(0);
+        expect(config[0].json.start).to.equal(1234);
+        expect(config[0].json.end).to.equal(5678);
     });
 
-    it("should use a name if specified.", function(){
+    it("should build from custom merged task - child start/end", function(){
         var taskConfig = {
             "freqDist": [
-                [
-                    {
-                        "id": "foo",
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
-                    },
-                    {
-                        "id": "bar",
-                        "target": "fb.parent.author.gender",
-                        "threshold": 2
+                {
+                    "target": "fb.parent.author.gender",
+                    "threshold": 2,
+                    "filter": "links.domain exists",
+                    "then": {
+                        "start": 1234,
+                        "end": 5678,
+                        "target": "fb.parent.author.age",
+                        "threshold": 4
                     }
-                ]
+                }
             ]
         };
         var config = taskManager.buildFromConfig(taskConfig);
-        config.should.be.an('array');
-        expect(config[0].cache.mergeKey).to.equal("foo");
-        expect(config[1].cache.mergeKey).to.equal("bar");
+        expect(config[0].then.start).to.equal(1234);
+        expect(config[0].then.end).to.equal(5678);
     });
 });
