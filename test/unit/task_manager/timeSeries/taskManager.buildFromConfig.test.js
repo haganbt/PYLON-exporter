@@ -10,10 +10,9 @@ var expect = chai.expect
 var taskManager = require('../../../../lib/taskManager')
     ;
 
-describe("Task Manager buildFromConfig - timeSeries", function(){
+describe.only("Task Manager buildFromConfig - timeSeries", function(){
 
     it("should build from - single target task", function(){
-
         var taskConfig = {
             "timeSeries": [
                 {
@@ -45,21 +44,22 @@ describe("Task Manager buildFromConfig - timeSeries", function(){
 
 
     it("should build from - 2 targets merged", function(){
-
         var taskConfig = {
             "timeSeries": [
-                [
-                    {
-                        "filter": "fb.content contains \"bar\"",
-                        "interval": "week",
-                        "span": 1
-                    },
-                    {
-                        "filter": "fb.content contains \"foo\"",
-                        "interval": "week",
-                        "span": 1
-                    }
-                ]
+                {
+                    "example_merged_timeSeries": [
+                        {
+                            "filter": "fb.content contains \"bar\"",
+                            "interval": "week",
+                            "span": 1
+                        },
+                        {
+                            "filter": "fb.content contains \"foo\"",
+                            "interval": "week",
+                            "span": 1
+                        }
+                    ]
+                }
             ]
         };
 
