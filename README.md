@@ -47,6 +47,10 @@ Below is a summary of all supported config options.
 
 | Option        | Scope           | Description  |
 |:------------- |:-------------|:-----|
+| ```app.format```      | global | Output file format. ```csv``` or ```json``` |
+| ```app.write_to_file```      | global | Boolean option to output data to file. ```true``` or ```false``` |
+| ```app.max_parallel_tasks```      | global | The number of tasks to run in parallel. |
+| ```app.log_level```      | global | Output log level. ```info```, ```warn```, ```debug``` |
 | ```auth.api_key```      | global | The api key used for authentication |
 | ```auth.username``` | global | The username used for authentication |
 | ```end``` | global, task | end time - unix timestamp. Defaults to now UTC |
