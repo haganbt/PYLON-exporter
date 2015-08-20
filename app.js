@@ -20,17 +20,16 @@ oe.process(configTasks, function(err, data, task){
     if(err){
         log.error(err);
     } else {
-        //log.info("REQUEST ::: " + JSON.stringify(task.json));
         log.info("NAME: " + JSON.stringify(task.name));
 
         var reqType = task.json.parameters.analysis_type;
         converter.jsonToCsv(data, reqType)
-        .then(function (data){
-            fw.write(task.name, data);
-            log.info(data);
+        .then(function (nextData){
+            fw.write(task.name, nextData);
+            log.info(nextData);
         })
-        .catch(function (err) {
-            log.error(err);
+        .catch(function (finalErr) {
+            log.error(finalErr);
         });
 
     }
