@@ -95,7 +95,7 @@ To specify which config file to use, set the ```NODE_ENV``` environment variable
 
 ```export NODE_ENV=foo```
 
-If ```NODE_ENV``` is not specified, the ```test``` config file will be used i.e.load the ```/config/test.js``` 
+If ```NODE_ENV``` is not specified, the ```basic``` config file will be used i.e.load the ```/config/basic.js``` 
 config file.
 
 **Example Config Recipe**
