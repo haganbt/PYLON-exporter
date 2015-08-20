@@ -22,19 +22,23 @@ var arrayOfObjects = [
         }
 ];
 
-
-var arrayOfObjectsTs = [ { key: 1435795200,
-    interactions: 1427400,
-    unique_authors: 1003600 },
-    { key: 1437004800,
+var arrayOfObjectsTs = [
+    {
+        key: 1435795200,
+        interactions: 1427400,
+        unique_authors: 1003600
+    },
+    {
+        key: 1437004800,
         interactions: 6715000,
-        unique_authors: 4535800 },
-    { key: 1438214400,
+        unique_authors: 4535800
+    },
+    {
+        key: 1438214400,
         interactions: 5860700,
-        unique_authors: 3911900 }
+        unique_authors: 3911900
+    }
 ];
-
-
 
 var arrayOfObjRedacted = {
     "redacted": true
