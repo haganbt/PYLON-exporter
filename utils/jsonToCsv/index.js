@@ -60,13 +60,13 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
                         if(level1.child) {
                             var l2Results = level1.child.results;
                             l2Results.forEach(function (l2ResultsResults) {
-                                out += level0.key + "," + l1ResultsKey + "," +
-                                    l2ResultsResults.key + "," +
+                                out += '"' + level0.key + '","' + l1ResultsKey + '","' +
+                                    l2ResultsResults.key + '",' +
                                     l2ResultsResults.interactions +
                                     "," + l2ResultsResults.unique_authors + "\n";
                             });
                         } else {
-                            out += level0.key + "," + level1.key + "," +
+                            out += '"' + level0.key + '","' + level1.key + '",' +
                                 level1.interactions + "," + level1.unique_authors
                                 + "\n";
                         }
@@ -76,7 +76,7 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
                     var thisKey = (reqType === "timeSeries")
                         ? formatUnix(level0.key) : level0.key;
 
-                    out += thisKey + "," + level0.interactions + "," +
+                    out += '"' + thisKey + '",' + level0.interactions + "," +
                         level0.unique_authors + "\n";
                 }
             });
@@ -93,8 +93,8 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
                                 var thisKey = (reqType === "timeSeries")
                                     ? formatUnix(childObj.key) : childObj.key;
 
-                                out += currentValue + "," +
-                                    thisKey + "," + childObj.interactions +
+                                out += '"' + currentValue + '","' +
+                                    thisKey + '",' + childObj.interactions +
                                     "," + childObj.unique_authors + "\n";
                             });
                     }
