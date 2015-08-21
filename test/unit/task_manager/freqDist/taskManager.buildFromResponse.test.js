@@ -51,12 +51,13 @@ describe("Task Manager buildFromResponse - freqDist", function(){
         }
     });
 
-    it("should have built the correct target from results", function(){
+    it("should have built the correct filter from results", function(){
         var reqOptions = taskManager.buildFromResponse(resData, thenData);
-        for (var ind in reqOptions) {
-            expect(reqOptions[ind].json.parameters.
-                parameters.target.should.equal("fb.parent.author.age"));
-        }
+        reqOptions[0].json.filter.
+            should.equal("fb.parent.author.gender ==\"male\"");
+
+        reqOptions[1].json.filter.
+            should.equal("fb.parent.author.gender ==\"female\"");
     });
 
     it("should create objects with a cache signature", function(){
