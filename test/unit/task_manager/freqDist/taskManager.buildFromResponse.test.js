@@ -51,20 +51,11 @@ describe("Task Manager buildFromResponse - freqDist", function(){
         }
     });
 
-    it("should have built the correct filter from results", function(){
-        var reqOptions = taskManager.buildFromResponse(resData, thenData);
-        reqOptions[0].json.filter.
-            should.equal("fb.parent.author.gender ==\"male\"");
-
-        reqOptions[1].json.filter.
-            should.equal("fb.parent.author.gender ==\"female\"");
-    });
-
-    it.skip("should have built the correct target from results", function(){
+    it("should have built the correct target from results", function(){
         var reqOptions = taskManager.buildFromResponse(resData, thenData);
         for (var ind in reqOptions) {
 
-            console.log(reqOptions[ind].json.parameters);
+            console.log(reqOptions[ind].json);
             expect(reqOptions[ind].json.parameters.
                 parameters.target.should.equal("fb.parent.author.age"));
         }
