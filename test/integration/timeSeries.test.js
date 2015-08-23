@@ -10,12 +10,12 @@ var expect = chai.expect
 
 var OperationsEngine = require('../../lib/OperationsEngine')
     , taskManager = require('../../lib/taskManager')
-    , log = require('../../utils/logger')
+    , log = require('../../utils/logger/index')
     ;
 
 var oe = new OperationsEngine();
 
-describe("Time Series", function() {
+describe.skip("Time Series", function() {
 
     this.timeout(10 * 60 * 1000);
 
