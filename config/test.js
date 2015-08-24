@@ -6,7 +6,7 @@
 module.exports = {
     "app": {
         "format": "csv", // json, csv
-        "write_to_file": false // true, false
+        "write_to_file": true // true, false
     },
     "hash": "fd4f0cfef1807e327476ff60288bea78",
     "auth": {
@@ -15,6 +15,14 @@ module.exports = {
     },
     "analysis": {
         "freqDist": [
+            {
+                "target": "interaction.tag_tree.automotive.brand",
+                "threshold": 6,
+                "then": {
+                    "type": "timeSeries",
+                    "interval": "week"
+                }
+            }
         ],
         "timeSeries": [
         ]
