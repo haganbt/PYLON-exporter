@@ -356,6 +356,19 @@ for Male authors only for both the primary request and secondary:
     }
 }
 ```            
+## Tableau Workbook
+
+An example Tableau workbook is provided ```(/tableau/standard-tableau)``` and accompanying config recipe ```(/config/standard-tableau.js)```.
+ This config recipe attempts to dynamically build a Tableau dashboard based on a specified pre-defined tag tree. 
+ 
+  * Create a ```/standard-tableau``` root folder i.e. not within a user dir, but on the root of the local disk.
+  * Edit the ```(/config/standard-tableau.js)``` and set the ```entity_tag_name``` variable on line 1 to be the name of the tag tree to use. 
+  This should be a high level classification like brand e.g. Ford, Honda, BMW.  
+  * Set the exporter to use the ```standard-tableau``` config recipe: ```export NODE_ENV=standard-tableau```
+  * Run the app: ```node app.js```
+  * Copy the files from the ```output``` dir to the ```/standard-tableau``` root folder
+  * Open the Tableau workbook file:```(/tableau/standard-tableau)```
+
 
 ### Feature Requests and Bugs
 
