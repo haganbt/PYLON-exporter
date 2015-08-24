@@ -1,138 +1,120 @@
-"use strict";
+var entity_tag_name =   "interaction.tag_tree.automotive.brand";
 
+"use strict";
 module.exports = {
+    "app": {
+        "format": "csv",
+        "write_to_file": true,
+        "log_level": "info"
+    },
+    "hash": "fd4f0cfef1807e327476ff60288bea78",
+    "auth": {
+        "username": "CS_2",
+        "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
+    },
     "analysis": {
         "freqDist": [
+            /**
+             * Data types by brand
+             */
             {
-                "name": "freqDist_tags",
-                "target": "interaction.tag_tree.automotive.brand",
-                "threshold": 10
-            },
-            {
-                "name": "freqDist_top_topics_by_tag",
-                "target": "interaction.tag_tree.automotive.brand",
-                "threshold": 10,
-                "then": {
-                    "target": "fb.topics.name",
-                    "threshold": 20
-                }
-            },
-            {
-                "name": "freqDist_top_hashtags_by_tag",
-                "target": "interaction.tag_tree.automotive.brand",
-                "threshold": 10,
-                "then": {
-                    "target": "fb.hashtags",
-                    "threshold": 20
-                }
-            },
-            {
-                "name": "freqDist_age_gender_by_tag",
-                "target": "interaction.tag_tree.automotive.brand",
-                "threshold": 10,
+                "name": "media_types",
+                "target": entity_tag_name,
+                "threshold": 6,
                 "child": {
-                    "target": "fb.author.gender",
-                    "threshold": 2,
+                    "target": "fb.media_type",
+                    "threshold": 6
+                }
+            },
+            /**
+             * Total Brand Volumes
+             */
+            {
+                "name": "brand_volumes",
+                "target": entity_tag_name,
+                "threshold": 5
+            },
+            /**
+             * Age Gender tornadoes
+             */
+            {
+                "name": "age_gender",
+                "target": entity_tag_name,
+                "threshold": 6,
+                "child": {
+                    "target": "fb.author.age",
+                    "threshold": 6,
                     "child": {
-                        "target": "fb.author.age",
-                        "threshold": 6
+                        "target": "fb.author.gender",
+                        "threshold": 2
                     }
                 }
             },
+            /**
+             * Brand volume by region
+             */
             {
-                "name": "freqDist_age_gender_by_tag",
-                "target": "fb.author.gender",
-                "threshold": 2,
+                "name": "brand_region",
+                "target": entity_tag_name,
+                "threshold": 6,
                 "then": {
-                    "target": "fb.author.age",
-                    "threshold": 6
+                    "target": "fb.author.region",
+                    "threshold": 20
+                }
+            },
+            /**
+             * URLs and domains
+             */
+            {
+                "name": "domains_by_brand",
+                "target": entity_tag_name,
+                "threshold": 6,
+                "then": {
+                    "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
+                    "target": "links.domain",
+                    "threshold": 25
+                }
+            },
+            {
+                "name": "links_by_brand",
+                "target": entity_tag_name,
+                "threshold": 6,
+                "then": {
+                    "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
+                    "target": "links.url",
+                    "threshold": 25
+                }
+            },
+            /**
+             * brand topics
+             */
+            {
+                "name": "topics_by_brand",
+                "target": entity_tag_name,
+                "threshold": 3,
+                "then": {
+                    "target": "fb.topics.name",
+                    "threshold": 100
+                }
+            },
+            /**
+             * topic hashtags
+             */
+            {
+                "name": "topic_hashtags",
+                "target": "fb.topics.name",
+                "threshold": 200,
+                "then": {
+                    "target": "fb.hashtags",
+                    "threshold": 50
                 }
             }
         ],
-        "timeSeries": [/*
+        "timeSeries": [
             {
-                "timeSeries_tag_by_hour": [
-                    {
-                        "id": "ford",
-                        "filter": "interaction.tag_tree.automotive.brand == \"ford\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "honda",
-                        "filter": "interaction.tag_tree.automotive.brand == \"honda\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "bmw",
-                        "filter": "interaction.tag_tree.automotive.brand == \"bmw\"",
-                        "interval": "hour"
-                    }
-                ]
-            },
-            {
-                "timeSeries_fb_type_per_tag": [
-                    {
-                        "id": "like_ford",
-                        "filter": "fb.type == \"like\" and interaction.tag_tree.automotive.brand == \"ford\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "story_ford",
-                        "filter": "fb.type == \"story\" and interaction.tag_tree.automotive.brand == \"ford\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "comment_ford",
-                        "filter": "fb.type == \"comment\" and interaction.tag_tree.automotive.brand == \"ford\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "reshare_ford",
-                        "filter": "fb.type == \"reshare\" and interaction.tag_tree.automotive.brand == \"ford\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "like_honda",
-                        "filter": "fb.type == \"like\" and interaction.tag_tree.automotive.brand == \"honda\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "story_honda",
-                        "filter": "fb.type == \"story\" and interaction.tag_tree.automotive.brand == \"honda\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "comment_honda",
-                        "filter": "fb.type == \"comment\" and interaction.tag_tree.automotive.brand == \"honda\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "reshare_honda",
-                        "filter": "fb.type == \"reshare\" and interaction.tag_tree.automotive.brand == \"honda\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "like_bmw",
-                        "filter": "fb.type == \"like\" and interaction.tag_tree.automotive.brand == \"bmw\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "story_bmw",
-                        "filter": "fb.type == \"story\" and interaction.tag_tree.automotive.brand == \"bmw\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "comment_bmw",
-                        "filter": "fb.type == \"comment\" and interaction.tag_tree.automotive.brand == \"bmw\"",
-                        "interval": "hour"
-                    },
-                    {
-                        "id": "reshare_bmw",
-                        "filter": "fb.type == \"reshare\" and interaction.tag_tree.automotive.brand == \"bmw\"",
-                        "interval": "hour"
-                    }
-                ]
-            }*/
-        ]
+                "name": "timeSeries_week",
+                "interval": "week"
+            }
+         ]
     }
 };
