@@ -363,7 +363,9 @@ An example Tableau workbook is provided ```(/tableau/standard-tableau)``` and ac
  
   * Create a ```/standard-tableau``` root folder i.e. not within a user dir, but on the root of the local disk.
   * Edit the ```(/config/standard-tableau.js)``` and set the ```entity_tag_name``` variable on line 1 to be the name of the tag tree to use. 
-  This should be a high level classification like brand e.g. Ford, Honda, BMW.  
+  As a general best practice this should be a high level classification like brand e.g. Ford, Honda, BMW.
+  NOTE: This will likely change to a standardized name space rather than setting the tag name manually. For all future filters, use "tag.standard" as a best practice 
+  within the CSDL to utilize to utilize future updates.    
   * Set the exporter to use the ```standard-tableau``` config recipe: ```export NODE_ENV=standard-tableau```
   * Run the app: ```node app.js```
   * Copy the files from the ```output``` dir to the ```/standard-tableau``` root folder
