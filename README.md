@@ -191,20 +191,22 @@ to be merged as an array. A task name property is specified as the merged tasks 
 as the value:
 
 ```json
-"timeSeries_brands_by_week": [ //<-- task name
-    {
-        "id": "ford", //<-- task id
-        "filter": "fb.content contains \"ford\"",
-        "interval": "week",
-        "span": 2
-    },
-    {
-        "id": "honda",
-        "filter": "fb.content contains \"honda\"",
-        "interval": "week",
-        "span": 2
-    }
-]
+{
+    "timeSeries_brands_by_week": [ //<-- task name
+        {
+            "id": "ford", //<-- task id
+            "filter": "fb.content contains \"ford\"",
+            "interval": "week",
+            "span": 2
+        },
+        {
+            "id": "honda",
+            "filter": "fb.content contains \"honda\"",
+            "interval": "week",
+            "span": 2
+        }
+    ]
+}
 ```
 
 **Task ID**
