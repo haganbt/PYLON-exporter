@@ -54,7 +54,7 @@ module.exports = {
              * Brand volume by region
              */
             {
-                "name": "brand_region",
+                "name": "tag_region",
                 "target": entity_tag_name,
                 "threshold": 6,
                 "then": {

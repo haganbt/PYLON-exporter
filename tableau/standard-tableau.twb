@@ -2395,9 +2395,9 @@
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
     </datasource>
-    <datasource caption='standard-tableau-brand_region' inline='true' name='textscan.42237.654025370400' version='9.0'>
-      <connection class='textscan' directory='/standard-tableau' filename='standard-tableau-brand_region.csv' password='' server=''>
-        <relation name='standard-tableau-brand_region#csv' table='[standard-tableau-brand_region#csv]' type='table'>
+    <datasource caption='standard-tableau-tag_region' inline='true' name='textscan.42237.654025370400' version='9.0'>
+      <connection class='textscan' directory='/standard-tableau' filename='standard-tableau-tag_region.csv' password='' server=''>
+        <relation name='standard-tableau-tag_region#csv' table='[standard-tableau-tag_region#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='string' name='category' ordinal='0' />
             <column datatype='string' name='key' ordinal='1' />
@@ -2410,7 +2410,7 @@
             <remote-name>category</remote-name>
             <remote-type>129</remote-type>
             <local-name>[category]</local-name>
-            <parent-name>[standard-tableau-brand_region#csv]</parent-name>
+            <parent-name>[standard-tableau-tag_region#csv]</parent-name>
             <remote-alias>category</remote-alias>
             <ordinal>0</ordinal>
             <local-type>string</local-type>
@@ -2431,7 +2431,7 @@
             <remote-name>key</remote-name>
             <remote-type>129</remote-type>
             <local-name>[key]</local-name>
-            <parent-name>[standard-tableau-brand_region#csv]</parent-name>
+            <parent-name>[standard-tableau-tag_region#csv]</parent-name>
             <remote-alias>key</remote-alias>
             <ordinal>1</ordinal>
             <local-type>string</local-type>
@@ -2452,7 +2452,7 @@
             <remote-name>interactions</remote-name>
             <remote-type>20</remote-type>
             <local-name>[interactions]</local-name>
-            <parent-name>[standard-tableau-brand_region#csv]</parent-name>
+            <parent-name>[standard-tableau-tag_region#csv]</parent-name>
             <remote-alias>interactions</remote-alias>
             <ordinal>2</ordinal>
             <local-type>integer</local-type>
@@ -2467,7 +2467,7 @@
             <remote-name>unique_authors</remote-name>
             <remote-type>20</remote-type>
             <local-name>[unique_authors]</local-name>
-            <parent-name>[standard-tableau-brand_region#csv]</parent-name>
+            <parent-name>[standard-tableau-tag_region#csv]</parent-name>
             <remote-alias>unique_authors</remote-alias>
             <ordinal>3</ordinal>
             <local-type>integer</local-type>
@@ -2481,7 +2481,7 @@
           <metadata-record class='capability'>
             <remote-name></remote-name>
             <remote-type>0</remote-type>
-            <parent-name>[standard-tableau-brand_region#csv]</parent-name>
+            <parent-name>[standard-tableau-tag_region#csv]</parent-name>
             <remote-alias></remote-alias>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
@@ -2962,7 +2962,7 @@
     </shared-view>
     <shared-view name='textscan.42237.654025370400'>
       <datasources>
-        <datasource caption='standard-tableau-brand_region' name='textscan.42237.654025370400' />
+        <datasource caption='standard-tableau-tag_region' name='textscan.42237.654025370400' />
       </datasources>
       <datasource-dependencies datasource='textscan.42237.654025370400'>
         <column caption='Category' datatype='string' name='[category]' role='dimension' type='nominal'>
@@ -3202,7 +3202,7 @@
       <table>
         <view>
           <datasources>
-            <datasource caption='standard-tableau-brand_region' name='textscan.42237.654025370400' />
+            <datasource caption='standard-tableau-tag_region' name='textscan.42237.654025370400' />
           </datasources>
           <mapsources>
             <mapsource name='Tableau' />
@@ -3683,7 +3683,7 @@
       </style>
       <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
       <datasources>
-        <datasource caption='standard-tableau-brand_region' name='textscan.42237.654025370400' />
+        <datasource caption='standard-tableau-tag_region' name='textscan.42237.654025370400' />
       </datasources>
       <datasource-dependencies datasource='textscan.42237.654025370400'>
         <column caption='Category' datatype='string' name='[category]' role='dimension' type='nominal'>
