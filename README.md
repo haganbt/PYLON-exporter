@@ -360,7 +360,7 @@ for Male authors only for both the primary request and secondary:
 
 It is possible to override the type of the freqDist child tasks by specifying a ```type``` property as part of the ```then```
 object. This is useful for dynamically generating timeSeries results using the results of the parent freqDist. For example, 
-you may wish to generate a timeSeries for gender i.e. for both male and female. This could eb done by specifying two timeSeries
+you may wish to generate a timeSeries for ```gender``` i.e. for both male and female. This could be done by specifying two timeSeries
 tasks with a ```filter``` property for each (```male``` and ```female```) or dynamically by overriding the ```type```:
 
 ```json
