@@ -108,8 +108,6 @@ This file must export an object with an ```analysis``` object containing either 
  
 
 ```json
- "use strict";
- 
  module.exports = {
      "analysis": {
          "freqDist": [
@@ -126,7 +124,6 @@ This file must export an object with an ```analysis``` object containing either 
          ]
      }
  };
- 
  ```
 
 When run, the ```default``` config file will be loaded, followed by the ```foo``` config file. ```Foo``` will 
