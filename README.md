@@ -63,7 +63,7 @@ Below is a summary of all supported config options.
 
 
 ## Authentication
-todo.
+todo. See ```/config/basic.js```
 
 ## Output Format
 JSON and CSV output formats are supported with JSON as default. Configure the output format by setting a. ```app.format``` 
