@@ -276,7 +276,7 @@ to support nesting timeSeries within freqDist (see "Type Property" section below
 The workflow for custom nested tasks is simple in that each result key from a primary task is used to generates 
 subsequent secondary tasks by using the key as a ```filter``` parameter.
 
-Nested tasks are configured within the config file using the ```then``` object:
+Custom nested tasks are configured within the config file using the ```then``` object:
 
 ```json
 "freqDist": [
