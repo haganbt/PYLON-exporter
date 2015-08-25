@@ -15,7 +15,7 @@ module.exports = {
     "analysis": {
         "freqDist": [
             /**
-             * Data types by brand
+             * Data types by entity
              */
             {
                 "name": "media_types",
@@ -27,10 +27,10 @@ module.exports = {
                 }
             },
             /**
-             * Total Brand Volumes
+             * Total Entity Volumes
              */
             {
-                "name": "brand_volumes",
+                "name": "entity_volumes",
                 "target": entity_tag_name,
                 "threshold": 5
             },
@@ -51,10 +51,10 @@ module.exports = {
                 }
             },
             /**
-             * Brand volume by region
+             * Entity volume by region
              */
             {
-                "name": "tag_region",
+                "name": "region_by_entity",
                 "target": entity_tag_name,
                 "threshold": 6,
                 "then": {
@@ -66,7 +66,7 @@ module.exports = {
              * URLs and domains
              */
             {
-                "name": "domains_by_brand",
+                "name": "domains_by_entity",
                 "target": entity_tag_name,
                 "threshold": 6,
                 "then": {
@@ -76,7 +76,7 @@ module.exports = {
                 }
             },
             {
-                "name": "links_by_brand",
+                "name": "links_by_entity",
                 "target": entity_tag_name,
                 "threshold": 6,
                 "then": {
@@ -86,10 +86,10 @@ module.exports = {
                 }
             },
             /**
-             * brand topics
+             * Entity topics
              */
             {
-                "name": "topics_by_brand",
+                "name": "topics_by_entity",
                 "target": entity_tag_name,
                 "threshold": 3,
                 "then": {
@@ -98,7 +98,7 @@ module.exports = {
                 }
             },
             /**
-             * topic hashtags
+             * Topic hashtags
              */
             {
                 "name": "topic_hashtags",
@@ -110,10 +110,10 @@ module.exports = {
                 }
             },
             /**
-             * entity timeSeries
+             * Entity timeSeries
              */
             {
-                "name": "timeSeries_by_tag",
+                "name": "timeSeries_by_entity",
                 "target": entity_tag_name,
                 "threshold": 30,
                 "then": {
