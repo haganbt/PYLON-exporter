@@ -131,7 +131,7 @@ When run, the ```default``` config file will be loaded, followed by the ```foo``
 overwrite any duplicate values within the ```default``` file.
 
 
-### Request Filters
+### Task Filters
 The ```filter``` parameter is supported as expected.
 
 ```json
@@ -142,7 +142,7 @@ The ```filter``` parameter is supported as expected.
 }
 ```
 
-### Task names
+### Task Names
 Task names are used to provide a short, human readable description of the result set being generated which is included
 as part of the output. If files are being generated, the ```name``` property is also used as the file name.
 
