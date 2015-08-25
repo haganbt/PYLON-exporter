@@ -185,7 +185,7 @@ To override time ranges for all tasks, specify a ```start``` and/or ```end``` pa
 ```
 
 ### Merging Result Sets
-Merging of response data is supported for both timeSeries and freqDist requests by grouping the request tasks
+Merging of response data is supported for both ```timeSeries``` and f```reqDist``` requests by grouping the request tasks
 to be merged as an array. A task name property is specified as the merged tasks array key and the task array itself 
 as the value:
 
