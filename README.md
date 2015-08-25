@@ -298,7 +298,7 @@ i.e. ```male``` and ```female```, secondary requests would be made using the ```
 done by auto generating the ```filter``` parameters for the secondary tasks e.g.:
 
 ```json
-"filter": "(fb.author.gender =="female")"
+"filter": "(fb.author.gender ==\"female\")"
 ```
 
 ***NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
