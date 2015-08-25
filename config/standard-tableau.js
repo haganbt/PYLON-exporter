@@ -108,13 +108,21 @@ module.exports = {
                     "target": "fb.hashtags",
                     "threshold": 50
                 }
+            },
+            /**
+             * entity timeSeries
+             */
+            {
+                "name": "timeSeries_by_tag",
+                "target": entity_tag_name,
+                "threshold": 30,
+                "then": {
+                    "type": "timeSeries",
+                    "interval": "day"
+                }
             }
         ],
         "timeSeries": [
-            {
-                "name": "timeSeries_week",
-                "interval": "week"
-            }
          ]
     }
 };
