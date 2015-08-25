@@ -33,16 +33,17 @@ var resData = {
     }
 };
 
-var thenData = {
-    "target": "fb.parent.author.age",
-    "threshold": 3
+var task = {
+    "then": {
+        "target": "fb.parent.author.age",
+        "threshold": 3
+    }
 };
-
 
 describe("Task Manager buildFromResponse - freqDist", function(){
 
     it("should build a task array from a response", function(){
-        var reqOptions = taskManager.buildFromResponse(resData, thenData);
+        var reqOptions = taskManager.buildFromResponse(resData, task);
         reqOptions.should.be.an('array');
         reqOptions.should.have.length(2);
         for (var ind in reqOptions) {
@@ -52,7 +53,7 @@ describe("Task Manager buildFromResponse - freqDist", function(){
     });
 
     it("should have built the correct filter from results", function(){
-        var reqOptions = taskManager.buildFromResponse(resData, thenData);
+        var reqOptions = taskManager.buildFromResponse(resData, task);
         reqOptions[0].json.filter.
             should.equal("fb.parent.author.gender ==\"male\"");
 
@@ -60,8 +61,32 @@ describe("Task Manager buildFromResponse - freqDist", function(){
             should.equal("fb.parent.author.gender ==\"female\"");
     });
 
+    it("should have built the correct type from results", function(){
+        var reqOptions = taskManager.buildFromResponse(resData, task);
+        reqOptions[0].json.parameters.analysis_type.should.equal('freqDist');
+        reqOptions[1].json.parameters.analysis_type.should.equal('freqDist');
+    });
+
+    it("should have built the correct props for a timeSeries", function(){
+        task.then = {
+            "type": "timeSeries",
+            "interval": "week",
+            "span": 2
+        };
+
+        var reqOptions = taskManager.buildFromResponse(resData, task);
+
+        reqOptions[0].json.parameters.analysis_type.should.equal('timeSeries');
+        reqOptions[0].json.parameters.parameters.interval.should.equal('week');
+        reqOptions[0].json.parameters.parameters.span.should.equal(2);
+
+        reqOptions[1].json.parameters.analysis_type.should.equal('timeSeries');
+        reqOptions[1].json.parameters.parameters.interval.should.equal('week');
+        reqOptions[1].json.parameters.parameters.span.should.equal(2);
+    });
+
     it("should create objects with a cache signature", function(){
-        var reqOptions = taskManager.buildFromResponse(resData, thenData);
+        var reqOptions = taskManager.buildFromResponse(resData, task);
         for (var ind in reqOptions) {
             expect(reqOptions[ind].cache.cacheId.should.be.a('string'));
             expect(reqOptions[ind].cache.cacheId.should.have.length(36));

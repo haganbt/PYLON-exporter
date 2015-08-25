@@ -269,15 +269,15 @@ Native nested tasks are supported using the same simplified format using a ```ch
 
 **Custom Nested Tasks**
 
-Custom nested tasks offer two significant advantages over native nested tasks. Firstly, any targets can be used for
-both primary and secondary tasks. Native nested tasks are currently restricted to low cardinality targets only. 
-Secondly, the ```filter``` property is supported meaning the secondary tasks can query a different data set than
-the primary if required.
+Custom nested tasks offer increased flexibility over native nested tasks by adding support for all targets (native nested 
+tasks are currently restricted to low cardinality targets only). In addition, the ```filter``` property is supported 
+meaning secondary tasks can query a different data set than the primary if required. The task type can also be overwritten
+to support nesting timeSeries within freqDist (see "Type Property" section below).
 
-The workflow for custom nested tasks is simple in that each result key from a primary request is used to generates 
-subsequent secondary requests by using the key as a ```filter``` parameter.
+The workflow for custom nested tasks is simple in that each result key from a primary task is used to generates 
+subsequent secondary tasks by using the key as a ```filter``` parameter.
 
-Nested requests are configured within the config file using the ```then``` object:
+Nested tasks are configured within the config file using the ```then``` object:
 
 ```json
 "freqDist": [
@@ -293,7 +293,7 @@ Nested requests are configured within the config file using the ```then``` objec
 ]
 ```
 
-The above example would make a primary request using the ```fb.author.gender``` target. With each of the returned keys
+The above example would generate a primary request using the ```fb.author.gender``` target. With each of the returned keys
 i.e. ```male``` and ```female```, secondary requests would be made using the ```fb.topics.name``` target. This is
 done by auto generating the ```filter``` parameters for the secondary tasks e.g.:
 
@@ -301,11 +301,8 @@ done by auto generating the ```filter``` parameters for the secondary tasks e.g.
 "filter": "(fb.author.gender ==\"female\")"
 ```
 
-***NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
-i.e. each individual request must have an audience size of > 1000 unique authors.***
 
-
-**Using Filters with Custom Nested Tasks**
+**Filters with Custom Nested Tasks**
 
 The ```filter``` property is supported as part of both a primary, secondary or both tasks. Currently these filters 
 operate independently i.e. specifying a filter in the primary task does not in any way get applied to secondary 
@@ -357,7 +354,42 @@ for Male authors only for both the primary request and secondary:
         "filter": "fb.author.gender == \"male\"",
     }
 }
-```            
+```
+
+**Type Property**
+
+It is possible to override the type of the freqDist child tasks by specifying a ```type``` property as part of the ```then```
+object. This is useful for dynamically generating timeSeries results using the results of the parent freqDist. For example, 
+you may wish to generate a timeSeries for gender i.e. for both male and female. This could eb done by specifying two timeSeries
+tasks with a ```filter``` property for each (```male``` and ```female```) or dynamically by overriding the ```type```:
+
+```json
+"freqDist": [
+    {
+        "target": "fb.author.gender",
+        "threshold": 2,
+        "then": {
+            "type": "timeSeries", //<-- override type
+            "interval": "week" //<-- timeSeries properties
+        }
+    }
+]
+```
+
+This become even more useful when the dealing with large number of properties e.g. a tag tree that may have many values.
+Simply specify the tag tree as the parent target:
+
+```json
+"freqDist": [
+    {
+        "target": "interaction.tag_tree.automotive.brand",
+        ...
+```
+
+
+***NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
+i.e. each individual request must have an audience size of > 1000 unique authors.***
+
 ## Tableau Workbook
 
 An example Tableau workbook is provided ```(/tableau/standard-tableau)``` and accompanying config recipe ```(/config/standard-tableau.js)```.

@@ -52,6 +52,15 @@ module.exports = {
                     "target": "fb.parent.author.age",
                     "threshold": 2
                 }
+            },
+            {
+                "name": "example_custom_dynamic_timeSeries_from_freqDist",
+                "target": "fb.author.gender",
+                "threshold": 2,
+                "then": {
+                    "type": "timeSeries",
+                    "interval": "week"
+                }
             }
         ],
         "timeSeries": [
