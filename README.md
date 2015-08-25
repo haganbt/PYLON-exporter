@@ -58,6 +58,8 @@ Below is a summary of all supported config options.
 | ```id``` | merged tasks | A unique identifier for each merged task result set |
 | ```name``` | task | A short, human readable description of the result set |
 | ```start``` | global, task | start time - unix timestamp. Defaults to now -30 days UTC |
+| ```then``` | freqDist task | Used to specify custom nested task properties |
+| ```then.type``` | freqDist task | Override nested freqDist tasks types to generate timeSeries |
 
 
 ## Authentication
