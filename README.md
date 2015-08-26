@@ -18,6 +18,11 @@ Features:
 If Node is not installed, install it from https://nodejs.org/. Once complete, check by running ```node -v``` from a 
 terminal window to show the install version.
 
+Clone the repo:
+
+```git clone https://github.com/datasift/SE-PYLON-exporter.git```
+```cd SE-PYLON-exporter```
+
 Install node module dependencies:
 
 ```sudo npm install```
