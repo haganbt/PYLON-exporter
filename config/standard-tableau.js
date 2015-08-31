@@ -1,6 +1,3 @@
-var entity_tag_name =   "interaction.tag_tree.automotive.brand";
-
-"use strict";
 module.exports = {
     "app": {
         "format": "csv",
@@ -14,32 +11,44 @@ module.exports = {
     },
     "analysis": {
         "freqDist": [
-            /**
-             * Data types by entity
-             */
+        /**
+         * Media types by entity
+         */
             {
                 "name": "media_types",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 6,
                 "child": {
                     "target": "fb.media_type",
                     "threshold": 6
                 }
             },
-            /**
-             * Total Entity Volumes
-             */
+        /**
+         * Type by entity
+         */
+            {
+                "name": "type",
+                "target": "interaction.tag_tree.standard",
+                "threshold": 6,
+                "child": {
+                    "target": "fb.type",
+                    "threshold": 6
+                }
+            },
+        /**
+         * Total Entity Volumes
+         */
             {
                 "name": "entity_volumes",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 5
             },
-            /**
-             * Age Gender tornadoes
-             */
+        /**
+         * Age Gender tornadoes
+         */
             {
                 "name": "age_gender",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 6,
                 "child": {
                     "target": "fb.author.age",
@@ -50,24 +59,24 @@ module.exports = {
                     }
                 }
             },
-            /**
-             * Entity volume by region
-             */
+        /**
+         * Entity volume by region
+         */
             {
                 "name": "region_by_entity",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 6,
                 "then": {
                     "target": "fb.author.region",
                     "threshold": 20
                 }
             },
-            /**
-             * URLs and domains
-             */
+        /**
+         * URLs and domains
+         */
             {
                 "name": "domains_by_entity",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 6,
                 "then": {
                     "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
@@ -77,7 +86,7 @@ module.exports = {
             },
             {
                 "name": "links_by_entity",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 6,
                 "then": {
                     "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
@@ -85,21 +94,21 @@ module.exports = {
                     "threshold": 25
                 }
             },
-            /**
-             * Entity topics
-             */
+        /**
+         * Entity topics
+         */
             {
                 "name": "topics_by_entity",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 3,
                 "then": {
                     "target": "fb.topics.name",
                     "threshold": 100
                 }
             },
-            /**
-             * Topic hashtags
-             */
+        /**
+         * Topic hashtags
+         */
             {
                 "name": "topic_hashtags",
                 "target": "fb.topics.name",
@@ -109,12 +118,12 @@ module.exports = {
                     "threshold": 50
                 }
             },
-            /**
-             * Entity timeSeries
-             */
+        /**
+         * Entity timeSeries
+         */
             {
                 "name": "timeSeries_by_entity",
-                "target": entity_tag_name,
+                "target": "interaction.tag_tree.standard",
                 "threshold": 30,
                 "then": {
                     "type": "timeSeries",
@@ -123,6 +132,6 @@ module.exports = {
             }
         ],
         "timeSeries": [
-         ]
+        ]
     }
 };
