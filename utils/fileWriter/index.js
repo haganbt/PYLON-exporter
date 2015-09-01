@@ -4,6 +4,7 @@ var Promise = require("bluebird")
     , fs = require("fs")
     , config = require("config")
     , moment = require("moment")
+    , fse = require('fs-extra')
     ;
 
 var format = config.get("app.format").toLowerCase() || "json"
@@ -16,6 +17,21 @@ var supportedFormats = ["json","csv"]
 
 var ts = moment().format("YYYY-MM-DD-HH.mm.ss")
     ;
+
+if(process.env.NODE_ENV.indexOf("tableau") > -1){
+    var dir = '/standard-tableau';
+    if (!fs.existsSync(dir)){
+        try {
+            fs.mkdirSync(dir);
+            fse.emptyDirSync(dir);
+        } catch(e){
+            log.error(new Error("/standard-tableau directory does not exist."));
+            process.exit(0);
+        }
+    } else {
+        fse.emptyDirSync(dir);
+    }
+}
 
 /**
  * write
@@ -37,22 +53,35 @@ var write = function write(fileName, content) {
         if(format === "json"){
             content = JSON.stringify(content, null, 4);
         }
-
-        // create dir
         var dir = "./output/" + process.env.NODE_ENV + "-" + ts;
         if (!fs.existsSync(dir)){
             fs.mkdirSync(dir);
         }
+        _writeFileSync(dir, fileName, format, content, reject);
 
-        fs.writeFile(dir + "/" + process.env.NODE_ENV + "-"
-            + fileName + "."
-            + format, content, "utf8", function (err) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve();
-            }
-        });
+        if(process.env.NODE_ENV.indexOf("tableau") > -1){
+            _writeFileSync('/standard-tableau', fileName, format, content, reject);
+        }
+        resolve();
+    });
+};
+
+/**
+ * _writeFileSync - write file to disk
+ *
+ * @param dir
+ * @param fileName
+ * @param format
+ * @param content
+ * @param reject
+ * @private
+ */
+var _writeFileSync = function _writeFileSync(dir, fileName, format, content, reject){
+    fs.writeFile(dir + "/" + process.env.NODE_ENV + "-"
+        + fileName + "." + format, content, "utf8", function (err) {
+        if (err) {
+            reject(err);
+        }
     });
 };
 

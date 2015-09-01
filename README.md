@@ -406,7 +406,6 @@ An example Tableau workbook is provided ```(/tableau/standard-tableau)``` and ac
    If you have not used this tag naming convention, simply find and replace ```interaction.tag_tree.standard``` with the desired tag name.
   * Set the exporter to use the ```standard-tableau``` config recipe: ```export NODE_ENV=standard-tableau```
   * Run the app: ```node app.js```
-  * Copy the files from the ```output``` dir to the ```/standard-tableau``` root folder
   * Open the Tableau workbook file:```(/tableau/standard-tableau)```
 
 
