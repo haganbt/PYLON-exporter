@@ -15,14 +15,6 @@ module.exports = {
     },
     "analysis": {
         "freqDist": [
-            {
-                "target": "interaction.tag_tree.automotive.brand",
-                "threshold": 6,
-                "then": {
-                    "type": "timeSeries",
-                    "interval": "week"
-                }
-            }
         ],
         "timeSeries": [
         ]
