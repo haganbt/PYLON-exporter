@@ -627,34 +627,6 @@
       </group>
       <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
       <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:category:nk]' type='palette'>
-            <map to='#1f77b4'>
-              <bucket>&quot;BMW&quot;</bucket>
-            </map>
-            <map to='#1f77b4'>
-              <bucket>&quot;Dancing with the Stars&quot;</bucket>
-            </map>
-            <map to='#2ca02c'>
-              <bucket>&quot;Grey&apos;s Anatomy&quot;</bucket>
-            </map>
-            <map to='#2ca02c'>
-              <bucket>&quot;Honda&quot;</bucket>
-            </map>
-            <map to='#9467bd'>
-              <bucket>&quot;The Family&quot;</bucket>
-            </map>
-            <map to='#d62728'>
-              <bucket>&quot;Revenge&quot;</bucket>
-            </map>
-            <map to='#ff7f0e'>
-              <bucket>&quot;Ford&quot;</bucket>
-            </map>
-            <map to='#ff7f0e'>
-              <bucket>&quot;Good Morning America&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
       </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
