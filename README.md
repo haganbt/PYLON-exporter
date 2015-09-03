@@ -395,7 +395,9 @@ Simply specify the tag tree as the parent target:
 ***NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
 i.e. each individual request must have an audience size of > 1000 unique authors.***
 
-## Tableau Workbook - EXPERIMENTAL!
+## Tableau Workbook
+
+WARNING - this feature is experimental - see https://github.com/datasift/SE-PYLON-exporter/issues/52
 
 An example Tableau workbook is provided ```(/tableau/standard-tableau)``` and accompanying config recipe ```(/config/standard-tableau.js)```.
  This config recipe dynamically builds a Tableau dashboard based on a specified pre-defined tag tree. The export will 
