@@ -119,8 +119,162 @@
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
     </datasource>
+    <datasource caption='standard-tableau-media_types' inline='true' name='textscan.42249.771233067100' version='9.0'>
+      <connection class='textscan' directory='/standard-tableau' filename='standard-tableau-media_types.csv' password='' server=''>
+        <relation name='standard-tableau-media_types#csv' table='[standard-tableau-media_types#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='category' ordinal='0' />
+            <column datatype='string' name='key' ordinal='1' />
+            <column datatype='integer' name='interactions' ordinal='2' />
+            <column datatype='integer' name='unique_authors' ordinal='3' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[category]</local-name>
+            <parent-name>[standard-tableau-media_types#csv]</parent-name>
+            <remote-alias>category</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>key</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[key]</local-name>
+            <parent-name>[standard-tableau-media_types#csv]</parent-name>
+            <remote-alias>key</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>interactions</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[interactions]</local-name>
+            <parent-name>[standard-tableau-media_types#csv]</parent-name>
+            <remote-alias>interactions</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>unique_authors</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[unique_authors]</local-name>
+            <parent-name>[standard-tableau-media_types#csv]</parent-name>
+            <remote-alias>unique_authors</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name></remote-name>
+            <remote-type>0</remote-type>
+            <parent-name>[standard-tableau-media_types#csv]</parent-name>
+            <remote-alias></remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Category' datatype='string' name='[category]' role='dimension' type='nominal'>
+      </column>
+      <column caption='Interactions' datatype='integer' name='[interactions]' role='measure' type='quantitative'>
+      </column>
+      <column caption='Key' datatype='string' name='[key]' role='dimension' type='nominal'>
+      </column>
+      <column caption='Unique Authors' datatype='integer' name='[unique_authors]' role='measure' type='quantitative'>
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
   </datasources>
   <worksheets>
+    <worksheet name='Media Types'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='standard-tableau-media_types' name='textscan.42249.771233067100' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.42249.771233067100'>
+            <column caption='Category' datatype='string' name='[category]' role='dimension' type='nominal'>
+            </column>
+            <column caption='Interactions' datatype='integer' name='[interactions]' role='measure' type='quantitative'>
+            </column>
+            <column caption='Key' datatype='string' name='[key]' role='dimension' type='nominal'>
+            </column>
+            <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
+            <column-instance column='[key]' derivation='None' name='[none:key:nk]' pivot='key' type='nominal' />
+            <column-instance column='[interactions]' derivation='Sum' name='[sum:interactions:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[textscan.42249.771233067100].[none:key:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[textscan.42249.771233067100].[sum:interactions:qk]</rows>
+        <cols>([textscan.42249.771233067100].[none:category:nk] / [textscan.42249.771233067100].[none:key:nk])</cols>
+      </table>
+    </worksheet>
     <worksheet name='Volume Histogram'>
       <table>
         <view>
@@ -181,7 +335,7 @@
   </dashboards>
   <windows>
     <window class='schema' source-height='-1' />
-    <window auto-hidden='0' class='dashboard' maximized='1' name='Share Of Voice'>
+    <window auto-hidden='0' class='dashboard' maximized='0' name='Share Of Voice'>
       <zones>
         <zone name='Volume Histogram'>
           <viewpoint>
@@ -220,6 +374,32 @@
           <field>[textscan.42249.761339027800].[none:category:nk]</field>
           <field>[textscan.42249.761339027800].[tdy:key:qk]</field>
           <field>[textscan.42249.761339027800].[yr:key:ok]</field>
+        </color-one-way>
+      </highlight>
+    </window>
+    <window auto-hidden='0' class='worksheet' maximized='1' name='Media Types'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[textscan.42249.771233067100].[none:key:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <highlight>
+        <color-one-way>
+          <field>[textscan.42249.771233067100].[none:category:nk]</field>
+          <field>[textscan.42249.771233067100].[none:key:nk]</field>
         </color-one-way>
       </highlight>
     </window>
@@ -638,6 +818,54 @@
       41b1zlqY+OTolUenSWmaoimMjv4Npq3HGKxZc94dMwDDJcLhUiwW1U+bew9NY6PRyGKxMMZM
       JtMhqYxD1YcCBYFpgWk3PX7Km9o79NSkaAmBENSeBYRAOsX6jy9PKmO4pPw/FaSJC5tTWiwA
       AAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Media Types' width='192'>
+      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
     </thumbnail>
   </thumbnails>
 </workbook>
