@@ -1174,12 +1174,6 @@
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='legend-title-text'>
-            <format attr='color' field='[textscan.42251.668697835600].[none:key:nk]' value=''>
-              <formatted-text>
-              </formatted-text>
-            </format>
-          </style-rule>
         </style>
         <panes>
           <pane>
