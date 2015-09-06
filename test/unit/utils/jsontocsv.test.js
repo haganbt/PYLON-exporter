@@ -95,7 +95,7 @@ describe("JSON to CSV converter", function(){
 
     it("should process a merged object - timeSeries", function(done){
         var payload = require("../../support/recipes/response.payloads");
-        converter.jsonToCsv(payload.mergedObjectTs, "timeSeries")
+        converter.jsonToCsv(payload.mergedObjectTs)
             .then(function(result){
                 result.should.be.an('string');
                 expect(result).to.eql('category,key,interactions,unique_authors\n' +
@@ -105,6 +105,35 @@ describe("JSON to CSV converter", function(){
                     '"honda","2015-07-02 00:00:00",193000,151900\n' +
                     '"honda","2015-07-16 00:00:00",958600,786000\n' +
                     '"honda","2015-07-30 00:00:00",727000,570800\n');
+                done();
+            })
+            .catch(function(err){
+                should.not.exist(err);
+                done();
+            });
+    });
+
+    it("should process a merged object - timeSeries as parent", function(done){
+        var payload = require("../../support/recipes/response.payloads");
+        converter.jsonToCsv(payload.mergedObjectTsAsParent)
+            .then(function(result){
+                result.should.be.an('string');
+                expect(result).to.eql('category,key,interactions,unique_authors\n' +
+                    '"2015-08-03 00:00:00","BMW",42500,34100\n' +
+                    '"2015-08-03 00:00:00","Ford Motor Company",10500,8400\n' +
+                    '"2015-08-03 00:00:00","Cars",9600,7300\n' +
+                    '"2015-08-10 00:00:00","BMW",71700,54400\n' +
+                    '"2015-08-10 00:00:00","Ford Motor Company",16300,12300\n' +
+                    '"2015-08-10 00:00:00","Cars",15900,11700\n' +
+                    '"2015-08-17 00:00:00","BMW",74500,56900\n' +
+                    '"2015-08-17 00:00:00","Cars",18600,13200\n' +
+                    '"2015-08-17 00:00:00","Ford Motor Company",17200,12100\n' +
+                    '"2015-08-24 00:00:00","BMW",55500,42600\n' +
+                    '"2015-08-24 00:00:00","Cars",15100,10300\n' +
+                    '"2015-08-24 00:00:00","Ford Motor Company",15000,11000\n' +
+                    '"2015-08-31 00:00:00","BMW",55400,41000\n' +
+                    '"2015-08-31 00:00:00","Cars",14300,9100\n' +
+                    '"2015-08-31 00:00:00","Ford Motor Company",11600,8400\n');
                 done();
             })
             .catch(function(err){

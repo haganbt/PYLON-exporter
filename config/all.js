@@ -54,7 +54,7 @@ module.exports = {
                 }
             },
             {
-                "name": "example_custom_dynamic_timeSeries_from_freqDist",
+                "name": "example_freqDist_nested_type_override",
                 "target": "fb.author.gender",
                 "threshold": 2,
                 "then": {
@@ -68,6 +68,15 @@ module.exports = {
                 "name": "example_timeSeries",
                 "interval": "week",
                 "span": 2
+            },
+            {
+                "name": "example_timeSeries_nested_type_override",
+                "interval": "week",
+                "then": {
+                    "type": "freqDist",
+                    "target": "fb.author.gender",
+                    "threshold": 2
+                }
             },
             {
                 "example_merged_timeSeries": [

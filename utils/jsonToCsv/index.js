@@ -8,9 +8,26 @@ var Promise = require("bluebird")
 var format = config.get("app.format").toLowerCase() || "json"
     ;
 
-function formatUnix(timeStamp){
-    return new moment.unix(timeStamp).utc().format('YYYY-MM-DD HH:mm:ss');
+/**
+ * isUnixTs - check if valid unix TS
+ *
+ * @param input - {*}
+ * @returns - boolean
+ */
+function isUnixTs(input){
+    return(moment.unix(input).isValid());
 }
+
+/**
+ * unixToHuman - convert unix TS to human readable format
+ *
+ * @param unixTs - int
+ * @returns - moment object
+ */
+function unixToHuman(unixTs){
+    return new moment.unix(unixTs).utc().format('YYYY-MM-DD HH:mm:ss');
+}
+
 
 /**
  * jsonToCsv - process the 3 JSON object types. See
@@ -18,10 +35,9 @@ function formatUnix(timeStamp){
  * examples.
  *
  * @param inObj = object
- * @param reqType (optional) - string - freqDist, timeSeries
  * @returns promist(string)
  */
-var jsonToCsv = function jsonToCsv(inObj, reqType) {
+var jsonToCsv = function jsonToCsv(inObj) {
     return new Promise(function(resolve, reject){
         var out = "";
 
@@ -32,12 +48,7 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
         if(inObj.redacted){
             return resolve("redacted");
         }
-
-        if(reqType === undefined){
-            reqType = "freqDist";
-        }
-
-
+        
         if (Array.isArray(inObj)) {
             // single level nested
             if (inObj[0] && inObj[0].child && !inObj[0].child.results[0].child){
@@ -73,10 +84,10 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
                     });
                 } else {
                     // non nested
-                    var thisKey = (reqType === "timeSeries")
-                        ? formatUnix(level0.key) : level0.key;
-
-                    out += '"' + thisKey + '",' + level0.interactions + "," +
+                    if(isUnixTs(level0.key) === true){
+                        level0.key = unixToHuman(level0.key);
+                    }
+                    out += '"' + level0.key + '",' + level0.interactions + "," +
                         level0.unique_authors + "\n";
                 }
             });
@@ -84,17 +95,19 @@ var jsonToCsv = function jsonToCsv(inObj, reqType) {
             out = "category,key,interactions,unique_authors\n";
             Object.keys(inObj).reduce(
                 function(previousValue, currentValue) {
-
                     if(inObj[currentValue].redacted){
                         out += currentValue + ",redacted\n";
                     } else {
                         inObj[currentValue].forEach(
                             function(childObj) {
-                                var thisKey = (reqType === "timeSeries")
-                                    ? formatUnix(childObj.key) : childObj.key;
-
+                                if(isUnixTs(currentValue) === true){
+                                    currentValue = unixToHuman(currentValue);
+                                }
+                                if(isUnixTs(childObj.key) === true){
+                                    childObj.key = unixToHuman(childObj.key);
+                                }
                                 out += '"' + currentValue + '","' +
-                                    thisKey + '",' + childObj.interactions +
+                                    childObj.key + '",' + childObj.interactions +
                                     "," + childObj.unique_authors + "\n";
                             });
                     }

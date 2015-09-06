@@ -361,18 +361,20 @@ for Male authors only for both the primary request and secondary:
 }
 ```
 
-**Type Property**
+## Type Property
 
-It is possible to override the type of the freqDist child tasks by specifying a ```type``` property as part of the ```then```
-object. This is useful for dynamically generating timeSeries results using the results of the parent freqDist. For example, 
-you may wish to generate a timeSeries for ```gender``` i.e. for both male and female. This could be done by specifying two timeSeries
-tasks with a ```filter``` property for each (```male``` and ```female```) or dynamically by overriding the ```type```:
+It is possible to override the type of custom nested tasks for both freqDist and timeSeries by specifying a ```type``` property 
+as part of the ```then``` object. This is powerful in that request types can be be mixed.
+
+For example, you may wish to generate a timeSeries for each member of a tag tree. This could be done by specifying a timeSeries
+tasks for each with a unique ```filter``` property however this could take many lines of config depending on how many tags
+were within the tree. The simpler method is to do this dynamically by overriding the ```type``` from freqDist to timeSeries:
 
 ```json
 "freqDist": [
     {
-        "target": "fb.author.gender",
-        "threshold": 2,
+        "target": "interaction.tag_tree.automotive.brand",
+        "threshold": 5,
         "then": {
             "type": "timeSeries", //<-- override type
             "interval": "week" //<-- timeSeries properties
@@ -381,16 +383,20 @@ tasks with a ```filter``` property for each (```male``` and ```female```) or dyn
 ]
 ```
 
-This become even more useful when the dealing with large number of properties e.g. a tag tree that may have many values.
-Simply specify the tag tree as the parent target:
+Likewise, the reverse is possible, from timeSeries to freqDist. For example, for each week, show the top topics:
 
 ```json
-"freqDist": [
+"timeSeries": [
     {
-        "target": "interaction.tag_tree.automotive.brand",
-        ...
+        "interval": "week",
+        "then": {
+            "type": "freqDist", //<-- override type
+            "target": "fb.topics.name", //<-- freqDist properties
+            "threshold": 10
+        }
+    }
+]
 ```
-
 
 ***NOTE: Due to the fact individual requests are used, custom nested requests can be more susceptible to redaction 
 i.e. each individual request must have an audience size of > 1000 unique authors.***

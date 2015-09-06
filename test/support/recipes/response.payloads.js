@@ -110,6 +110,94 @@ var mergedObjectTs = {
     ]
 };
 
+var mergedObjectTsAsParent = {
+    "1438560000": [
+        {
+            "key": "BMW",
+            "interactions": 42500,
+            "unique_authors": 34100
+        },
+        {
+            "key": "Ford Motor Company",
+            "interactions": 10500,
+            "unique_authors": 8400
+        },
+        {
+            "key": "Cars",
+            "interactions": 9600,
+            "unique_authors": 7300
+        }
+    ],
+    "1439164800": [
+        {
+            "key": "BMW",
+            "interactions": 71700,
+            "unique_authors": 54400
+        },
+        {
+            "key": "Ford Motor Company",
+            "interactions": 16300,
+            "unique_authors": 12300
+        },
+        {
+            "key": "Cars",
+            "interactions": 15900,
+            "unique_authors": 11700
+        }
+    ],
+    "1439769600": [
+        {
+            "key": "BMW",
+            "interactions": 74500,
+            "unique_authors": 56900
+        },
+        {
+            "key": "Cars",
+            "interactions": 18600,
+            "unique_authors": 13200
+        },
+        {
+            "key": "Ford Motor Company",
+            "interactions": 17200,
+            "unique_authors": 12100
+        }
+    ],
+    "1440374400": [
+        {
+            "key": "BMW",
+            "interactions": 55500,
+            "unique_authors": 42600
+        },
+        {
+            "key": "Cars",
+            "interactions": 15100,
+            "unique_authors": 10300
+        },
+        {
+            "key": "Ford Motor Company",
+            "interactions": 15000,
+            "unique_authors": 11000
+        }
+    ],
+    "1440979200": [
+        {
+            "key": "BMW",
+            "interactions": 55400,
+            "unique_authors": 41000
+        },
+        {
+            "key": "Cars",
+            "interactions": 14300,
+            "unique_authors": 9100
+        },
+        {
+            "key": "Ford Motor Company",
+            "interactions": 11600,
+            "unique_authors": 8400
+        }
+    ]
+};
+
 var mrgObjSingleRedacted = {
     "ford": {
         "redacted": true
@@ -418,6 +506,7 @@ exports.arrayOfObjectsTs = arrayOfObjectsTs;
 exports.arrayOfObjRedacted = arrayOfObjRedacted;
 exports.mergedObject = mergedObject;
 exports.mergedObjectTs = mergedObjectTs;
+exports.mergedObjectTsAsParent = mergedObjectTsAsParent;
 exports.mrgObjSingleRedacted = mrgObjSingleRedacted;
 exports.mrgObjDoubleRedact = mrgObjDoubleRedact;
 exports.OneLevelNestObj = OneLevelNestObj;
