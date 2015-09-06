@@ -164,7 +164,7 @@ as part of the output. If files are being generated, the ```name``` property is 
 As default, the exporter will use a 30 day time range for all tasks. This can be overridden for all tasks or
 on a per task basis. Simply specify a ```start``` and/or ```end``` parameter as a unix timestamp.
 
-As default ```start``` will be set to now and ```end``` set to now -30 days. Either parameter may be omitted.
+As default ```end``` will be set to now and ```start``` set to now -32 days. Either parameter may be omitted.
 
 **Override All Tasks**
 
