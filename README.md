@@ -410,8 +410,13 @@ An example Tableau workbook is provided and accompanying config recipe ```(/conf
   * The Tableau workbook will be output in the same dir as the output files.
   
 NOTE: The Tableau workbook uses absolute file paths, so if the source files or the workbook are moved outside of the output dir, the source file paths
-will need to be updated inside the workbook. Simply edit the workbook using a text edit (its an XML file) and find and replace the ```directory='```
+will need to be updated inside the workbook. Simply edit the workbook using a text edit (its an XML file) and find/replace the ```directory='```
  locations.
+
+**Custom Tableau Recipes**
+
+To create a custom Tableau config recipe simply copy the example ```(/config/standard-tableau.js)``` and rename accordingly.
+Providing the config file name contains the string 'tableau', the default workbook will be output witht eh source files.
 
 
 ### Feature Requests and Bugs
