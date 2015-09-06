@@ -408,10 +408,12 @@ An example Tableau workbook is provided and accompanying config recipe ```(/conf
   * Set the exporter to use the ```standard-tableau``` config recipe: ```export NODE_ENV=standard-tableau```
   * Run the app: ```node app.js```
   * The Tableau workbook will be output in the same dir as the output files.
+
+**Source File Locations**
   
-NOTE: The Tableau workbook uses absolute file paths, so if the source files or the workbook are moved outside of the output dir, the source file paths
-will need to be updated inside the workbook. Simply edit the workbook using a text edit (its an XML file) and find/replace the ```directory='```
- locations.
+Tableau workbooks do not support relative source file paths and hence absolute file paths are dynamically hard coded in to the workbook. If the 
+source files or the workbook are moved outside of the output dir, the source file paths will need to be updated within 
+the workbook. Simply edit the```standard-tableau.tbw``` workbook using a text edit (its an XML file) and find/replace the ```directory='``` locations.
 
 **Custom Tableau Recipes**
 
