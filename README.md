@@ -418,7 +418,7 @@ the workbook. Simply edit the```standard-tableau.tbw``` workbook using a text ed
 **Custom Tableau Recipes**
 
 To create a custom Tableau config recipe simply copy the example ```(/config/standard-tableau.js)``` and rename accordingly.
-Providing the config file name contains the string 'tableau', the default workbook will be output witht eh source files.
+Providing the config file name contains the string 'tableau', the default workbook will be output with the source files.
 
 
 ### Feature Requests and Bugs
