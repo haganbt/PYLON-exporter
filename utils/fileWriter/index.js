@@ -20,7 +20,7 @@ var ts = moment().format("YYYY-MM-DD-HH.mm.ss")
     , dir = "./output/" + process.env.NODE_ENV + "-" + ts
     ;
 
-if(process.env.NODE_ENV.indexOf("tableau") > -1){
+if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === "true"){
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
     }
