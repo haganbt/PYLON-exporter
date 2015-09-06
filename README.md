@@ -361,7 +361,7 @@ for Male authors only for both the primary request and secondary:
 }
 ```
 
-## Type Property
+**Type Property**
 
 It is possible to override the type of custom nested tasks for both freqDist and timeSeries by specifying a ```type``` property 
 as part of the ```then``` object. This is powerful in that request types can be be mixed.
