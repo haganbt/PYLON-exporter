@@ -8,7 +8,7 @@
   </preferences>
   <datasources>
     <datasource caption='standard-tableau-timeSeries_by_entity' inline='true' name='textscan.42249.761339027800' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-timeSeries_by_entity.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-timeSeries_by_entity.csv' password='' server=''>
         <relation name='standard-tableau-timeSeries_by_entity#csv' table='[standard-tableau-timeSeries_by_entity#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='string' name='category' ordinal='0' />
@@ -125,7 +125,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-entity_volumes+' inline='true' name='textscan.42251.650483888900' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-entity_volumes.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-entity_volumes.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -347,7 +347,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-media_types+' inline='true' name='textscan.42251.668697835600' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-media_types.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-media_types.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -575,7 +575,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-age_gender' inline='true' name='textscan.42251.717791458300' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-age_gender.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-age_gender.csv' password='' server=''>
         <relation name='standard-tableau-age_gender#csv' table='[standard-tableau-age_gender#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='string' name='name' ordinal='0' />
@@ -720,7 +720,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-domains_by_entity+' inline='true' name='textscan.42251.739436713000' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-domains_by_entity.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-domains_by_entity.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -948,7 +948,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-links_by_entity+' inline='true' name='textscan.42251.816880891200' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-links_by_entity.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-links_by_entity.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -1175,7 +1175,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-topics_by_entity+' inline='true' name='textscan.42251.824961423600' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-topics_by_entity.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-topics_by_entity.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -1397,7 +1397,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-topic_hashtags+' inline='true' name='textscan.42252.623906226900' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-topic_hashtags.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-topic_hashtags.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -1655,7 +1655,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-region_by_entity' inline='true' name='textscan.42252.644524131900' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-region_by_entity.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-region_by_entity.csv' password='' server=''>
         <relation name='standard-tableau-region_by_entity#csv' table='[standard-tableau-region_by_entity#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='string' name='category' ordinal='0' />
@@ -1773,7 +1773,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-timeSeries_by_day' inline='true' name='textscan.42253.581680590300' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-timeSeries_by_day.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-timeSeries_by_day.csv' password='' server=''>
         <relation name='standard-tableau-timeSeries_by_day#csv' table='[standard-tableau-timeSeries_by_day#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='datetime' name='key' ordinal='0' />
@@ -1874,7 +1874,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-topics_by_day+' inline='true' name='textscan.42253.582548402800' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-topics_by_day.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-topics_by_day.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -2090,7 +2090,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-hashtags_by_day' inline='true' name='textscan.42253.607543831000' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-hashtags_by_day.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-hashtags_by_day.csv' password='' server=''>
         <relation name='standard-tableau-hashtags_by_day#csv' table='[standard-tableau-hashtags_by_day#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='datetime' name='category' ordinal='0' />
@@ -2207,7 +2207,7 @@
       </semantic-values>
     </datasource>
     <datasource caption='standard-tableau-links_by_day' inline='true' name='textscan.42253.610002488400' version='9.0'>
-      <connection class='textscan' directory='/Users/Ben/WebstormProjects/SE-PYLON-exporter/output/standard-tableau-2015-09-06-14.27.50' filename='standard-tableau-links_by_day.csv' password='' server=''>
+      <connection class='textscan' directory='' filename='standard-tableau-links_by_day.csv' password='' server=''>
         <relation name='standard-tableau-links_by_day#csv' table='[standard-tableau-links_by_day#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype='datetime' name='category' ordinal='0' />
