@@ -931,7 +931,6 @@
       </column>
       <column caption='Unique Authors' datatype='integer' name='[unique_authors]' role='measure' type='quantitative'>
       </column>
-      <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
       <group caption='Action (Category)' hidden='true' name='[Action (Category)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[category]' />
@@ -944,21 +943,6 @@
         </groupfilter>
       </group>
       <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:category:nk]' type='palette'>
-            <map to='#1f77b4'>
-              <bucket>&quot;BMW&quot;</bucket>
-            </map>
-            <map to='#2ca02c'>
-              <bucket>&quot;Honda&quot;</bucket>
-            </map>
-            <map to='#ff7f0e'>
-              <bucket>&quot;Ford&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
@@ -1175,7 +1159,6 @@
       </column>
       <column caption='Unique Authors' datatype='integer' name='[unique_authors]' role='measure' type='quantitative'>
       </column>
-      <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
       <group caption='Action (Category)' hidden='true' name='[Action (Category)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[category]' />
@@ -1187,21 +1170,6 @@
         </groupfilter>
       </group>
       <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:category:nk]' type='palette'>
-            <map to='#1f77b4'>
-              <bucket>&quot;BMW&quot;</bucket>
-            </map>
-            <map to='#2ca02c'>
-              <bucket>&quot;Honda&quot;</bucket>
-            </map>
-            <map to='#ff7f0e'>
-              <bucket>&quot;Ford&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
@@ -1799,23 +1767,7 @@
       </column>
       <column caption='Unique Authors' datatype='integer' name='[unique_authors]' role='measure' type='quantitative'>
       </column>
-      <column-instance column='[category]' derivation='None' name='[none:category:nk]' pivot='key' type='nominal' />
       <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:category:nk]' type='palette'>
-            <map to='#1f77b4'>
-              <bucket>&quot;BMW&quot;</bucket>
-            </map>
-            <map to='#2ca02c'>
-              <bucket>&quot;Honda&quot;</bucket>
-            </map>
-            <map to='#ff7f0e'>
-              <bucket>&quot;Ford&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
@@ -2542,7 +2494,6 @@
       </zones>
     </window>
     <window auto-hidden='0' class='dashboard' maximized='0' name='Domains &amp; URL&apos;s'>
-      <active id='1' />
       <zones>
         <zone h='100000' id='1' name='Volume Bubbles' w='50000' x='0' y='0'>
           <viewpoint>
@@ -2604,6 +2555,8 @@
           <field>[textscan.42249.761339027800].[yr:key:ok]</field>
         </color-one-way>
       </highlight>
+      <viewpoint>
+      </viewpoint>
     </window>
     <window auto-hidden='0' class='worksheet' maximized='0' name='Volume Bubbles'>
       <cards>
@@ -2629,6 +2582,8 @@
           <field>[textscan.42251.650483888900].[none:key:nk]</field>
         </color-one-way>
       </highlight>
+      <viewpoint>
+      </viewpoint>
     </window>
     <window auto-hidden='0' class='worksheet' maximized='0' name='Media Type'>
       <cards>
@@ -2743,6 +2698,8 @@
           <field>[textscan.42251.816880891200].[none:key:nk]</field>
         </color-one-way>
       </highlight>
+      <viewpoint>
+      </viewpoint>
     </window>
     <window auto-hidden='0' class='worksheet' maximized='0' name='Topics'>
       <cards>
@@ -2770,6 +2727,8 @@
           <field>[textscan.42251.824961423600].[none:key:nk]</field>
         </color-one-way>
       </highlight>
+      <viewpoint>
+      </viewpoint>
     </window>
     <window auto-hidden='0' class='worksheet' maximized='0' name='Hashtags'>
       <cards>
@@ -2797,6 +2756,8 @@
           <field>[textscan.42252.623906226900].[none:key:nk]</field>
         </color-one-way>
       </highlight>
+      <viewpoint>
+      </viewpoint>
     </window>
     <window auto-hidden='0' class='worksheet' maximized='0' name='Region'>
       <cards>
@@ -2828,6 +2789,8 @@
           <field>[textscan.42252.644524131900].[none:key:nk]</field>
         </color-one-way>
       </highlight>
+      <viewpoint>
+      </viewpoint>
     </window>
   </windows>
   <thumbnails>
