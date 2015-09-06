@@ -399,16 +399,19 @@ i.e. each individual request must have an audience size of > 1000 unique authors
 
 WARNING - this feature is experimental - see https://github.com/datasift/SE-PYLON-exporter/issues/52
 
-An example Tableau workbook is provided ```(/tableau/standard-tableau)``` and accompanying config recipe ```(/config/standard-tableau.js)```.
+An example Tableau workbook is provided and accompanying config recipe ```(/config/standard-tableau.js)```.
  This config recipe dynamically builds a Tableau dashboard based on a specified pre-defined tag tree. The export will 
  be most effective for high level tags like products or brands etc as each tag is drilled in to for demographics, topics and hashtags etc.
  
-  * Create a ```/standard-tableau``` root folder i.e. not within a user dir, but on the root of the local disk - ```mkdir /standard-tableau```.
   * Edit the ```(/config/standard-tableau.js)```. As default this recipe will look to use a tag named ```interaction.tag_tree.standard```. It is best practice to use this naming convention for CSDL where you intend to use this export.
    If you have not used this tag naming convention, simply find and replace ```interaction.tag_tree.standard``` with the desired tag name.
   * Set the exporter to use the ```standard-tableau``` config recipe: ```export NODE_ENV=standard-tableau```
   * Run the app: ```node app.js```
-  * Open the Tableau workbook file:```(/tableau/standard-tableau)```
+  * The Tableau workbook will be output in the same dir as the output files.
+  
+NOTE: The Tableau workbook uses absolute file paths, so if the source files or the workbook are moved outside of the output dir, the source file paths
+will need to be updated inside the workbook. Simply edit the workbook using a text edit (its an XML file) and find and replace the ```directory='```
+ locations.
 
 
 ### Feature Requests and Bugs
