@@ -6,14 +6,14 @@ var Promise = require("bluebird")
     , moment = require("moment")
     , fse = require('fs-extra')
     , path = require('path')
+    , log = require('../logger')
     ;
 
 var format = config.get("app.format").toLowerCase() || "json"
     , writeConfig = config.get("app.write_to_file") || "false"
-    , log = require('../logger')
     ;
 
-var supportedFormats = ["json","csv"]
+var supportedFormats = ["json", "csv"]
     ;
 
 var ts = moment().format("YYYY-MM-DD-HH.mm.ss")
@@ -24,30 +24,30 @@ if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === true){
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
     }
-    var destFile =  dir + '/' + process.env.NODE_ENV + '.twb';
+    var destFile = dir + '/' + process.env.NODE_ENV + '.twb';
     var absoluteDest = path.resolve(__dirname + '../../../' + dir);
 
     fse.copy('./lib/tableau/standard-tableau.twb', destFile, function (err) {
         if (err) {
-            log.error("Unable to copy Tableau source file.")
+            log.error("Unable to copy Tableau source file.");
         }
         // Tableau cannot save relative paths :(
         // http://community.tableau.com/ideas/4167
-        fs.readFile(destFile, 'utf8', function (err,data) {
-            if (err) {
+        fs.readFile(destFile, 'utf8', function (readErr, data) {
+            if (readErr) {
                 log.error("Unable to read Tableau source file");
             }
             //file dir location
             var result = data.replace(/ directory=''/g, " directory='" + absoluteDest + "'");
             // fine names
             result = data.replace(/standard-tableau/g, process.env.NODE_ENV);
-            fs.writeFile(destFile, result, 'utf8', function (err) {
-                if (err) {
+            fs.writeFile(destFile, result, 'utf8', function (writeErr) {
+                if (writeErr) {
                     log.error("Unable to write to Tableau destFile file.");
                 }
             });
         });
-    })
+    });
 }
 
 /**
