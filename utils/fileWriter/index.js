@@ -20,14 +20,14 @@ var ts = moment().format("YYYY-MM-DD-HH.mm.ss")
     , dir = "./output/" + process.env.NODE_ENV + "-" + ts
     ;
 
-if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === "true"){
+if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === true){
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
     }
     var destFile =  dir + '/' + process.env.NODE_ENV + '.twb';
     var absoluteDest = path.resolve(__dirname + '../../../' + dir);
 
-    fse.copy('./tableau/standard-tableau.twb', destFile, function (err) {
+    fse.copy('./lib/tableau/standard-tableau.twb', destFile, function (err) {
         if (err) {
             log.error("Unable to copy Tableau source file.")
         }
