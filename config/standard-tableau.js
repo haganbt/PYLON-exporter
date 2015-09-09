@@ -4,19 +4,47 @@ module.exports = {
         "write_to_file": true,
         "log_level": "info"
     },
-    "hash": "<INDEX_HASH>",
+    "hash": "fd4f0cfef1807e327476ff60288bea78",
     "auth": {
-        "username": "<USERNNAME>",
-        "api_key": "<API_KEY>"
+        "username": "CS_2",
+        "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
     },
     "analysis": {
         "freqDist": [
+            /**
+             * Global Data types
+             */
+                {
+                    "name": "types_global",
+                    "target": "fb.type",
+                    "threshold": 10
+                },
+                {
+                    "name": "media_types_global",
+                    "target": "fb.media_type",
+                    "threshold": 10
+                },
+                {
+                    "name": "parent_media_types_global",
+                    "target": "fb.parent.media_type",
+                    "threshold": 10
+                },
+                {
+                    "name": "author_type_global",
+                    "target": "fb.author.type",
+                    "threshold": 10
+                },
+                {
+                    "name": "parent_author_type_global",
+                    "target": "fb.parent.author.type",
+                    "threshold": 10
+                },
             /**
              * Media types by entity
              */
                 {
                     "name": "media_types_by_entity",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 6,
                     "child": {
                         "target": "fb.media_type",
@@ -28,7 +56,7 @@ module.exports = {
              */
                 {
                     "name": "type",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 6,
                     "child": {
                         "target": "fb.type",
@@ -40,7 +68,7 @@ module.exports = {
              */
                 {
                     "name": "entity_volumes",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 5
                 },
             /**
@@ -48,7 +76,7 @@ module.exports = {
              */
                 {
                     "name": "age_gender",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 6,
                     "child": {
                         "target": "fb.author.age",
@@ -64,7 +92,7 @@ module.exports = {
              */
                 {
                     "name": "region_by_entity",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 6,
                     "then": {
                         "target": "fb.author.region",
@@ -76,7 +104,7 @@ module.exports = {
              */
                 {
                     "name": "domains_by_entity",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 6,
                     "then": {
                         "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
@@ -86,7 +114,7 @@ module.exports = {
                 },
                 {
                     "name": "links_by_entity",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 6,
                     "then": {
                         "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
@@ -99,7 +127,7 @@ module.exports = {
              */
                 {
                     "name": "topics_by_entity",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 3,
                     "then": {
                         "target": "fb.topics.name",
@@ -123,7 +151,7 @@ module.exports = {
              */
                 {
                     "name": "timeSeries_by_entity",
-                    "target": "interaction.tag_tree.standard",
+                    "target": "interaction.tag_tree.automotive.brand",
                     "threshold": 30,
                     "then": {
                         "type": "timeSeries",
