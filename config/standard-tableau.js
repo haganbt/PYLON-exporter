@@ -4,10 +4,10 @@ module.exports = {
         "write_to_file": true,
         "log_level": "info"
     },
-    "hash": "fd4f0cfef1807e327476ff60288bea78",
+    "hash": "<INDEX_HASH>",
     "auth": {
-        "username": "CS_2",
-        "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
+        "username": "<USERNNAME>",
+        "api_key": "<API_KEY>"
     },
     "analysis": {
         "freqDist": [
@@ -44,7 +44,7 @@ module.exports = {
              */
                 {
                     "name": "media_types_by_entity",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "child": {
                         "target": "fb.media_type",
@@ -56,7 +56,7 @@ module.exports = {
              */
                 {
                     "name": "type",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "child": {
                         "target": "fb.type",
@@ -68,7 +68,7 @@ module.exports = {
              */
                 {
                     "name": "entity_volumes",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 5
                 },
             /**
@@ -76,7 +76,7 @@ module.exports = {
              */
                 {
                     "name": "age_gender",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "child": {
                         "target": "fb.author.age",
@@ -92,7 +92,7 @@ module.exports = {
              */
                 {
                     "name": "region_by_entity",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "then": {
                         "target": "fb.author.region",
@@ -104,7 +104,7 @@ module.exports = {
              */
                 {
                     "name": "domains_by_entity",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "then": {
                         "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
@@ -114,7 +114,7 @@ module.exports = {
                 },
                 {
                     "name": "links_by_entity",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "then": {
                         "filter": "not links.domain in \"bit.ly, bitly.com, facebook.com\"",
@@ -127,7 +127,7 @@ module.exports = {
              */
                 {
                     "name": "topics_by_entity",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 3,
                     "then": {
                         "target": "fb.topics.name",
@@ -151,7 +151,7 @@ module.exports = {
              */
                 {
                     "name": "timeSeries_by_entity",
-                    "target": "interaction.tag_tree.automotive.brand",
+                    "target": "interaction.tag_tree.standard",
                     "threshold": 30,
                     "then": {
                         "type": "timeSeries",
