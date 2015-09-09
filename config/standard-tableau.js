@@ -15,7 +15,7 @@ module.exports = {
              * Media types by entity
              */
                 {
-                    "name": "media_types",
+                    "name": "media_types_by_entity",
                     "target": "interaction.tag_tree.standard",
                     "threshold": 6,
                     "child": {
