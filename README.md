@@ -403,8 +403,6 @@ i.e. each individual request must have an audience size of > 1000 unique authors
 
 ## Tableau Workbook
 
-WARNING - this feature is experimental - see https://github.com/datasift/SE-PYLON-exporter/issues/52
-
 An example Tableau workbook is provided and accompanying config recipe ```(/config/standard-tableau.js)```.
  This config recipe dynamically builds a Tableau dashboard based on a specified pre-defined tag tree. The export will 
  be most effective for high level tags like products or brands etc as each tag is drilled in to for demographics, topics and hashtags etc.
