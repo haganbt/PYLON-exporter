@@ -15,14 +15,6 @@ module.exports = {
     },
     "analysis": {
         "freqDist": [
-
-            {
-                "name": "foo",
-                "baseline": true,
-                "filter": "fb.all.content any \"Ford\"",
-                "target": "fb.author.gender",
-                "threshold": 2
-            }
         ],
         "timeSeries": [
         ]
