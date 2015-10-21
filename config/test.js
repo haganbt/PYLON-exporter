@@ -6,15 +6,23 @@
 module.exports = {
     "app": {
         "format": "csv", // json, csv
-        "write_to_file": true // true, false
+        "write_to_file": false // true, false
     },
-    "hash": "fd4f0cfef1807e327476ff60288bea78",
+    "hash": "<INDEX_HASH>",
     "auth": {
-        "username": "CS_2",
-        "api_key": "5c15152f7086f7f3b2d2cc6b25648e94"
+        "username": "<USERNNAME>",
+        "api_key": "<API_KEY>"
     },
     "analysis": {
         "freqDist": [
+
+            {
+                "name": "foo",
+                "baseline": true,
+                "filter": "fb.all.content any \"Ford\"",
+                "target": "fb.author.gender",
+                "threshold": 2
+            }
         ],
         "timeSeries": [
         ]
