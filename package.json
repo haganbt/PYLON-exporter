@@ -1,5 +1,5 @@
 {
-  "name": "SE-PYLON-exporter",
+  "name": "PYLON-exporter",
   "version": "1.0.0",
   "description": "Utility for exporting data from a PYLON index.",
   "main": "app.js",
@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/haganbt/SE-PYLON-exporter.git"
+    "url": "https://github.com/haganbt/PYLON-exporter.git"
   },
   "author": "Ben",
   "bugs": {
-    "url": "https://github.com/haganbt/SE-PYLON-exporter/issues"
+    "url": "https://github.com/haganbt/PYLON-exporter/issues"
   },
-  "homepage": "https://github.com/haganbt/SE-PYLON-exporter",
+  "homepage": "https://github.com/haganbt/PYLON-exporter",
   "dependencies": {
     "async": "0.9.0",
     "bluebird": "2.9.34",
