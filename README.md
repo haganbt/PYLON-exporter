@@ -140,6 +140,7 @@ overwrite any duplicate values within the ```default``` file.
 ### Task Filters
 
 **Filter All Tasks**
+
 A filter can be supplied at the global level. If a global ```filter``` property is specified, it will apply across all tasks.
 
 ```json
@@ -150,6 +151,7 @@ A filter can be supplied at the global level. If a global ```filter``` property 
 ```
 
 **Filter per Task**
+
 The ```filter``` parameter is supported as expected.
 
 ```json
