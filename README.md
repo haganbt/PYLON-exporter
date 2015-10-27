@@ -138,6 +138,18 @@ overwrite any duplicate values within the ```default``` file.
 
 
 ### Task Filters
+
+**Filter All Tasks**
+A filter can be supplied at the global level. If a global ```filter``` property is specified, it will apply across all tasks.
+
+```json
+"filter": "fb.type == \"story\"",
+"analysis": {
+    "freqDist": [
+        ....
+```
+
+**Filter per Task**
 The ```filter``` parameter is supported as expected.
 
 ```json
@@ -148,7 +160,11 @@ The ```filter``` parameter is supported as expected.
 }
 ```
 
-A filter can also be supplied at the global level. If a global ```filter``` property is specified, it will apply across all tasks and will be joined with an **AND** to any filters specified in individual tasks.
+If a global ```filter``` property is specified, it will apply across all tasks and will be joined with an **AND** to any filters specified in individual tasks. The above filters in the same config file would yield:
+would yield a filter of:
+```json
+  "filter": "(fb.type == \"story\") and (fb.sentiment == \"negative\")"
+```
 
 ### Task Names
 Task names are used to provide a short, human readable description of the result set being generated which is included
