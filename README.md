@@ -60,6 +60,7 @@ Below is a summary of all supported config options.
 | ```auth.api_key```      | global | The api key used for authentication |
 | ```auth.username``` | global | The username used for authentication |
 | ```end``` | global, task | end time - unix timestamp. Defaults to now UTC |
+| ```filter``` | global,task | A CSDL filter to apply to tasks |
 | ```hash``` | global | The hash id of the index to analyze |
 | ```id``` | merged tasks | A unique identifier for each merged task result set |
 | ```name``` | task | A short, human readable description of the result set |
@@ -146,6 +147,8 @@ The ```filter``` parameter is supported as expected.
     "threshold": 2
 }
 ```
+
+A filter can also be supplied at the global level. If a global ```filter``` property is specified, it will apply across all tasks and will be joined with an **AND** to any filters specified in individual tasks.
 
 ### Task Names
 Task names are used to provide a short, human readable description of the result set being generated which is included
@@ -359,6 +362,23 @@ for Male authors only for both the primary request and secondary:
         "filter": "fb.author.gender == \"male\"",
     }
 }
+```
+
+If a ```filter``` parameter is specified at the global level, it will be joined with any other filters using an **AND**. For example a global filter of:
+```json
+  "filter": "fb.author.country_code == \"US\""
+```
+combined with task of:
+```json
+{
+    "filter": "fb.sentiment == \"negative\"",
+    "target": "fb.topics.name",
+    "threshold": 2
+}
+```
+would yield a filter of:
+```json
+  "filter": "(fb.author.country_code == \"US\") and (fb.sentiment == \"negative\")"
 ```
 
 **Type Property**
