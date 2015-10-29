@@ -8,6 +8,7 @@ module.exports = {
     },
     //"start": <UNIX_TS>, //override default 30 days
     //"end":  <UNIX_TS>,
+    //"filter": "fb.author.country_code == \"US\"", //limit all requests in config file to specified CSDL
     "analysis": {
         "freqDist": [
             {
