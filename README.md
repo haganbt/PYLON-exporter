@@ -202,7 +202,7 @@ To override time ranges for all tasks, specify a ```start``` and/or ```end``` pa
 **Override Per Task**
 
 For individual and nested tasks (both native and custom), simply specify as part of the task. Custom nested tasks will
-automatically inherit the set values.
+automatically inherit the parent task values.
 
 ```json
 {
