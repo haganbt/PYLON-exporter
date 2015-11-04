@@ -208,7 +208,6 @@ automatically inherit the parent task values.
 {
     "start": <UNIX_TS>,
     "end":  <UNIX_TS>,
-    "name": "titles_age-gender",
     "target": "fb.author.gender",
     "threshold": 2,
     "then": {
