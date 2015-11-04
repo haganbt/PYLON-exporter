@@ -182,7 +182,7 @@ as part of the output. If files are being generated, the ```name``` property is 
 ```
 
 ### Task Time Ranges
-As default, the exporter will use a 30 day time range for all tasks. This can be overridden for all tasks or
+As default, the exporter will use a 32 day time range for all tasks. This can be overridden for all tasks or
 on a per task basis. Simply specify a ```start``` and/or ```end``` parameter as a unix timestamp.
 
 As default ```end``` will be set to now and ```start``` set to now -32 days. Either parameter may be omitted.
@@ -201,13 +201,20 @@ To override time ranges for all tasks, specify a ```start``` and/or ```end``` pa
 
 **Override Per Task**
 
+For individual and nested tasks (both native and custom), simply specify as part of the task. Custom nested tasks will
+automatically inherit the set values.
+
 ```json
 {
     "start": <UNIX_TS>,
     "end":  <UNIX_TS>,
-    "name": "example_freqDist",
-    "target": "fb.parent.topics.name",
-    "threshold": 3
+    "name": "titles_age-gender",
+    "target": "fb.author.gender",
+    "threshold": 2,
+    "then": {
+        "target": "fb.topics.name",
+        "threshold": 2,
+    }
 }
 ```
 

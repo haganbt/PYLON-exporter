@@ -34,6 +34,10 @@ var resData = {
 };
 
 var task = {
+    "json": {
+        "start": 123,
+        "end": 456,
+    },
     "then": {
         "target": "fb.parent.author.age",
         "threshold": 3
