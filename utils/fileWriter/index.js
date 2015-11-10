@@ -37,10 +37,10 @@ if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === true){
             if (readErr) {
                 log.error("Unable to read Tableau source file");
             } else {
-                //replace file dir location
-                var result = data.replace(/ directory=''/g, " directory='" + absoluteDest + "'");
                 //replace workbook name
-                var out = result.replace(/standard-tableau/g, process.env.NODE_ENV);
+                var result = data.replace(/standard-tableau/g, process.env.NODE_ENV);
+                //replace file dir location
+                var out = result.replace(/ directory=''/g, " directory='" + absoluteDest + "'");
                 fs.writeFile(destFile, out, 'utf8', function (writeErr) {
                     if (writeErr) {
                         log.error("Unable to write to Tableau destFile file.");
