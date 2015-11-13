@@ -127,8 +127,8 @@
         <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
       </semantic-values>
     </datasource>
-    <datasource caption='standard-tableau-media_types_by_entity_by_entity+' inline='true' name='textscan.42251.668697835600' version='9.0'>
-      <connection class='textscan' directory='' filename='standard-tableau-media_types_by_entity_by_entity.csv' password='' server=''>
+    <datasource caption='standard-tableau-media_types_by_entity+' inline='true' name='textscan.42251.668697835600' version='9.0'>
+      <connection class='textscan' directory='' filename='standard-tableau-media_types_by_entity.csv' password='' server=''>
         <relation join='inner' type='join'>
           <clause type='join'>
             <expression op='='>
@@ -3339,7 +3339,7 @@
     </action>
     <datasources>
       <datasource caption='standard-tableau-timeSeries_by_entity' name='textscan.42249.761339027800' />
-      <datasource caption='standard-tableau-media_types_by_entity_by_entity+' name='textscan.42251.668697835600' />
+      <datasource caption='standard-tableau-media_types_by_entity+' name='textscan.42251.668697835600' />
       <datasource caption='standard-tableau-domains_by_entity+' name='textscan.42251.739436713000' />
       <datasource caption='standard-tableau-links_by_entity+' name='textscan.42251.816880891200' />
       <datasource caption='standard-tableau-topics_by_entity+' name='textscan.42251.824961423600' />
@@ -3817,7 +3817,7 @@
       <table>
         <view>
           <datasources>
-            <datasource caption='standard-tableau-media_types_by_entity_by_entity+' name='textscan.42251.668697835600' />
+            <datasource caption='standard-tableau-media_types_by_entity+' name='textscan.42251.668697835600' />
           </datasources>
           <datasource-dependencies datasource='textscan.42251.668697835600'>
             <column caption='Interactions' datatype='integer' name='[interactions]' role='measure' type='quantitative'>
