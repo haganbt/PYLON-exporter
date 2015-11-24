@@ -167,7 +167,7 @@ module.exports = {
                 "threshold": 10,
                 "child": {
                     "target": "fb.author.gender",
-                    "threshold": 2,
+                    "threshold": 6,
                     "child": {
                         "target": "fb.sentiment",
                         "threshold": 3
@@ -183,7 +183,7 @@ module.exports = {
                 "threshold": 10,
                 "child": {
                     "target": "fb.author.age",
-                    "threshold": 2,
+                    "threshold": 6,
                     "child": {
                         "target": "fb.sentiment",
                         "threshold": 3
