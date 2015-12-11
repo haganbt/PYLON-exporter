@@ -239,7 +239,7 @@ module.exports = {
                 "interval": "day",
                 "then": {
                     "type": "freqDist",
-                    "target": "fb.topics.name",
+                    "target": "fb.parent.topics.name",
                     "threshold": 100
                 }
             },
@@ -251,7 +251,7 @@ module.exports = {
                 "interval": "day",
                 "then": {
                     "type": "freqDist",
-                    "target": "fb.hashtags",
+                    "target": "fb.parent.hashtags",
                     "threshold": 100
                 }
             },
