@@ -25,22 +25,20 @@ if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === true){
         fs.mkdirSync(dir);
     }
     var destFile = dir + '/' + process.env.NODE_ENV + '.twb';
+    //this next line may be irrelevant now that relative path in tableau is done
     var absoluteDest = path.resolve(__dirname + '../../../' + dir);
 
     fse.copy('./lib/tableau/standard-tableau.twb', destFile, function (err) {
         if (err) {
             log.error("Unable to copy Tableau source file.");
         }
-        // Tableau cannot save relative paths :(
-        // http://community.tableau.com/ideas/4167
         fs.readFile(destFile, 'utf8', function (readErr, data) {
             if (readErr) {
                 log.error("Unable to read Tableau source file");
             } else {
                 //replace workbook name
                 var result = data.replace(/standard-tableau/g, process.env.NODE_ENV);
-                //replace file dir location
-                var out = result.replace(/ directory=''/g, " directory='" + absoluteDest + "'");
+                var out = result.replace(/ directory=''/g, " directory='.//'");
                 fs.writeFile(destFile, out, 'utf8', function (writeErr) {
                     if (writeErr) {
                         log.error("Unable to write to Tableau destFile file.");
