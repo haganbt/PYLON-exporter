@@ -25,8 +25,6 @@ if(process.env.NODE_ENV.indexOf("tableau") > -1 && writeConfig === true){
         fs.mkdirSync(dir);
     }
     var destFile = dir + '/' + process.env.NODE_ENV + '.twb';
-    //this next line may be irrelevant now that relative path in tableau is done
-    var absoluteDest = path.resolve(__dirname + '../../../' + dir);
 
     fse.copy('./lib/tableau/standard-tableau.twb', destFile, function (err) {
         if (err) {
