@@ -458,10 +458,12 @@ An example Tableau workbook is provided and accompanying config recipe ```(/conf
   * The Tableau workbook will be output in the same dir as the output files.
 
 **Source File Locations**
-  
-Tableau workbooks do not support relative source file paths and hence absolute file paths are dynamically hard coded in to the workbook. If the 
-source files or the workbook are moved outside of the output dir, the source file paths will need to be updated within 
-the workbook. Simply edit the```standard-tableau.tbw``` workbook using a text edit (its an XML file) and find/replace the ```directory='``` locations.
+
+At the time of writing, Tableau partially supports relative source file paths (meaning the generated workbook and 
+source ```.csv``` files  can be moved once created) however **once the notebook is saved, the source file location paths 
+are then hard coded to the workbook**. If the source files or the workbook are then subsequently moved outside of the 
+original dir where the workbook was first saved, the source file paths will need to be updated within the workbook. 
+Simply edit the ```standard-tableau.tbw``` workbook using a text edit (its an XML file) and find/replace the ```directory='``` locations.
 
 **Custom Tableau Recipes**
 
