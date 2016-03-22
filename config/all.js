@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-    "hash": "<INDEX_HASH>",
+    "id": "<INDEX_ID>",
     "auth": {
         "username": "<USERNNAME>",
         "api_key": "<API_KEY>"

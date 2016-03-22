@@ -29,7 +29,7 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config).to.have.length(1);
 
         expect(config[0].json)
-            .to.have.keys("hash", "filter", "start", "end", "parameters");
+            .to.have.keys("id", "filter", "start", "end", "parameters");
 
         expect(config[0].json.parameters)
             .to.have.keys("analysis_type", "parameters");
@@ -85,7 +85,7 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config).to.have.length(2);
 
         expect(config[0].json)
-            .to.have.keys("hash", "filter", "start", "end", "parameters");
+            .to.have.keys("id", "filter", "start", "end", "parameters");
 
         expect(config[0].json.parameters)
             .to.have.keys("analysis_type", "parameters");
@@ -99,7 +99,7 @@ describe("Task Manager buildFromConfig - freqDist", function(){
 
 
         expect(config[1].json)
-            .to.have.keys("hash", "filter", "start", "end", "parameters");
+            .to.have.keys("id", "filter", "start", "end", "parameters");
 
         expect(config[1].json.parameters)
             .to.have.keys("analysis_type", "parameters");
@@ -163,7 +163,7 @@ describe("Task Manager buildFromConfig - freqDist", function(){
         expect(config).to.have.length(1);
 
         expect(config[0].json)
-            .to.have.keys("hash", "filter", "start", "end", "parameters");
+            .to.have.keys("id", "filter", "start", "end", "parameters");
 
         expect(config[0].json.parameters)
             .to.have.keys("analysis_type", "parameters");
