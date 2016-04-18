@@ -96,7 +96,7 @@ module.exports = {
                 "threshold": 10,
                 "then": {
                     "target": "fb.author.region",
-                    "threshold": 20
+                    "threshold": 200
                 }
             },
         /**
