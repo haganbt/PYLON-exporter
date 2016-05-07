@@ -1,3 +1,5 @@
+## WARNING: This project is no longer maintained in favour of [PYLON Exporter ++](https://github.com/haganbt/pepp).
+
 # PYLON-exporter
 
 Utility for exporting data from a PYLON index. PYLON-exporter mandates a config driven approach to data collection, 
